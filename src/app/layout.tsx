@@ -5,7 +5,6 @@ import { ThemeProvider } from "next-themes";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/sonner";
 import { RouteChatWidget } from "@/components/layout/route-chat-widget";
-import { ClinicPrompt } from "@/components/layout/clinic-prompt";
 import { MobileClinicBar } from "@/components/layout/mobile-clinic-bar";
 import { PreferredLocationProvider } from "@/components/providers/preferred-location-provider";
 import { AuthHashHandler } from "@/components/providers/auth-hash-handler";
@@ -65,7 +64,6 @@ export default function RootLayout({
             <TooltipProvider>
               <AuthHashHandler />
               {children}
-              <ClinicPrompt />
               <MobileClinicBar />
               {CLINIC_CONFIG.aiChat.enabled ? <RouteChatWidget /> : null}
               <Toaster />

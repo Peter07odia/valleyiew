@@ -2,31 +2,20 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useState } from "react"
-import { Menu, X, MapPin, ArrowUpRight } from "lucide-react"
+import { Menu, X, ArrowUpRight } from "lucide-react"
 import { SiteLogo } from "./site-logo"
-import { CLINIC_LOCATIONS, REGIONS } from "@/config/clinic"
+import { ClinicSwitcher } from "./clinic-switcher"
 import { usePreferredLocation } from "@/components/providers/preferred-location-provider"
-import { getTodayHours, isLocationOpen } from "@/lib/constants"
 const links = [["Home", "/"], ["Locations", "/locations"], ["Team", "/team"], ["Services", "/services"], ["Contact", "/contact"]]
 export function SiteHeader() {
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
-  const { preferredLocation: clinic, setPreferredLocation, clearPreferredLocation } = usePreferredLocation()
-  const today = clinic ? getTodayHours(clinic) : null
-  const status = !today || today.status !== "confirmed" ? "Call for hours" : clinic && isLocationOpen(clinic) ? "Open now" : "Closed now"
+  const { preferredLocation: clinic } = usePreferredLocation()
   return <header className="sticky top-0 z-40 border-b border-secondary/10 bg-background/95 backdrop-blur-md">
     <a className="sr-only focus:not-sr-only focus:absolute focus:bg-white focus:p-4" href="#main-content">Skip to content</a>
     <div className="bg-secondary text-secondary-foreground">
-      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 px-5 py-2 text-xs sm:px-8">
-        <span className="hidden sm:block">Your health connected with care!</span>
-        <div className="flex min-w-0 items-center gap-2"><MapPin className="size-3.5 shrink-0" aria-hidden="true" />
-          <label className="sr-only" htmlFor="header-clinic">Choose your clinic</label>
-          <select id="header-clinic" value={clinic?.slug ?? ""} onChange={e => e.target.value ? setPreferredLocation(e.target.value) : clearPreferredLocation()} className="max-w-[65vw] cursor-pointer rounded border border-white/25 bg-secondary px-2 py-1 text-xs text-white focus:outline-2 focus:outline-white">
-            <option value="">Choose your clinic</option>
-            {REGIONS.map(region => <optgroup key={region.id} label={region.name}>{CLINIC_LOCATIONS.filter(l => l.region === region.id).map(l => <option key={l.slug} value={l.slug}>{l.shortName}</option>)}</optgroup>)}
-          </select>
-          {clinic && <span className="whitespace-nowrap text-white/75">{status}</span>}
-        </div>
+      <div className="mx-auto flex max-w-7xl items-center px-5 py-2 text-xs sm:px-8">
+        <ClinicSwitcher />
       </div>
     </div>
     <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-4 sm:gap-5 sm:px-8">
