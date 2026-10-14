@@ -1,0 +1,524 @@
+[
+  {
+    "id": "whitby",
+    "slug": "whitby",
+    "region": "durham",
+    "name": "Valleyview Medical Centre - Whitby",
+    "shortName": "Whitby (Dundas St)",
+    "address": "1916 Dundas St E, Unit 6",
+    "city": "Whitby",
+    "province": "ON",
+    "postalCode": "L1N 2L6",
+    "postalCodeStatus": "confirmed",
+    "phone": "905-434-1662",
+    "fax": "905-747-0999",
+    "email": "info@valleyviewmedical.ca",
+    "contactStatus": "confirmed",
+    "bookingUrl": "https://ocean.cognisantmd.com/online-booking/04f9eeaf-8434-4153-aa26-2d0c910f4020",
+    "heroImage": "/images/sections/home-care-photo-whitby-4k.png",
+    "heroImageAlt": "A family physician greeting parents and children in a bright clinic lounge",
+    "hours": [
+      {
+        "day": "Monday",
+        "open": "09:00",
+        "close": "19:00",
+        "isClosed": false,
+        "status": "confirmed"
+      },
+      {
+        "day": "Tuesday",
+        "open": "09:00",
+        "close": "19:00",
+        "isClosed": false,
+        "status": "confirmed"
+      },
+      {
+        "day": "Wednesday",
+        "open": "09:00",
+        "close": "19:00",
+        "isClosed": false,
+        "status": "confirmed"
+      },
+      {
+        "day": "Thursday",
+        "open": "09:00",
+        "close": "19:00",
+        "isClosed": false,
+        "status": "confirmed"
+      },
+      {
+        "day": "Friday",
+        "open": "09:00",
+        "close": "17:00",
+        "isClosed": false,
+        "status": "confirmed"
+      },
+      {
+        "day": "Saturday",
+        "open": "09:00",
+        "close": "14:00",
+        "isClosed": false,
+        "status": "confirmed"
+      },
+      {
+        "day": "Sunday",
+        "open": "",
+        "close": "",
+        "isClosed": true,
+        "status": "confirmed"
+      }
+    ],
+    "doctorIds": [
+      "afaf-saeed",
+      "sidra-saif",
+      "abdullah-khan",
+      "emmanuel-olamide-adeogun",
+      "rashida-anike-agoro"
+    ]
+  },
+  {
+    "id": "oshawa",
+    "slug": "oshawa",
+    "region": "durham",
+    "name": "Valleyview Medical Centre - Oshawa",
+    "shortName": "Oshawa (Harmony)",
+    "address": "991 Taunton Rd E, Unit B3",
+    "city": "Oshawa",
+    "province": "ON",
+    "postalCode": "L1K 0Z7",
+    "postalCodeStatus": "confirmed",
+    "phone": "905-367-5402",
+    "fax": "905-291-7274",
+    "email": "valleyviewharmony@gmail.com",
+    "contactStatus": "confirmed",
+    "bookingUrl": "https://ocean.cognisantmd.com/online-booking/3b9e0482-a387-48f5-afd3-f0aedf0064f9",
+    "heroImage": "/images/hero/oshawa.jpg",
+    "heroImageAlt": "A physician holding a stethoscope",
+    "hours": [
+      {
+        "day": "Monday",
+        "open": "09:00",
+        "close": "19:00",
+        "isClosed": false,
+        "status": "confirmed"
+      },
+      {
+        "day": "Tuesday",
+        "open": "09:00",
+        "close": "19:00",
+        "isClosed": false,
+        "status": "confirmed"
+      },
+      {
+        "day": "Wednesday",
+        "open": "09:00",
+        "close": "19:00",
+        "isClosed": false,
+        "status": "confirmed"
+      },
+      {
+        "day": "Thursday",
+        "open": "09:00",
+        "close": "19:00",
+        "isClosed": false,
+        "status": "confirmed"
+      },
+      {
+        "day": "Friday",
+        "open": "09:00",
+        "close": "17:00",
+        "isClosed": false,
+        "status": "confirmed"
+      },
+      {
+        "day": "Saturday",
+        "open": "",
+        "close": "",
+        "isClosed": false,
+        "status": "to-be-confirmed"
+      },
+      {
+        "day": "Sunday",
+        "open": "",
+        "close": "",
+        "isClosed": false,
+        "status": "to-be-confirmed"
+      }
+    ],
+    "doctorIds": [
+      "emmanuel-olamide-adeogun",
+      "shehla-qadeer",
+      "olajide-afolarin",
+      "maren-preussler",
+      "olugbenga-ajayi"
+    ]
+  },
+  {
+    "id": "courtice",
+    "slug": "courtice",
+    "region": "durham",
+    "name": "Valleyview Medical Centre - Courtice",
+    "shortName": "Courtice (Nash Rd)",
+    "address": "1656 Nash Rd, Unit 2",
+    "city": "Courtice",
+    "province": "ON",
+    "postalCode": "L1E 1S8",
+    "postalCodeStatus": "confirmed",
+    "phone": "905-674-1447",
+    "fax": "905-674-8323",
+    "email": "valleyviewcourtice@gmail.com",
+    "contactStatus": "confirmed",
+    "bookingUrl": "https://ocean.cognisantmd.com/online-booking/38259596-8c5a-4814-9fee-31fc9f106803",
+    "heroImage": "/images/sections/home-care-photo-courtice-4k.png",
+    "heroImageAlt": "A clinician talking with an older couple in a calm clinic lounge",
+    "hours": [
+      {
+        "day": "Monday",
+        "open": "09:00",
+        "close": "19:00",
+        "isClosed": false,
+        "status": "confirmed"
+      },
+      {
+        "day": "Tuesday",
+        "open": "09:00",
+        "close": "19:00",
+        "isClosed": false,
+        "status": "confirmed"
+      },
+      {
+        "day": "Wednesday",
+        "open": "09:00",
+        "close": "19:00",
+        "isClosed": false,
+        "status": "confirmed"
+      },
+      {
+        "day": "Thursday",
+        "open": "09:00",
+        "close": "19:00",
+        "isClosed": false,
+        "status": "confirmed"
+      },
+      {
+        "day": "Friday",
+        "open": "09:00",
+        "close": "17:00",
+        "isClosed": false,
+        "status": "confirmed"
+      },
+      {
+        "day": "Saturday",
+        "open": "",
+        "close": "",
+        "isClosed": false,
+        "status": "to-be-confirmed"
+      },
+      {
+        "day": "Sunday",
+        "open": "",
+        "close": "",
+        "isClosed": false,
+        "status": "to-be-confirmed"
+      }
+    ],
+    "doctorIds": [
+      "olajide-afolarin",
+      "kehinde-hazzan",
+      "olalekan-adekeye"
+    ]
+  },
+  {
+    "id": "lansdowne-mall",
+    "slug": "peterborough-lansdowne-mall",
+    "region": "peterborough",
+    "name": "Valleyview Medical Centre - Lansdowne Mall",
+    "shortName": "Peterborough (Lansdowne Mall)",
+    "address": "769 Borden Ave",
+    "city": "Peterborough",
+    "province": "ON",
+    "postalCode": "",
+    "postalCodeStatus": "to-be-confirmed",
+    "phone": "905-434-1912",
+    "fax": "905-595-1414",
+    "email": "Valleyviewmedical.css@gmail.com",
+    "contactStatus": "confirmed",
+    "bookingUrl": "https://ocean.cognisantmd.com/online-booking/adb0456d-e954-44d3-b5ba-f3c75e48e345",
+    "heroImage": "/images/sections/home-care-photo-desktop-v2.png",
+    "heroImageAlt": "A clinician speaking with a parent and child in a sunlit clinic room",
+    "hours": [
+      {
+        "day": "Monday",
+        "open": "",
+        "close": "",
+        "isClosed": false,
+        "status": "to-be-confirmed"
+      },
+      {
+        "day": "Tuesday",
+        "open": "",
+        "close": "",
+        "isClosed": false,
+        "status": "to-be-confirmed"
+      },
+      {
+        "day": "Wednesday",
+        "open": "",
+        "close": "",
+        "isClosed": false,
+        "status": "to-be-confirmed"
+      },
+      {
+        "day": "Thursday",
+        "open": "",
+        "close": "",
+        "isClosed": false,
+        "status": "to-be-confirmed"
+      },
+      {
+        "day": "Friday",
+        "open": "",
+        "close": "",
+        "isClosed": false,
+        "status": "to-be-confirmed"
+      },
+      {
+        "day": "Saturday",
+        "open": "",
+        "close": "",
+        "isClosed": false,
+        "status": "to-be-confirmed"
+      },
+      {
+        "day": "Sunday",
+        "open": "",
+        "close": "",
+        "isClosed": false,
+        "status": "to-be-confirmed"
+      }
+    ],
+    "doctorIds": [
+      "henry-oghotuoma",
+      "eseigbe-uwadia"
+    ]
+  },
+  {
+    "id": "peterborough-pharmacy",
+    "slug": "peterborough-pharmacy",
+    "region": "peterborough",
+    "name": "Valleyview Medical Centre - Peterborough Pharmacy",
+    "shortName": "Peterborough (Lansdowne St)",
+    "address": "1774 Lansdowne St",
+    "city": "Peterborough",
+    "province": "ON",
+    "postalCode": "K9K 2A4",
+    "postalCodeStatus": "confirmed",
+    "phone": "705-813-8007",
+    "fax": "",
+    "email": "Valleyviewmedical.lss@gmail.com",
+    "contactStatus": "confirmed",
+    "bookingUrl": "https://ocean.cognisantmd.com/online-booking/0fc11d64-70da-4264-acb3-35ad99f7cff5",
+    "heroImage": "/images/sections/home-care-photo-desktop-variation-1-4k.png",
+    "heroImageAlt": "A clinician meeting with patients in a bright clinic lounge",
+    "hours": [
+      {
+        "day": "Monday",
+        "open": "",
+        "close": "",
+        "isClosed": false,
+        "status": "to-be-confirmed"
+      },
+      {
+        "day": "Tuesday",
+        "open": "",
+        "close": "",
+        "isClosed": false,
+        "status": "to-be-confirmed"
+      },
+      {
+        "day": "Wednesday",
+        "open": "",
+        "close": "",
+        "isClosed": false,
+        "status": "to-be-confirmed"
+      },
+      {
+        "day": "Thursday",
+        "open": "",
+        "close": "",
+        "isClosed": false,
+        "status": "to-be-confirmed"
+      },
+      {
+        "day": "Friday",
+        "open": "",
+        "close": "",
+        "isClosed": false,
+        "status": "to-be-confirmed"
+      },
+      {
+        "day": "Saturday",
+        "open": "",
+        "close": "",
+        "isClosed": false,
+        "status": "to-be-confirmed"
+      },
+      {
+        "day": "Sunday",
+        "open": "",
+        "close": "",
+        "isClosed": false,
+        "status": "to-be-confirmed"
+      }
+    ],
+    "doctorIds": [
+      "babajide-olawale-odusan"
+    ]
+  },
+  {
+    "id": "lynden-road",
+    "slug": "brantford-lynden-road",
+    "region": "brantford",
+    "name": "Valleyview Medical Centre - Lynden Road",
+    "shortName": "Brantford (Lynden Rd)",
+    "address": "175 Lynden Rd, Unit A5-A",
+    "city": "Brantford",
+    "province": "ON",
+    "postalCode": "N3R 8A7",
+    "postalCodeStatus": "confirmed",
+    "phone": "519-398-7477",
+    "fax": "519-398-7555",
+    "email": "",
+    "contactStatus": "confirmed",
+    "bookingUrl": "https://ocean.cognisantmd.com/online-booking/6a6d7f25-f36c-4ff2-aef0-49f1034847fe",
+    "heroImage": "/images/brantford/hero-clinic-conversation.jpg",
+    "heroImageAlt": "A patient speaking with a clinician in a warm, modern clinic setting",
+    "hours": [
+      {
+        "day": "Monday",
+        "open": "09:00",
+        "close": "19:00",
+        "isClosed": false,
+        "status": "confirmed"
+      },
+      {
+        "day": "Tuesday",
+        "open": "09:00",
+        "close": "19:00",
+        "isClosed": false,
+        "status": "confirmed"
+      },
+      {
+        "day": "Wednesday",
+        "open": "09:00",
+        "close": "19:00",
+        "isClosed": false,
+        "status": "confirmed"
+      },
+      {
+        "day": "Thursday",
+        "open": "09:00",
+        "close": "19:00",
+        "isClosed": false,
+        "status": "confirmed"
+      },
+      {
+        "day": "Friday",
+        "open": "09:00",
+        "close": "17:00",
+        "isClosed": false,
+        "status": "confirmed"
+      },
+      {
+        "day": "Saturday",
+        "open": "09:00",
+        "close": "14:00",
+        "isClosed": false,
+        "status": "confirmed"
+      },
+      {
+        "day": "Sunday",
+        "open": "09:00",
+        "close": "14:00",
+        "isClosed": false,
+        "status": "confirmed"
+      }
+    ],
+    "doctorIds": [
+      "tunde-samuel-omisore"
+    ]
+  },
+  {
+    "id": "colborne-east",
+    "slug": "brantford-colborne",
+    "region": "brantford",
+    "name": "Valleyview Medical Centre - Colborne",
+    "shortName": "Brantford (Colborne St E)",
+    "address": "603 Colborne St E",
+    "city": "Brantford",
+    "province": "ON",
+    "postalCode": "N3S 7S8",
+    "postalCodeStatus": "confirmed",
+    "phone": "519-929-9819",
+    "fax": "519-929-9820",
+    "email": "",
+    "contactStatus": "confirmed",
+    "bookingUrl": "https://ocean.cognisantmd.com/online-booking/71398f83-8da0-45d1-9a22-aa1b4a996f43",
+    "heroImage": "/images/brantford/hero-colborne-african-physician.jpg",
+    "heroImageAlt": "A physician speaking with a patient in a warm, modern clinic setting",
+    "hours": [
+      {
+        "day": "Monday",
+        "open": "09:00",
+        "close": "19:00",
+        "isClosed": false,
+        "status": "confirmed"
+      },
+      {
+        "day": "Tuesday",
+        "open": "09:00",
+        "close": "19:00",
+        "isClosed": false,
+        "status": "confirmed"
+      },
+      {
+        "day": "Wednesday",
+        "open": "09:00",
+        "close": "19:00",
+        "isClosed": false,
+        "status": "confirmed"
+      },
+      {
+        "day": "Thursday",
+        "open": "09:00",
+        "close": "19:00",
+        "isClosed": false,
+        "status": "confirmed"
+      },
+      {
+        "day": "Friday",
+        "open": "09:00",
+        "close": "17:00",
+        "isClosed": false,
+        "status": "confirmed"
+      },
+      {
+        "day": "Saturday",
+        "open": "09:00",
+        "close": "14:00",
+        "isClosed": false,
+        "status": "confirmed"
+      },
+      {
+        "day": "Sunday",
+        "open": "09:00",
+        "close": "14:00",
+        "isClosed": false,
+        "status": "confirmed"
+      }
+    ],
+    "doctorIds": [
+      "kolawole-gbolagade"
+    ]
+  }
+]
