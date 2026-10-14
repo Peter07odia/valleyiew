@@ -32,6 +32,7 @@ export function MobileClinicBar() {
       {/* Keeps the footer from sitting underneath the bar. */}
       <div className="h-[calc(4rem+env(safe-area-inset-bottom))] md:hidden" aria-hidden="true" />
       <nav
+        data-mobile-clinic-bar
         aria-label={`Quick actions for ${clinic.shortName}`}
         className="fixed inset-x-0 bottom-0 z-40 border-t border-white/10 bg-secondary pb-[env(safe-area-inset-bottom)] text-secondary-foreground shadow-[0_-8px_24px_-12px_rgba(0,0,0,0.4)] md:hidden"
       >

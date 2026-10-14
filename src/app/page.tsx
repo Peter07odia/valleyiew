@@ -11,7 +11,6 @@ import {
   FileText,
   HeartHandshake,
   HeartPulse,
-  MapPin,
   Pill,
   RefreshCw,
   ShieldCheck,
@@ -23,11 +22,10 @@ import {
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { ClinicHero } from "@/components/home/clinic-hero";
+import { LocationsShowcase } from "@/components/home/locations-showcase";
 import { LocationTeamSection } from "@/components/team/location-team-section";
 import { Reveal } from "@/components/shared/reveal";
 import { Button } from "@/components/ui/button";
-import { CLINIC_CONFIG, CLINIC_LOCATIONS } from "@/config/clinic";
-import { formatLocationAddress } from "@/lib/constants";
 
 const CARE_REASONS = [
   {
@@ -165,7 +163,7 @@ export default function HomePage() {
   return (
     <>
       <SiteHeader />
-      <main id="main-content" className="flex-1 overflow-hidden bg-background">
+      <main id="main-content" className="flex-1 overflow-x-clip bg-background">
         <ClinicHero />
 
         <section
@@ -424,73 +422,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section
-          id="locations"
-          className="scroll-mt-28 bg-secondary px-5 py-24 text-secondary-foreground sm:px-10 lg:py-32"
-        >
-          <div className="mx-auto max-w-7xl">
-            <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr]">
-              <Reveal>
-                <p className="text-xs font-bold uppercase tracking-[0.22em] text-accent-warm">
-                  Find your clinic
-                </p>
-                <h2 className="mt-5 max-w-[8ch] font-serif text-5xl font-medium leading-[0.94] tracking-[-0.04em] sm:text-6xl">
-                  Seven clinics. Care closer to home.
-                </h2>
-                <p className="mt-6 max-w-md leading-7 text-secondary-foreground/65">
-                  Find your clinic below. Call your preferred clinic for appointment
-                  enquiries or view the clinic hours before your visit.
-                </p>
-              </Reveal>
-
-              <div className="grid gap-px bg-white/20 sm:grid-cols-2">
-                {CLINIC_LOCATIONS.map((location, index) => (
-                  <Reveal
-                    as="article"
-                    effect="flip"
-                    key={location.id}
-                    delay={(index % 2) * 120}
-                    className="flex min-h-80 flex-col bg-secondary p-7 sm:p-9"
-                  >
-                    <div className="flex items-center justify-between">
-                      <span className="font-serif text-4xl text-accent-warm">
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-                      <Reveal as="span" effect="bounce" delay={(index % 2) * 120}>
-                        <MapPin
-                          className="size-5 text-primary"
-                          aria-hidden="true"
-                        />
-                      </Reveal>
-                    </div>
-                    <p className="mt-12 text-xs font-bold uppercase tracking-[0.18em] text-secondary-foreground/55">
-                      {location.shortName}
-                    </p>
-                    <h3 className="mt-3 font-serif text-3xl leading-tight">
-                      {CLINIC_CONFIG.organizationName}
-                    </h3>
-                    <p className="mt-5 max-w-xs leading-7 text-secondary-foreground/70">
-                      {formatLocationAddress(location)}
-                    </p>
-                    {location.phone ? (
-                      <a href={`tel:${location.phone.replace(/-/g, "")}`} className="mt-4 w-fit font-semibold underline underline-offset-4">{location.phone}</a>
-                    ) : null}
-                    {location.fax ? <p className="mt-2 text-sm text-secondary-foreground/70">Fax: {location.fax}</p> : null}
-                    <Link href={`/locations/${location.slug}`} className="mt-4 w-fit text-sm font-semibold underline underline-offset-4">View clinic details and hours</Link>
-                    {location.bookingUrl ? (
-                      <a href={location.bookingUrl} className="mt-4 w-fit text-sm font-semibold underline underline-offset-4">Book at {location.shortName}</a>
-                    ) : null}
-                    {location.postalCodeStatus !== "confirmed" ? (
-                      <p className="mt-auto pt-8 text-xs font-semibold uppercase tracking-[0.14em] text-accent-warm">
-                        Postal code to be confirmed
-                      </p>
-                    ) : null}
-                  </Reveal>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
+        <LocationsShowcase />
 
         <section className="bg-primary px-5 py-16 text-white sm:px-10">
           <div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 md:flex-row md:items-center">
