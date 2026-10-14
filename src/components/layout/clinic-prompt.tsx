@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect } from "react"
 import { usePathname } from "next/navigation"
 import { Check, MapPin } from "lucide-react"
 
@@ -12,6 +13,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
+import { clinicSlugForPath } from "@/lib/clinic-path"
 import { cn } from "@/lib/utils"
 
 // Intake and staff pages have their own clinic handling; never interrupt them.
@@ -19,7 +21,8 @@ const SKIP_PATHS = ["/admin", "/new-patient-form", "/registration-reports", "/au
 
 /**
  * Clinic chooser. Visitors without a saved clinic must pick one before using
- * the site; afterwards it reopens (closable) from any "Change clinic" control.
+ * the site, unless the page already identifies the clinic; afterwards it
+ * reopens (closable) from any "Change clinic" control.
  */
 export function ClinicPrompt() {
   const pathname = usePathname()
@@ -31,9 +34,16 @@ export function ClinicPrompt() {
     closeLocationPicker,
   } = usePreferredLocation()
 
+  // Visitors landing on a page about one clinic get that clinic without asking.
+  const impliedClinic = clinicSlugForPath(pathname)
+  useEffect(() => {
+    if (hasHydrated && !preferredLocation && impliedClinic) setPreferredLocation(impliedClinic)
+  }, [hasHydrated, preferredLocation, impliedClinic, setPreferredLocation])
+
   const required =
     hasHydrated &&
     !preferredLocation &&
+    !impliedClinic &&
     !SKIP_PATHS.some(path => pathname?.startsWith(path))
   const open = required || (hasHydrated && isPickerOpen)
 
