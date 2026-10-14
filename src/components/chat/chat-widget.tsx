@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect, useCallback } from "react"
 import Link from "next/link"
 import { usePreferredLocation } from "@/components/providers/preferred-location-provider"
+import { useMobileClinicBarVisible } from "@/components/layout/mobile-clinic-bar"
 import { useChat } from "@ai-sdk/react"
 import { MessageCircle, X, Send, Bot, AlertTriangle, House } from "lucide-react"
 import { AnimatePresence, motion } from "framer-motion"
@@ -412,6 +413,7 @@ export function ChatWidget() {
   const isDesktop = useIsDesktop()
   const { preferredLocation, hasHydrated } = usePreferredLocation()
   const hasClinic = !!preferredLocation
+  const aboveClinicBar = useMobileClinicBarVisible()
 
   // Greet once per visit, a few seconds after the visitor has a clinic.
   useEffect(() => {
@@ -438,7 +440,7 @@ export function ChatWidget() {
             animate={{ scale: 1 }}
             exit={{ scale: 0 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="fixed right-6 bottom-6 z-50"
+            className={cn("fixed right-6 z-50", aboveClinicBar ? "bottom-[calc(5rem+env(safe-area-inset-bottom))] md:bottom-6" : "bottom-6")}
           >
             <button
               type="button"
