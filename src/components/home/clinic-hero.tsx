@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, ArrowUpRight, Clock, MapPin, Navigation, Phone, RefreshCw } from "lucide-react"
+import { ArrowRight, ArrowUpRight, Clock, MapPin, Navigation, Phone } from "lucide-react"
 
 import { usePreferredLocation } from "@/components/providers/preferred-location-provider"
 import { Button } from "@/components/ui/button"
@@ -29,7 +29,7 @@ function todayStatus(location: ClinicLocation) {
 }
 
 export function ClinicHero() {
-  const { preferredLocation: clinic, openLocationPicker } = usePreferredLocation()
+  const { preferredLocation: clinic } = usePreferredLocation()
   const hero = clinic?.heroImage
     ? { src: clinic.heroImage, alt: clinic.heroImageAlt ?? DEFAULT_HERO.alt }
     : DEFAULT_HERO
@@ -143,16 +143,6 @@ export function ClinicHero() {
                 </a>
               </Button>
             ) : null}
-            <Button
-              type="button"
-              size="lg"
-              variant="outline"
-              onClick={openLocationPicker}
-              className="h-13 rounded-none border-white/30 bg-transparent px-7 text-white hover:bg-white hover:text-secondary"
-            >
-              <RefreshCw className="size-4" aria-hidden="true" />
-              {clinic ? "Change clinic" : "Choose your clinic"}
-            </Button>
           </div>
         </div>
       </div>
