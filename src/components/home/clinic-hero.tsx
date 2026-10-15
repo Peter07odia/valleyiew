@@ -2,30 +2,15 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, ArrowUpRight, Clock, MapPin, Navigation, Phone } from "lucide-react"
+import { ArrowRight, ArrowUpRight, Navigation } from "lucide-react"
 
 import { usePreferredLocation } from "@/components/providers/preferred-location-provider"
 import { Button } from "@/components/ui/button"
-import {
-  formatLocationAddress,
-  formatTime,
-  getGoogleMapsDirectionsUrl,
-  getTodayHours,
-  isLocationOpen,
-  type ClinicLocation,
-} from "@/lib/constants"
+import { getGoogleMapsDirectionsUrl } from "@/lib/constants"
 
 const DEFAULT_HERO = {
   src: "/images/brantford/hero-clinic-conversation.jpg",
   alt: "A patient speaking with a clinician in a warm, modern clinic setting",
-}
-
-function todayStatus(location: ClinicLocation) {
-  const today = getTodayHours(location)
-  if (!today || today.status !== "confirmed") return "Call the clinic for today's hours"
-  if (today.isClosed) return "Closed today"
-  const range = `${formatTime(today.open)} – ${formatTime(today.close)}`
-  return isLocationOpen(location) ? `Open now · today ${range}` : `Closed now · today ${range}`
 }
 
 export function ClinicHero() {
@@ -69,7 +54,7 @@ export function ClinicHero() {
               <span className="absolute -right-1 -top-1 block size-3 rounded-full bg-current" />
             </span>
             <p className="text-base font-medium leading-6 sm:text-lg">
-              {clinic ? "Your clinic" : "Seven clinics. One Valleyview."}
+              {clinic ? clinic.shortName : "Seven clinics. One Valleyview."}
             </p>
           </div>
 
@@ -80,39 +65,14 @@ export function ClinicHero() {
             <span className="block">Valleyview</span>
             <span className="block">Medical Centre</span>
             <span className="mt-5 block text-[clamp(1.35rem,2.6vw,2.6rem)] font-bold normal-case leading-tight tracking-[0.02em] text-accent-warm [text-shadow:none]">
-              {clinic ? clinic.shortName : "Connected with care"}
+              Your health, connected with care.
             </span>
           </h1>
 
-          {clinic ? (
-            <ul className="mt-7 grid max-w-2xl gap-2.5 text-sm leading-6 text-secondary-foreground/85 sm:text-base">
-              <li className="flex gap-3">
-                <MapPin className="mt-1 size-4 shrink-0 text-accent-warm" aria-hidden="true" />
-                {formatLocationAddress(clinic)}
-              </li>
-              {clinic.phone ? (
-                <li className="flex gap-3">
-                  <Phone className="mt-1 size-4 shrink-0 text-accent-warm" aria-hidden="true" />
-                  <a href={`tel:${clinic.phone.replace(/\D/g, "")}`} className="font-semibold underline underline-offset-4">
-                    {clinic.phone}
-                  </a>
-                </li>
-              ) : null}
-              <li className="flex gap-3">
-                <Clock className="mt-1 size-4 shrink-0 text-accent-warm" aria-hidden="true" />
-                <span>
-                  {todayStatus(clinic)} ·{" "}
-                  <Link href={`/locations/${clinic.slug}`} className="underline underline-offset-4">
-                    Full hours
-                  </Link>
-                </span>
-              </li>
-            </ul>
-          ) : (
-            <p className="mt-8 max-w-xl text-base leading-7 text-secondary-foreground/80 sm:text-lg sm:leading-8">
-              Family practice and everyday care across Durham Region, Peterborough and Brantford.
-            </p>
-          )}
+          <p className="mt-7 max-w-xl text-base leading-7 text-secondary-foreground/85 sm:text-lg sm:leading-8">
+            Compassionate, comprehensive family care for individuals and families{" "}
+            {clinic ? `in ${clinic.city}.` : "across Durham Region, Peterborough and Brantford."}
+          </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             {clinic?.bookingUrl ? (
