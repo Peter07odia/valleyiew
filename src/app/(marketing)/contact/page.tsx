@@ -1,7 +1,6 @@
 import type { Metadata } from "next"
 import { ArrowDown, ArrowUpRight, MapPin } from "lucide-react"
 
-import { ClinicTodayCards } from "@/components/contact/clinic-today-cards"
 import { ContactMap } from "@/components/contact/contact-map"
 import { ContactMessageForm } from "@/components/contact/contact-message-form"
 import { Reveal } from "@/components/shared/reveal"
@@ -127,17 +126,10 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section aria-labelledby="map-heading" className="px-5 pt-16 sm:px-8 lg:pt-20">
+      <section aria-labelledby="map-heading" className="px-5 py-16 sm:px-8 lg:py-20">
         <div className="mx-auto max-w-7xl">
           <h2 id="map-heading" className="sr-only">Clinic map</h2>
           <ContactMap />
-        </div>
-      </section>
-
-      <section aria-labelledby="today-heading" className="px-5 py-16 sm:px-8 lg:py-20">
-        <div className="mx-auto max-w-7xl">
-          <h2 id="today-heading" className="sr-only">Clinic hours today</h2>
-          <ClinicTodayCards />
         </div>
       </section>
     </>
