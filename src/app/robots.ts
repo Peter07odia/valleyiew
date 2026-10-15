@@ -1,12 +1,8 @@
 import type { MetadataRoute } from "next"
-import {
-  CLINIC_CONFIG,
-  getConfiguredSiteUrl,
-  isConfirmed,
-} from "@/config/clinic"
+import { getConfiguredSiteUrl, searchIndexingAllowed } from "@/config/clinic"
 
 export default function robots(): MetadataRoute.Robots {
-  if (process.env.VERCEL_ENV === "preview" || !isConfirmed(CLINIC_CONFIG.domainStatus)) {
+  if (!searchIndexingAllowed()) {
     return {
       rules: {
         userAgent: "*",

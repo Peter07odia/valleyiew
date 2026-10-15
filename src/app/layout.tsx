@@ -11,7 +11,7 @@ import { AuthHashHandler } from "@/components/providers/auth-hash-handler";
 import {
   CLINIC_CONFIG,
   getConfiguredSiteUrl,
-  isConfirmed,
+  searchIndexingAllowed,
 } from "@/config/clinic";
 import "./globals.css";
 
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     "medical centre",
   ],
   metadataBase: getConfiguredSiteUrl(),
-  robots: process.env.VERCEL_ENV !== "preview" && isConfirmed(CLINIC_CONFIG.domainStatus)
+  robots: searchIndexingAllowed()
     ? { index: true, follow: true }
     : { index: false, follow: false },
   openGraph: {

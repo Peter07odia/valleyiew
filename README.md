@@ -48,7 +48,7 @@ Configure Gemini and the dedicated rate-limit secret only after applying `202610
 
 ## Vercel and domain transition
 
-`vercel.json` targets Toronto functions (`yyz1`) and the protected notification cron. This is not a guarantee that all providers/data reside in Canada; the existing clinic database was observed in `us-east-1`. No provider region was changed.
+`vercel.json` targets Montréal functions (`yul1`, Vercel's Canadian region) and the protected notification cron. This is not a guarantee that all providers/data reside in Canada; the existing clinic database was observed in `us-east-1`. No provider region was changed.
 
 Keep the main domain registered at GoDaddy. A later, explicitly approved production cutover can point website DNS to Vercel. Preserve email records and verify the separate `admin` dependency before retiring old hosting. Regional domains should redirect to their corresponding location/region routes. The current regional sites remain online.
 

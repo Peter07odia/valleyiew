@@ -10,3 +10,13 @@ describe("unified clinic content",()=>{
  it("gives every clinic its own hero image with alt text",()=>{expect(new Set(CLINIC_LOCATIONS.map(l=>l.heroImage)).size).toBe(7);for(const l of CLINIC_LOCATIONS){expect(l.heroImageAlt).toBeTruthy();expect(existsSync(join(process.cwd(),"public",l.heroImage!))).toBe(true)}});
  it("does not present disputed weekend hours as confirmed",()=>{for(const l of CLINIC_LOCATIONS.filter(l=>["oshawa","courtice"].includes(l.id)))expect(l.hours.filter(h=>["Saturday","Sunday"].includes(h.day)).every(h=>h.status==="to-be-confirmed" && !h.open)).toBe(true)});
 });
+describe("search indexing", () => {
+  it("stays off unless launch indexing is explicitly enabled outside previews", async () => {
+    const { searchIndexingAllowed } = await import("./clinic");
+    const set = (allow: string, env: string) => { process.env.VVM_ALLOW_INDEXING = allow; process.env.VERCEL_ENV = env; };
+    set("", "production"); expect(searchIndexingAllowed()).toBe(false);
+    set("true", "preview"); expect(searchIndexingAllowed()).toBe(false);
+    set("true", "production"); expect(searchIndexingAllowed()).toBe(true);
+    set("", "");
+  });
+});

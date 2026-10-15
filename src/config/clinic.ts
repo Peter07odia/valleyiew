@@ -119,6 +119,19 @@ export const REGIONS = [
   { id: "brantford", name: "Brantford" },
 ] as const;
 
+/**
+ * Search engines may index the site only after launch is explicitly switched on
+ * (VVM_ALLOW_INDEXING=true on the real domain). Review deployments, including
+ * the public *.vercel.app address, always stay out of search results.
+ */
+export function searchIndexingAllowed(): boolean {
+  return (
+    process.env.VVM_ALLOW_INDEXING === "true" &&
+    process.env.VERCEL_ENV !== "preview" &&
+    isConfirmed(CLINIC_CONFIG.domainStatus)
+  );
+}
+
 export function getConfiguredSiteUrl(): URL {
   const configuredUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
