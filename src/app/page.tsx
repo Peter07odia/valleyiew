@@ -190,11 +190,11 @@ export default function HomePage() {
                 </div>
               </div>
 
-              <Reveal className="pt-8 lg:pl-8 lg:pt-0">
+              <Reveal className="@container pt-8 lg:pl-8 lg:pt-0">
                 <p className="text-xs font-bold uppercase tracking-[0.22em] text-primary">
                   Why patients choose Valleyview Medical Centre
                 </p>
-                <h2 className="mt-5 max-w-[12ch] text-balance font-serif text-5xl font-medium leading-[0.95] tracking-[-0.035em] text-secondary sm:text-6xl">
+                <h2 className="mt-5 max-w-[12ch] text-balance font-serif text-5xl font-medium leading-[0.95] tracking-[-0.035em] text-secondary sm:max-w-none sm:whitespace-nowrap sm:text-[6.3cqi]">
                   Quality care, right when you need it.
                 </h2>
                 <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
