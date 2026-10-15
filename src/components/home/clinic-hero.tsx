@@ -60,10 +60,10 @@ export function ClinicHero() {
 
           <h1
             id="hero-heading"
-            className="max-w-[10ch] text-balance font-sans text-[clamp(3rem,7.2vw,7.75rem)] font-semibold uppercase leading-[0.86] tracking-[-0.045em] [text-shadow:0_8px_36px_rgba(4,18,42,0.3)]"
+            className="max-w-[16ch] text-balance font-sans text-[clamp(2.5rem,5.4vw,5.5rem)] font-normal leading-[1.02] tracking-[-0.03em] [text-shadow:0_8px_36px_rgba(4,18,42,0.3)]"
           >
-            <span className="block">Valleyview</span>
-            <span className="block">Medical Centre</span>
+            <span className="block text-[0.42em] font-light leading-tight tracking-[-0.01em] text-secondary-foreground/85">Welcome to</span>
+            <span className="mt-1 block">Valleyview Medical Centre</span>
             <span className="mt-5 block text-[clamp(1.35rem,2.6vw,2.6rem)] font-bold normal-case leading-tight tracking-[0.02em] text-accent-warm [text-shadow:none]">
               Your health, connected with care.
             </span>
