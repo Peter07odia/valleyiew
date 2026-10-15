@@ -37,6 +37,7 @@ function DoctorCarousel({ doctors }: { doctors: typeof TEAM_MEMBER_BIOS }) {
         </Link>
       })}
     </div>
-    <div className={styles.controls}><button onClick={()=>move(-1)} disabled={edges.start} aria-label="Previous doctors"><ChevronLeft size={20} /></button><button onClick={()=>move(1)} disabled={edges.end} aria-label="Next doctors"><ChevronRight size={20} /></button></div>
+    {/* Arrows only when the row actually scrolls. */}
+    {edges.start && edges.end ? null : <div className={styles.controls}><button onClick={()=>move(-1)} disabled={edges.start} aria-label="Previous doctors"><ChevronLeft size={20} /></button><button onClick={()=>move(1)} disabled={edges.end} aria-label="Next doctors"><ChevronRight size={20} /></button></div>}
   </>
 }

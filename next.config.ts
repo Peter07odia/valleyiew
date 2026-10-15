@@ -14,7 +14,6 @@ const nextConfig: NextConfig = {
     // Original valleyviewmedical.ca paths (static backup 2026-10-13).
     { source: "/locations/brantford-1", destination: "/locations#brantford", permanent: true },
     { source: "/locations/peterborough-1", destination: "/locations#peterborough", permanent: true },
-    { source: "/staff/hetal-bhalala", destination: "/team", permanent: true },
     { source: "/blog/:slug(new-registration-process|throat-infection-treatments)", destination: "/blog", permanent: true },
     { source: "/services/chronic-disease-care", destination: "/services/chronic-condition-support", permanent: true },
     { source: "/services/pediatrics", destination: "/services/child-adolescent-health", permanent: true },

@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { TEAM_MEMBER_BIOS } from "@/lib/team";
+import { SUPPORT_PROFILES, TEAM_MEMBER_BIOS } from "@/lib/team";
 import { SERVICES, LOCATIONS, BLOG_POSTS } from "@/lib/constants";
 import { getConfiguredSiteUrl } from "@/config/clinic";
 
@@ -84,7 +84,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.5,
   }));
 
-  const staffPages = TEAM_MEMBER_BIOS.map((bio) => ({
+  const staffPages = [...TEAM_MEMBER_BIOS, ...SUPPORT_PROFILES].map((bio) => ({
     url: `${BASE_URL}/staff/${bio.id}`,
     lastModified: new Date(),
     changeFrequency: "monthly" as const,

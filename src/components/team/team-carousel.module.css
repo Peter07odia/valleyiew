@@ -7,6 +7,19 @@
 .heading>p{font-size:18px;color:#566174;margin:0;line-height:1.6}
 .track{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:12px 0 16px;overscroll-behavior-x:contain}
 .track::-webkit-scrollbar{display:none}
+/* Centre a short row; auto margins collapse to 0 once the row overflows and scrolls. */
+.track>:first-child{margin-left:auto}
+.track>:last-child{margin-right:auto}
+/* Team page: wrapping, centred grid using the same cards. */
+.grid{display:flex;flex-wrap:wrap;justify-content:center;gap:24px;padding:12px 0 16px}
+.gridItem{flex:0 0 260px;display:flex;text-decoration:none;border-radius:16px}
+.tabs{display:flex;justify-content:center;margin:0 auto 36px;max-width:100%;overflow-x:auto}
+.tabList{display:inline-flex;gap:4px;padding:6px;border:1px solid #e2e8f0;border-radius:16px;background:#fff;box-shadow:0 18px 48px -34px rgba(28,46,74,.45)}
+.tab{height:44px;padding:0 20px;border-radius:12px;font-size:14px;font-weight:600;color:#566174;white-space:nowrap;transition:background .2s,color .2s}
+.tab:hover{color:#1a202c}
+.tab[data-state=active]{background:#39243F;color:#fff}
+.scope{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px;margin:-28px auto 32px;font-size:14px;color:#566174;text-align:center}
+.scope button{font-weight:600;color:#D9583B;text-decoration:underline;text-underline-offset:4px}
 .cardLink{flex:0 0 calc((100% - 72px)/4);min-width:0;display:flex;text-decoration:none;scroll-snap-align:start;border-radius:16px}
 .card{background:#fff;border-radius:16px;border:1px solid #e2e8f0;box-shadow:0 4px 6px -1px #0000000d,0 2px 4px -1px #00000008;display:flex;flex:1;flex-direction:column;overflow:hidden;transition:transform .2s,box-shadow .2s;min-height:300px}
 .card:hover{transform:translateY(-5px);box-shadow:0 12px 24px #00000012}
@@ -25,5 +38,5 @@
 .controls button:disabled{opacity:.35;cursor:not-allowed}
 .section :focus-visible{outline:3px solid #2563eb;outline-offset:3px}
 @media(max-width:1023px){.cardLink{flex-basis:calc((100% - 24px)/2)}}
-@media(max-width:639px){.section{padding:48px 0}.container{padding:0 28px}.heading{padding:0 16px;margin-bottom:28px}.heading h1,.heading h2{font-size:30px}.heading p{font-size:16px}.cardLink{flex-basis:100%}}
+@media(max-width:639px){.gridItem{flex-basis:100%;max-width:320px}.tab{padding:0 14px;font-size:13px}.section{padding:48px 0}.container{padding:0 28px}.heading{padding:0 16px;margin-bottom:28px}.heading h1,.heading h2{font-size:30px}.heading p{font-size:16px}.cardLink{flex-basis:100%}}
 @media(prefers-reduced-motion:reduce){.card{transition:none}.card:hover{transform:none}}

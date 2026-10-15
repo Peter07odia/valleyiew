@@ -6,6 +6,7 @@ import { ArrowLeft, Mail, MapPin } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import {
+  SUPPORT_PROFILES,
   TEAM_MEMBER_BIOS,
   getTeamBio,
   getTeamMemberAppearances,
@@ -19,11 +20,11 @@ interface StaffProfilePageProps {
 }
 
 function formatSectionTitle(title: string) {
-  return title === "Management" ? "Management Team" : title
+  return title
 }
 
 export async function generateStaticParams() {
-  return TEAM_MEMBER_BIOS.map((bio) => ({
+  return [...TEAM_MEMBER_BIOS, ...SUPPORT_PROFILES].map((bio) => ({
     slug: bio.id,
   }))
 }

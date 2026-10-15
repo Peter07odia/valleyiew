@@ -1,0 +1,215 @@
+{
+  "profiles": [
+    {
+      "id": "musab-waseem",
+      "name": "Musab Waseem",
+      "image": "/images/staff/musab.jpg",
+      "paragraphs": [
+        "Musab Waseem is a highly skilled allied healthcare professional with a strong background in pharmacy and clinical support. Having previously worked as a pharmacist in India, he brings extensive knowledge of medications, patient counseling, and healthcare procedures. His expertise extends to immunization, as he holds certifications in IM injection and vaccine handling, ensuring safe and effective administration of vaccines. With a keen eye for precision and a commitment to patient care, Musab plays a crucial role in supporting both clinical and administrative functions at Valleyview Medical Centre. His diverse skill set and dedication make him an integral part of the healthcare team.",
+        "As the Manager of Clinical and Business Operations at Valleyview Medical Centre, Musab Waseem ensures the smooth and efficient functioning of both patient care services and business operations. With over 14 months of experience in healthcare administration, he plays a pivotal role in managing daily clinic workflows, optimizing operational strategies, and implementing advanced healthcare technologies. His expertise in EMR systems, medical billing, and regulatory compliance contributes to a well-structured and patient-focused environment. Musab's leadership and problem-solving skills allow him to coordinate seamlessly with physicians, staff, and patients, ensuring that the clinic delivers exceptional care while maintaining the highest standards of efficiency and professionalism."
+      ],
+      "sourceUrl": "https://valleyviewmedical.ca/doctors/"
+    },
+    {
+      "id": "husban-ahmed",
+      "name": "Husban Ahmed",
+      "image": "/images/staff/husban.jpg",
+      "paragraphs": [
+        "Originally from Brampton, Husban and his family relocated to Whitby in 2014, immersing themselves in the community's welcoming atmosphere.",
+        "After completing his studies in Life Sciences at the University of Waterloo, he graduated with Honours from the University of Toronto's Leslie Dan Faculty of Pharmacy in 2020.",
+        "While Husban has gained valuable experience in hospital and industry settings, his true passion lies in serving as a community pharmacist. His aim is to enrich the well-being of the patients he cares for and to become an integral part of the healthcare community.",
+        "Possessing extensive training and practical experience, he demonstrates an exceptional ability to offer timely, accurate, and personalized information and care to his patients.",
+        "Husban's commitment to cultivating a comfortable and informed environment has garnered him the trust and admiration of those he assists. His unwavering dedication to promoting wellness through proper medication management and health education underscores his pivotal role in the field.",
+        "Husban's contributions as a pharmacist continually uplift the lives of individuals under his care, solidifying his status as an invaluable asset within the healthcare community."
+      ],
+      "sourceUrl": "https://valleyviewmedical.ca/doctors/"
+    },
+    {
+      "id": "hetal-bhalala",
+      "name": "Hetal Bhalala",
+      "image": "/images/staff/hetal.jpg",
+      "paragraphs": [
+        "Hetal stands as an accomplished and empathetic clinical pharmacist, leaving a significant impact on geriatric healthcare. With a wealth of knowledge and experience, she ensures exceptional patient care and expert medication guidance.",
+        "Her experience as a consultant at the Canadian Addiction Treatment Centres (CATC) has enriched her insights in addiction treatment, further enhancing her ability to provide comprehensive care.",
+        "Additionally, her certifications in diabetes management and minor ailments exemplify her dedication to holistic patient well-being.",
+        "Beyond her qualifications, Hetal's friendly and approachable demeanour, combined with her fluency in three languages, allows her to connect deeply with patients.",
+        "Her genuine concern for their well-being makes her a truly distinct healthcare professional, standing out for her compassion.",
+        "Hetal's unyielding commitment to enhancing lives not only speaks to her character but also underscores her pivotal role in advancing health outcomes, making her an invaluable asset in the field of healthcare."
+      ],
+      "sourceUrl": "https://valleyviewmedical.ca/doctors/"
+    },
+    {
+      "id": "kashif-alavi",
+      "name": "Kashif Alavi",
+      "image": "/images/staff/kashif.jpg",
+      "paragraphs": [
+        "Kashif Alavi is known for his dedicated patient care and strong interpersonal skills, thriving in fast-paced environments by combining his approachable nature with the ability to foster trust among healthcare colleagues.",
+        "His communication strategies and prompt feedback yield impactful results, while his commitment to continuous improvement and rapid skill acquisition is evident.",
+        "Kashif's expertise in optimizing patient care is showcased through exceptional support for diverse individuals, including seniors and those with unique needs, earning praise for his empathy, efficiency, and punctuality.",
+        "Proficient in multilingual communication and technology integration, he excels in connecting with clients and is adept at problem-solving. His teamwork and mentoring abilities extend beyond his roles, displaying dedication to team development.",
+        "With a Master of Science in Pharmacy from St. John's University, New York, Kashif's extensive career spans Pharmacist Manager positions and academic roles, reflecting his commitment to healthcare excellence.",
+        "With over 15 years of experience across diverse regions, including the Durham Region, urban and rural Alberta, and New York, his broad network and local insights position him to drive transformative change in patient care and healthcare collaborations, showcasing him as a valuable asset in the healthcare field."
+      ],
+      "sourceUrl": "https://valleyviewmedical.ca/doctors/"
+    }
+  ],
+  "members": [
+    {
+      "name": "Musab Waseem",
+      "title": "Allied Healthcare Professional",
+      "category": "administrative",
+      "locationIds": [
+        "whitby",
+        "oshawa",
+        "courtice"
+      ],
+      "image": "/images/staff/musab.jpg",
+      "profileId": "musab-waseem"
+    },
+    {
+      "name": "Kawaldeep Agrawal",
+      "title": "Clinic Coordinator",
+      "category": "administrative",
+      "locationIds": [
+        "whitby"
+      ],
+      "image": "/images/branding/vvm-logo.png",
+      "profileId": null
+    },
+    {
+      "name": "Nikita Saxena",
+      "title": "Medical Office Administrator (MOA)",
+      "category": "administrative",
+      "locationIds": [
+        "whitby"
+      ],
+      "image": "/images/branding/vvm-logo.png",
+      "profileId": null
+    },
+    {
+      "name": "Afrika Gayle",
+      "title": "Medical Office Administrator (MOA)",
+      "category": "administrative",
+      "locationIds": [
+        "whitby"
+      ],
+      "image": "/images/branding/vvm-logo.png",
+      "profileId": null
+    },
+    {
+      "name": "Kayla Elizabeth",
+      "title": "Clinic Coordinator",
+      "category": "administrative",
+      "locationIds": [
+        "oshawa"
+      ],
+      "image": "/images/staff/kayla.jpeg",
+      "profileId": null
+    },
+    {
+      "name": "Akshana Uthaya Paskaran",
+      "title": "Medical Office Administrator (MOA)",
+      "category": "administrative",
+      "locationIds": [
+        "oshawa"
+      ],
+      "image": "/images/branding/vvm-logo.png",
+      "profileId": null
+    },
+    {
+      "name": "Wagmah Sayeed",
+      "title": "Medical Office Administrator (MOA)",
+      "category": "administrative",
+      "locationIds": [
+        "courtice"
+      ],
+      "image": "/images/branding/vvm-logo.png",
+      "profileId": null
+    },
+    {
+      "name": "Husban Ahmed",
+      "title": "Pharmacist",
+      "category": "pharmacists",
+      "locationIds": [
+        "whitby",
+        "oshawa"
+      ],
+      "image": "/images/staff/husban.jpg",
+      "profileId": "husban-ahmed"
+    },
+    {
+      "name": "Hetal Bhalala",
+      "title": "Pharmacist",
+      "category": "pharmacists",
+      "locationIds": [
+        "whitby"
+      ],
+      "image": "/images/staff/hetal.jpg",
+      "profileId": "hetal-bhalala"
+    },
+    {
+      "name": "Kashif Alavi",
+      "title": "Pharmacist",
+      "category": "pharmacists",
+      "locationIds": [
+        "whitby"
+      ],
+      "image": "/images/staff/kashif.jpg",
+      "profileId": "kashif-alavi"
+    },
+    {
+      "name": "Kashif Alavi",
+      "title": "Pharmacist Manager",
+      "category": "management",
+      "locationIds": [
+        "whitby"
+      ],
+      "image": "/images/staff/kashif.jpg",
+      "profileId": "kashif-alavi"
+    },
+    {
+      "name": "Musab Waseem",
+      "title": "Manager of Clinical & Business Operations",
+      "category": "management",
+      "locationIds": [
+        "whitby",
+        "oshawa",
+        "courtice"
+      ],
+      "image": "/images/staff/musab.jpg",
+      "profileId": "musab-waseem"
+    },
+    {
+      "name": "Husban Ahmed",
+      "title": "Pharmacist Manager",
+      "category": "management",
+      "locationIds": [
+        "oshawa"
+      ],
+      "image": "/images/staff/husban.jpg",
+      "profileId": "husban-ahmed"
+    },
+    {
+      "name": "Musab Waseem",
+      "title": "Clinic Manager",
+      "category": "management",
+      "locationIds": [
+        "lansdowne-mall",
+        "peterborough-pharmacy"
+      ],
+      "image": "/images/staff/musab.jpg",
+      "profileId": "musab-waseem"
+    },
+    {
+      "name": "Jaspreet Kaur",
+      "title": "Clinic Coordinator",
+      "category": "administrative",
+      "locationIds": [
+        "lansdowne-mall",
+        "peterborough-pharmacy"
+      ],
+      "image": "/images/branding/vvm-logo.png",
+      "profileId": null
+    }
+  ]
+}
