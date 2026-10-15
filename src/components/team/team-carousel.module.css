@@ -19,8 +19,6 @@
 .tab{height:44px;padding:0 20px;border-radius:12px;font-size:14px;font-weight:600;color:#566174;white-space:nowrap;transition:background .2s,color .2s}
 .tab:hover{color:#1a202c}
 .tab[data-state=active]{background:#0B2A5B;color:#fff}
-.scope{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px;margin:-28px auto 32px;font-size:14px;color:#566174;text-align:center}
-.scope button{font-weight:600;color:#0E68DF;text-decoration:underline;text-underline-offset:4px}
 .cardLink{flex:0 0 calc((100% - 72px)/4);min-width:0;display:flex;text-decoration:none;scroll-snap-align:start;border-radius:16px}
 .card{background:#fff;border-radius:16px;border:1px solid #e2e8f0;box-shadow:0 4px 6px -1px #0000000d,0 2px 4px -1px #00000008;display:flex;flex:1;flex-direction:column;overflow:hidden;transition:transform .2s,box-shadow .2s;min-height:300px}
 .card:hover{transform:translateY(-5px);box-shadow:0 12px 24px #00000012}

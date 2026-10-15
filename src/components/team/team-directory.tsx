@@ -95,8 +95,7 @@ function PersonCard({ person, index }: { person: Person; index: number }) {
 /** Our Team page: centred group tabs (Doctors, Administrative, Pharmacists, Management) for the visitor's clinic. */
 export function TeamDirectory() {
   const { preferredLocation } = usePreferredLocation()
-  const [showAll, setShowAll] = useState(false)
-  const clinic = showAll ? null : preferredLocation
+  const clinic = preferredLocation
   const groups = TEAM_CATEGORIES.map(category => ({
     ...category,
     people: peopleFor(category.id, clinic?.id ?? null, clinic?.doctorIds ?? null),
@@ -114,29 +113,6 @@ export function TeamDirectory() {
           <p>Experienced and qualified healthcare professionals</p>
         </Reveal>
 
-        <p className={styles.scope}>
-          {clinic ? (
-            <>
-              Showing the team at <strong className="text-secondary">{clinic.shortName}</strong>
-              <span aria-hidden="true">·</span>
-              <button type="button" onClick={() => setShowAll(true)}>
-                Show all clinics
-              </button>
-            </>
-          ) : (
-            <>
-              Showing all seven clinics
-              {preferredLocation ? (
-                <>
-                  <span aria-hidden="true">·</span>
-                  <button type="button" onClick={() => setShowAll(false)}>
-                    Show {preferredLocation.shortName} only
-                  </button>
-                </>
-              ) : null}
-            </>
-          )}
-        </p>
 
         <TabsPrimitive.Root value={active} onValueChange={value => setPicked(value as TeamCategory)}>
           <div className={styles.tabs}>
