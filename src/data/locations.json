@@ -249,52 +249,52 @@
     "hours": [
       {
         "day": "Monday",
-        "open": "",
-        "close": "",
+        "open": "09:00",
+        "close": "19:00",
         "isClosed": false,
-        "status": "to-be-confirmed"
+        "status": "confirmed"
       },
       {
         "day": "Tuesday",
-        "open": "",
-        "close": "",
+        "open": "09:00",
+        "close": "19:00",
         "isClosed": false,
-        "status": "to-be-confirmed"
+        "status": "confirmed"
       },
       {
         "day": "Wednesday",
-        "open": "",
-        "close": "",
+        "open": "09:00",
+        "close": "19:00",
         "isClosed": false,
-        "status": "to-be-confirmed"
+        "status": "confirmed"
       },
       {
         "day": "Thursday",
-        "open": "",
-        "close": "",
+        "open": "09:00",
+        "close": "19:00",
         "isClosed": false,
-        "status": "to-be-confirmed"
+        "status": "confirmed"
       },
       {
         "day": "Friday",
-        "open": "",
-        "close": "",
+        "open": "09:00",
+        "close": "17:00",
         "isClosed": false,
-        "status": "to-be-confirmed"
+        "status": "confirmed"
       },
       {
         "day": "Saturday",
-        "open": "",
-        "close": "",
+        "open": "09:00",
+        "close": "14:00",
         "isClosed": false,
-        "status": "to-be-confirmed"
+        "status": "confirmed"
       },
       {
         "day": "Sunday",
-        "open": "",
-        "close": "",
+        "open": "09:00",
+        "close": "14:00",
         "isClosed": false,
-        "status": "to-be-confirmed"
+        "status": "confirmed"
       }
     ],
     "doctorIds": [
@@ -323,52 +323,52 @@
     "hours": [
       {
         "day": "Monday",
-        "open": "",
-        "close": "",
+        "open": "09:00",
+        "close": "19:00",
         "isClosed": false,
-        "status": "to-be-confirmed"
+        "status": "confirmed"
       },
       {
         "day": "Tuesday",
-        "open": "",
-        "close": "",
+        "open": "09:00",
+        "close": "19:00",
         "isClosed": false,
-        "status": "to-be-confirmed"
+        "status": "confirmed"
       },
       {
         "day": "Wednesday",
-        "open": "",
-        "close": "",
+        "open": "09:00",
+        "close": "19:00",
         "isClosed": false,
-        "status": "to-be-confirmed"
+        "status": "confirmed"
       },
       {
         "day": "Thursday",
-        "open": "",
-        "close": "",
+        "open": "09:00",
+        "close": "19:00",
         "isClosed": false,
-        "status": "to-be-confirmed"
+        "status": "confirmed"
       },
       {
         "day": "Friday",
-        "open": "",
-        "close": "",
+        "open": "09:00",
+        "close": "17:00",
         "isClosed": false,
-        "status": "to-be-confirmed"
+        "status": "confirmed"
       },
       {
         "day": "Saturday",
-        "open": "",
-        "close": "",
+        "open": "09:00",
+        "close": "14:00",
         "isClosed": false,
-        "status": "to-be-confirmed"
+        "status": "confirmed"
       },
       {
         "day": "Sunday",
-        "open": "",
-        "close": "",
+        "open": "09:00",
+        "close": "14:00",
         "isClosed": false,
-        "status": "to-be-confirmed"
+        "status": "confirmed"
       }
     ],
     "doctorIds": [

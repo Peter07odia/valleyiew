@@ -50,6 +50,6 @@ For each of the 7 clinics: the header selector changes the Book link to that cli
 - **Per-clinic recipients:** `valleyviewlynden@gmail.com` is the interim central recipient for all seven clinics. Replace it with `VVM_REPORT_RECIPIENTS_JSON` once the clinic mailboxes are confirmed.
 - **Report sign-in rate limits:** these are global, not per user, and were carried over from Brantford. Once several clinics' staff sign in, one person's attempts can delay another's (5 codes/hour, 10 verifications per 15 minutes).
 - **Original pages without a destination:** `/accessibility` and `/terms-of-service` currently return 404. Their content needs a decision.
-- **Missing hours:** Peterborough hours and Durham weekend hours remain "Call for hours".
+- **Missing hours:** Oshawa and Courtice weekend hours remain "Call for hours". Peterborough (both clinics) was set on 2026-10-14 to the shared weekday hours plus Brantford's weekend hours (Sat–Sun 9 AM–2 PM), per the user; confirm with the clinic when possible.
 - **Peterborough portraits:** Dr. Odusan and Dr. Oghotuoma have no portraits; the logo is shown instead.
 - **Preview deployment:** none was made in this pass.
