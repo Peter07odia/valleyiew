@@ -37,13 +37,13 @@ const regionName = (location: ClinicLocation) => REGIONS.find(r => r.id === loca
 function status(location: ClinicLocation) {
   const today = getTodayHours(location)
   if (!hasPublishedHours(location) || !today || today.status !== "confirmed") {
-    return { label: "Call for hours", tone: "bg-secondary/80", today: "Call for today's hours" }
+    return { label: "Call for hours", tone: "bg-muted-foreground", today: "Call for today's hours" }
   }
-  if (today.isClosed) return { label: "Closed today", tone: "bg-primary", today: "Closed today" }
+  if (today.isClosed) return { label: "Closed today", tone: "bg-secondary", today: "Closed today" }
   const open = isLocationOpen(location)
   return {
     label: open ? "Open now" : "Closed now",
-    tone: open ? "bg-success" : "bg-primary",
+    tone: open ? "bg-success" : "bg-secondary",
     today: `Today: ${formatTime(today.open)} – ${formatTime(today.close)}`,
   }
 }

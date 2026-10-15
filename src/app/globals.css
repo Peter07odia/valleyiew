@@ -51,71 +51,74 @@
   --color-warning: var(--warning);
   --color-accent-warm: var(--accent-warm);
   --color-accent-warm-foreground: var(--accent-warm-foreground);
+  --color-accent-aqua: var(--accent-aqua);
 }
 
 /*
- * Valleyview Medical Centre — editorial design tokens (from the Brantford design)
- * Primary: Persimmon (#D9583B)
- * Secondary: Aubergine (#39243F)
- * Surface: Warm cream (#FFF8EC)
- * Accent: Butter yellow (#F1C75B)
+ * Valleyview Medical Centre — brand tokens from the VMC logo
+ * Primary: logo blue (#0E68DF) · Dark: deep navy (#0B2A5B, shade of the logo blue)
+ * Surface: white · Soft band: light blue (#EEF5FE)
+ * Accents: lime (#C1FF72) and aqua (#5CE1E6) — decoration or text on navy only
+ * Alerts: red (#D62828), never for primary actions
  */
 
 :root {
   /* Core brand */
-  --background: #fff8ec;
-  --foreground: #302431;
+  --background: #ffffff;
+  --foreground: #172238;
 
   /* Cards & popovers */
   --card: #ffffff;
-  --card-foreground: #302431;
+  --card-foreground: #172238;
   --popover: #ffffff;
-  --popover-foreground: #302431;
+  --popover-foreground: #172238;
 
-  /* Primary — persimmon */
-  --primary: #d9583b;
+  /* Primary — logo blue */
+  --primary: #0e68df;
   --primary-foreground: #ffffff;
 
-  /* Secondary — aubergine */
-  --secondary: #39243f;
-  --secondary-foreground: #fff8ec;
+  /* Secondary — deep navy */
+  --secondary: #0b2a5b;
+  --secondary-foreground: #ffffff;
 
-  --muted: #f2e9dc;
-  --muted-foreground: #746672;
+  --muted: #f2f6fb;
+  --muted-foreground: #556074;
 
-  --accent: #ded8ee;
-  --accent-foreground: #39243f;
+  /* Soft band — light logo blue */
+  --accent: #eef5fe;
+  --accent-foreground: #0b2a5b;
 
-  /* Healthcare-specific */
-  --accent-warm: #f1c75b;
-  --accent-warm-foreground: #39243f;
-  --success: #557a68;
-  --warning: #b78220;
-  --destructive: oklch(0.55 0.22 27);
+  /* Highlight — logo lime (use on navy, or as a fill with navy text) */
+  --accent-warm: #c1ff72;
+  --accent-warm-foreground: #0b2a5b;
+  --accent-aqua: #5ce1e6;
+  --success: #17803d;
+  --warning: #b45309;
+  --destructive: #d62828;
 
   /* Borders & inputs */
-  --border: #dfd1c5;
-  --input: #dfd1c5;
-  --ring: #d9583b;
+  --border: #dbe3ee;
+  --input: #cfd9e6;
+  --ring: #0e68df;
 
   /* Charts */
-  --chart-1: #d9583b;
-  --chart-2: #f1c75b;
-  --chart-3: #7d6aa4;
-  --chart-4: #39243f;
-  --chart-5: #557a68;
+  --chart-1: #0e68df;
+  --chart-2: #5ce1e6;
+  --chart-3: #c1ff72;
+  --chart-4: #0b2a5b;
+  --chart-5: #d62828;
 
   --radius: 0.625rem;
 
   /* Sidebar */
-  --sidebar: #fff1df;
-  --sidebar-foreground: #302431;
-  --sidebar-primary: #d9583b;
+  --sidebar: #f2f6fb;
+  --sidebar-foreground: #172238;
+  --sidebar-primary: #0e68df;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #ded8ee;
-  --sidebar-accent-foreground: #39243f;
-  --sidebar-border: #dfd1c5;
-  --sidebar-ring: #d9583b;
+  --sidebar-accent: #eef5fe;
+  --sidebar-accent-foreground: #0b2a5b;
+  --sidebar-border: #dbe3ee;
+  --sidebar-ring: #0e68df;
 }
 
 .dark {

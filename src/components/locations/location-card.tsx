@@ -47,7 +47,7 @@ export function LocationCard({ location, waitMinutes }: LocationCardProps) {
             ? "bg-accent-warm"
             : hoursConfirmed && open
               ? "bg-success"
-              : "bg-primary"
+              : "bg-secondary"
         )}
       >
         <span className="flex items-center gap-2">

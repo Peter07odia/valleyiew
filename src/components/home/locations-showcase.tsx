@@ -141,7 +141,7 @@ export function LocationsShowcase() {
                     delay={(index % 3) * 100}
                     className={cn(
                       "flex w-[78vw] max-w-[19rem] shrink-0 snap-start flex-col bg-secondary p-6 sm:w-[19rem] sm:p-7",
-                      selected && "bg-[#4a3150]",
+                      selected && "bg-[#14407f]",
                     )}
                   >
                     <div className="flex items-center justify-between">

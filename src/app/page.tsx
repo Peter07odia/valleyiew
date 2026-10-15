@@ -230,7 +230,7 @@ export default function HomePage() {
 
         <LocationTeamSection headingLevel="h2" />
 
-        <section className="bg-[#F4E7D8]">
+        <section className="bg-accent">
           <div className="mx-auto grid max-w-[94rem] lg:grid-cols-2">
             <div className="relative min-h-[33rem] lg:min-h-[48rem]">
               <Image
@@ -390,7 +390,7 @@ export default function HomePage() {
                   urgent attention.
                 </p>
               </Reveal>
-              <div className="relative aspect-[4/3] overflow-hidden border-[10px] border-background shadow-[18px_18px_0_#D9583B]">
+              <div className="relative aspect-[4/3] overflow-hidden border-[10px] border-background shadow-[18px_18px_0_var(--primary)]">
                 <Image
                   src="/images/brantford/health-resources-still-life.jpg"
                   alt="A notebook, medication organizer, and appointment folder prepared for a clinic visit"

@@ -99,15 +99,16 @@ export const CLINIC_CONFIG = {
 } as const;
 
 /**
- * Visual direction carried over from the Brantford site: a warm editorial
- * palette alongside the confirmed Valleyview logo.
+ * Brand colours taken from the VMC logo (blue ring, lime/aqua/red figures),
+ * plus a deep navy shade of the logo blue for dark surfaces.
  */
 export const BRAND_PALETTE = {
-  aubergine: "#39243F",
-  persimmon: "#D9583B",
-  lavender: "#DED8EE",
-  cream: "#FFF8EC",
-  butter: "#F1C75B",
+  blue: "#0E68DF",
+  navy: "#0B2A5B",
+  lime: "#C1FF72",
+  aqua: "#5CE1E6",
+  red: "#D62828",
+  white: "#FFFFFF",
 } as const;
 
 export const CLINIC_LOCATIONS = locationData as ClinicLocation[];

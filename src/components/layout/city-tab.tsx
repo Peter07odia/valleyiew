@@ -98,7 +98,7 @@ export function CityTab({
         onOpenAutoFocus={event => event.preventDefault()}
         onMouseEnter={show}
         onMouseLeave={hide}
-        className={cn("gap-0 rounded-none border-0 p-0 shadow-[0_24px_60px_-28px_rgba(28,20,40,0.55)]", single ? "w-72" : "w-[34rem]")}
+        className={cn("gap-0 rounded-none border-0 p-0 shadow-[0_24px_60px_-28px_rgba(11,42,91,0.45)]", single ? "w-72" : "w-[34rem]")}
       >
         <p className="border-b border-secondary/10 px-4 pt-3 pb-2 text-[0.62rem] font-bold uppercase tracking-[0.18em] text-muted-foreground">
           {single ? `${city} clinic` : `${city} clinics`}
@@ -131,7 +131,7 @@ export function CityTab({
                     <span>
                       {hours.text}
                       {hours.open === null ? null : (
-                        <span className={cn("ml-1.5 font-semibold", hours.open ? "text-success" : "text-primary")}>
+                        <span className={cn("ml-1.5 font-semibold", hours.open ? "text-success" : "text-destructive")}>
                           {hours.open ? "Open now" : "Closed now"}
                         </span>
                       )}

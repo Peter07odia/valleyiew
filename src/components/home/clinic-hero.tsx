@@ -50,7 +50,7 @@ export function ClinicHero() {
           className="object-cover object-[65%_center] sm:object-center"
         />
       </div>
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(37,20,41,0.92)_0%,rgba(37,20,41,0.79)_38%,rgba(37,20,41,0.3)_66%,rgba(37,20,41,0.08)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,30,66,0.92)_0%,rgba(8,30,66,0.78)_38%,rgba(8,30,66,0.28)_66%,rgba(8,30,66,0.06)_100%)]" />
       <div className="absolute inset-0 bg-gradient-to-t from-secondary/85 via-transparent to-secondary/10" />
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.06]"
@@ -75,7 +75,7 @@ export function ClinicHero() {
 
           <h1
             id="hero-heading"
-            className="max-w-[10ch] text-balance font-sans text-[clamp(3rem,7.2vw,7.75rem)] font-semibold uppercase leading-[0.86] tracking-[-0.045em] [text-shadow:0_8px_36px_rgba(22,11,25,0.28)]"
+            className="max-w-[10ch] text-balance font-sans text-[clamp(3rem,7.2vw,7.75rem)] font-semibold uppercase leading-[0.86] tracking-[-0.045em] [text-shadow:0_8px_36px_rgba(4,18,42,0.3)]"
           >
             <span className="block">Valleyview</span>
             <span className="block">Medical Centre</span>

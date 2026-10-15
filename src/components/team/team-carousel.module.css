@@ -3,7 +3,7 @@
 .container{width:100%;max-width:1280px;margin:auto;padding:0 40px}
 .heading{text-align:center;margin-bottom:48px}
 .heading h1,.heading h2{font-family:'Manrope Variable',sans-serif;font-size:36px;font-weight:800;line-height:1.2;letter-spacing:-.035em;margin:0}
-.heading>span{display:block;width:56px;height:4px;border-radius:9999px;margin:16px auto;background:linear-gradient(90deg,#0d9488,#3b82f6,transparent)}
+.heading>span{display:block;width:56px;height:4px;border-radius:9999px;margin:16px auto;background:linear-gradient(90deg,#0E68DF,#5CE1E6,#C1FF72)}
 .heading>p{font-size:18px;color:#566174;margin:0;line-height:1.6}
 .track{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:12px 0 16px;overscroll-behavior-x:contain}
 .track::-webkit-scrollbar{display:none}
@@ -13,30 +13,31 @@
 /* Team page: wrapping, centred grid using the same cards. */
 .grid{display:flex;flex-wrap:wrap;justify-content:center;gap:24px;padding:12px 0 16px}
 .gridItem{flex:0 0 260px;display:flex;text-decoration:none;border-radius:16px}
-.tabs{display:flex;justify-content:center;margin:0 auto 36px;max-width:100%;overflow-x:auto}
+.tabs{display:flex;justify-content:safe center;margin:0 auto 36px;max-width:100%;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
 .tabList{display:inline-flex;gap:4px;padding:6px;border:1px solid #e2e8f0;border-radius:16px;background:#fff;box-shadow:0 18px 48px -34px rgba(28,46,74,.45)}
 .tab{height:44px;padding:0 20px;border-radius:12px;font-size:14px;font-weight:600;color:#566174;white-space:nowrap;transition:background .2s,color .2s}
 .tab:hover{color:#1a202c}
-.tab[data-state=active]{background:#39243F;color:#fff}
+.tab[data-state=active]{background:#0B2A5B;color:#fff}
 .scope{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px;margin:-28px auto 32px;font-size:14px;color:#566174;text-align:center}
-.scope button{font-weight:600;color:#D9583B;text-decoration:underline;text-underline-offset:4px}
+.scope button{font-weight:600;color:#0E68DF;text-decoration:underline;text-underline-offset:4px}
 .cardLink{flex:0 0 calc((100% - 72px)/4);min-width:0;display:flex;text-decoration:none;scroll-snap-align:start;border-radius:16px}
 .card{background:#fff;border-radius:16px;border:1px solid #e2e8f0;box-shadow:0 4px 6px -1px #0000000d,0 2px 4px -1px #00000008;display:flex;flex:1;flex-direction:column;overflow:hidden;transition:transform .2s,box-shadow .2s;min-height:300px}
 .card:hover{transform:translateY(-5px);box-shadow:0 12px 24px #00000012}
-.cardHeader{height:80px;background:linear-gradient(135deg,#dbeafe,#ccfbf1);display:flex;justify-content:center;position:relative;flex-shrink:0}
+.cardHeader{height:80px;background:linear-gradient(135deg,#dbeafe,#d6f7f8);display:flex;justify-content:center;position:relative;flex-shrink:0}
 .avatarWrap{width:88px;height:88px;border:4px solid white;border-radius:50%;box-shadow:0 4px 6px -1px #0000001a,0 2px 4px -1px #0000000d;position:absolute;bottom:-44px;overflow:hidden;background:#f1f5f9}
 .avatarImg{object-fit:cover;object-position:center top}
 .cardBody{padding:48px 20px 20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;flex:1}
 .doctorInfo{display:flex;flex-direction:column;flex:1;gap:4px}
 .doctorInfo h3{font-size:16px;line-height:1.375;font-weight:800;letter-spacing:-.04em;margin:0}
 .doctorInfo p{font-size:14px;color:#566174;line-height:1.5;margin:0}
-.doctorInfo .credentials{font-size:12px;font-weight:600;color:#2563eb;margin-top:3px}
-.viewProfile{display:flex;align-items:center;justify-content:center;gap:4px;font-size:14px;font-weight:600;color:#2563eb;width:100%;padding-top:16px;border-top:1px solid #e2e8f0;margin-top:auto}
+.doctorInfo .credentials{font-size:12px;font-weight:600;color:#0E68DF;margin-top:3px}
+.viewProfile{display:flex;align-items:center;justify-content:center;gap:4px;font-size:14px;font-weight:600;color:#0E68DF;width:100%;padding-top:16px;border-top:1px solid #e2e8f0;margin-top:auto}
 .controls{display:flex;justify-content:center;gap:12px;padding-top:24px}
 .controls button{display:flex;align-items:center;justify-content:center;width:48px;height:48px;background:white;border:1px solid #e2e8f0;border-radius:50%;box-shadow:0 1px 3px #00000014;color:#1a202c;cursor:pointer;transition:.2s}
-.controls button:hover:not(:disabled){background:#eff6ff;border-color:#93c5fd;color:#2563eb}
+.controls button:hover:not(:disabled){background:#eff6ff;border-color:#93c5fd;color:#0E68DF}
 .controls button:disabled{opacity:.35;cursor:not-allowed}
-.section :focus-visible{outline:3px solid #2563eb;outline-offset:3px}
+.section :focus-visible{outline:3px solid #0E68DF;outline-offset:3px}
 @media(max-width:1023px){.cardLink{flex-basis:calc((100% - 24px)/2)}}
 @media(max-width:639px){.gridItem{flex-basis:100%;max-width:320px}.tab{padding:0 14px;font-size:13px}.section{padding:48px 0}.container{padding:0 28px}.heading{padding:0 16px;margin-bottom:28px}.heading h1,.heading h2{font-size:30px}.heading p{font-size:16px}.cardLink{flex-basis:100%}}
 @media(prefers-reduced-motion:reduce){.card{transition:none}.card:hover{transform:none}}

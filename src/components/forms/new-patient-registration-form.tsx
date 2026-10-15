@@ -170,7 +170,7 @@ export function NewPatientRegistrationForm({ preview = false }: { preview?: bool
       onSubmit={handleSubmit}
       noValidate
       aria-busy={submitting}
-      className="border border-secondary/15 bg-[#FFFCF7]"
+      className="border border-secondary/15 bg-white"
     >
       {preview && <p role="status" className="border-b bg-amber-50 px-5 py-4 text-sm text-amber-950">Design preview: please use sample details only. Registration submissions are not enabled yet.</p>}
       <div className="grid grid-cols-2 border-b border-secondary/15">

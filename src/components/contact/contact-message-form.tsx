@@ -88,7 +88,7 @@ export function ContactMessageForm({ preview = false }: { preview?: boolean }) {
   return (
     <form onSubmit={submit} noValidate={false} aria-label="Send us a message" className="space-y-5">
       {preview ? (
-        <p role="status" className="border-l-4 border-accent-warm bg-accent-warm/15 px-4 py-3 text-sm text-secondary">
+        <p role="status" className="border-l-4 border-primary bg-primary/8 px-4 py-3 text-sm text-secondary">
           Online messages are not switched on yet. Please call your clinic in the meantime.
         </p>
       ) : null}

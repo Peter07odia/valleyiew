@@ -64,7 +64,7 @@ export default function ContactPage() {
             </a>
           </Reveal>
 
-          <Reveal effect="flip" className="h-fit border border-secondary/15 bg-white p-6 shadow-[0_30px_70px_-40px_rgba(57,36,63,0.45)] sm:p-9">
+          <Reveal effect="flip" className="h-fit border border-secondary/15 bg-white p-6 shadow-[0_30px_70px_-40px_rgba(11,42,91,0.4)] sm:p-9">
             <h2 className="font-serif text-3xl tracking-[-0.02em] text-secondary">Send us a message</h2>
             <p className="mt-2 mb-6 text-sm text-muted-foreground">We&apos;ll pass it to the clinic you choose.</p>
             <ContactMessageForm preview={!messagesEnabled} />
