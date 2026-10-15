@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation"
 import { CheckCircle2, ChevronDown, ChevronLeft, ChevronRight, Clock, MapPin, Navigation, Phone } from "lucide-react"
 
 import { usePreferredLocation } from "@/components/providers/preferred-location-provider"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Popover, PopoverAnchor, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { CLINIC_LOCATIONS, REGIONS } from "@/config/clinic"
 import { clinicSlugForPath } from "@/lib/clinic-path"
@@ -23,16 +24,22 @@ import { cn } from "@/lib/utils"
 // Intake and staff pages have their own clinic handling; never interrupt them.
 const SKIP_PATHS = ["/admin", "/new-patient-form", "/registration-reports", "/auth"]
 
-/** Short labels for the top-bar tabs. */
-const TAB_LABELS: Record<string, string> = {
-  whitby: "Whitby",
-  oshawa: "Oshawa",
-  courtice: "Courtice",
-  "lansdowne-mall": "Lansdowne Mall",
-  "peterborough-pharmacy": "Lansdowne St",
-  "lynden-road": "Lynden",
-  "colborne-east": "Colborne",
-}
+/** Top-bar tabs: one per city; cities with several clinics open a small menu. */
+const CITY_GROUPS = CLINIC_LOCATIONS.reduce<{ city: string; locations: ClinicLocation[] }[]>((groups, location) => {
+  const group = groups.find(g => g.city === location.city)
+  if (group) group.locations.push(location)
+  else groups.push({ city: location.city, locations: [location] })
+  return groups
+}, [])
+
+/** "Peterborough (Lansdowne Mall)" -> "Lansdowne Mall". */
+const branchLabel = (location: ClinicLocation) => /\(([^)]+)\)/.exec(location.shortName)?.[1] ?? location.shortName
+
+const tabClass = (active: boolean) =>
+  cn(
+    "inline-flex shrink-0 items-center gap-1 border-l border-white/15 px-4 py-1 text-[10.5px] font-bold uppercase tracking-[0.14em] transition-colors first:border-l-0 focus-visible:outline-2 focus-visible:outline-white xl:px-5",
+    active ? "text-accent-warm" : "text-white/65 hover:text-white",
+  )
 
 const regionName = (location: ClinicLocation) => REGIONS.find(r => r.id === location.region)?.name ?? ""
 
@@ -91,12 +98,13 @@ export function ClinicSwitcher() {
       onOpenChange={next => (next ? openLocationPicker() : !required && closeLocationPicker())}
     >
       <PopoverAnchor asChild>
-        <div className="flex w-full min-w-0 items-center gap-4">
+        {/* Three columns on desktop so the city tabs sit in the true centre of the bar. */}
+        <div className="grid w-full min-w-0 grid-cols-1 items-center lg:grid-cols-[1fr_auto_1fr] lg:gap-4">
           <PopoverTrigger asChild>
             <button
               type="button"
               aria-label={preferredLocation ? `Change clinic, currently ${preferredLocation.shortName}` : "Choose your clinic"}
-              className="inline-flex min-w-0 shrink items-center gap-2 py-1 font-semibold transition-colors hover:text-accent-warm focus-visible:outline-2 focus-visible:outline-white"
+              className="inline-flex min-w-0 items-center gap-2 justify-self-start py-1 font-semibold transition-colors hover:text-accent-warm focus-visible:outline-2 focus-visible:outline-white"
             >
               <MapPin className="size-3.5 shrink-0 text-accent-warm" aria-hidden="true" />
               <span className="truncate text-[11px] font-bold uppercase tracking-[0.16em]">
@@ -108,26 +116,55 @@ export function ClinicSwitcher() {
               />
             </button>
           </PopoverTrigger>
-          <span className="hidden h-5 w-px shrink-0 bg-white/15 lg:block" aria-hidden="true" />
-          <div className="ml-auto hidden min-w-0 items-center overflow-x-auto lg:flex" role="group" aria-label="Clinics">
-            {CLINIC_LOCATIONS.map(location => {
-              const selected = preferredLocation?.slug === location.slug
+          <nav className="hidden items-center justify-center lg:flex" aria-label="Clinics by city">
+            {CITY_GROUPS.map(({ city, locations }) => {
+              const active = locations.some(l => l.slug === preferredLocation?.slug)
+              if (locations.length === 1) {
+                const [location] = locations
+                return (
+                  <button key={city} type="button" aria-pressed={active} onClick={() => choose(location.slug)} className={tabClass(active)}>
+                    {city}
+                  </button>
+                )
+              }
               return (
-                <button
-                  key={location.id}
-                  type="button"
-                  aria-pressed={selected}
-                  onClick={() => choose(location.slug)}
-                  className={cn(
-                    "shrink-0 border-l border-white/15 px-3 py-1 text-[10.5px] font-bold uppercase tracking-[0.12em] transition-colors first:border-l-0 focus-visible:outline-2 focus-visible:outline-white xl:px-4",
-                    selected ? "text-accent-warm" : "text-white/65 hover:text-white",
-                  )}
-                >
-                  {TAB_LABELS[location.id] ?? location.shortName}
-                </button>
+                <DropdownMenu key={city} modal={false}>
+                  <DropdownMenuTrigger asChild>
+                    <button type="button" aria-label={`${city}: choose a location`} className={tabClass(active)}>
+                      {city}
+                      <ChevronDown className="size-3 opacity-70" aria-hidden="true" />
+                    </button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="center" sideOffset={10} className="w-64 rounded-none p-1.5">
+                    <p className="px-2 pt-1 pb-1.5 text-[0.62rem] font-bold uppercase tracking-[0.18em] text-muted-foreground">
+                      {city} locations
+                    </p>
+                    {locations.map(location => {
+                      const selected = location.slug === preferredLocation?.slug
+                      return (
+                        <DropdownMenuItem
+                          key={location.slug}
+                          onSelect={() => choose(location.slug)}
+                          className="flex cursor-pointer items-start gap-2.5 rounded-none px-2 py-2"
+                        >
+                          {selected ? (
+                            <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
+                          ) : (
+                            <MapPin className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
+                          )}
+                          <span className="min-w-0">
+                            <span className="block text-sm font-semibold text-secondary">{branchLabel(location)}</span>
+                            <span className="block truncate text-xs text-muted-foreground">{location.address}</span>
+                          </span>
+                          {selected ? <span className="sr-only">(your clinic)</span> : null}
+                        </DropdownMenuItem>
+                      )
+                    })}
+                  </DropdownMenuContent>
+                </DropdownMenu>
               )
             })}
-          </div>
+          </nav>
         </div>
       </PopoverAnchor>
 
