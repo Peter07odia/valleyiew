@@ -9,7 +9,7 @@ export default function MarketingLayout({
   return (
     <>
       <SiteHeader />
-      <main id="main-content" className="flex-1">{children}</main>
+      <main id="main-content" className="flex-1 overflow-x-clip">{children}</main>
       <SiteFooter />
     </>
   )
