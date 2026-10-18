@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -167,6 +166,7 @@ export default function HomePage() {
       <SiteHeader />
       <main id="main-content" className="flex-1 overflow-x-clip bg-background">
         <ClinicHero />
+        <HomePharmacySection />
 
         <section
           id="care"
@@ -231,10 +231,6 @@ export default function HomePage() {
         </section>
 
         <LocationTeamSection headingLevel="h2" />
-
-        <Suspense fallback={null}>
-          <HomePharmacySection />
-        </Suspense>
 
         <section className="bg-accent">
           <div className="mx-auto grid max-w-[94rem] lg:grid-cols-2">

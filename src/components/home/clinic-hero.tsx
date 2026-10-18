@@ -110,12 +110,12 @@ export function ClinicHero() {
                 variant="outline"
                 className="h-13 rounded-none border-white/30 bg-transparent px-7 text-white hover:bg-white hover:text-secondary"
               >
-                {/* Several pharmacy services: show them on the clinic page; otherwise go straight to the pharmacy. */}
+                {/* Several pharmacy services: jump to the pharmacy card below the hero; otherwise go straight to the pharmacy. */}
                 {(clinic.pharmacyActions?.length ?? 0) > 1 || !clinic.pharmacyUrl ? (
-                  <Link href={`/locations/${clinic.slug}#pharmacy`}>
+                  <a href="#pharmacy">
                     <Pill className="size-4" aria-hidden="true" />
                     Pharmacy
-                  </Link>
+                  </a>
                 ) : (
                   <a href={clinic.pharmacyUrl} target="_blank" rel="noopener noreferrer" aria-label={`${clinic.pharmacyName} (opens in a new tab)`}>
                     <Pill className="size-4" aria-hidden="true" />
