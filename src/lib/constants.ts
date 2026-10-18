@@ -344,3 +344,27 @@ export function formatTime(time: string): string {
   const hour12 = h % 12 || 12;
   return `${hour12}:${m.toString().padStart(2, "0")} ${period}`;
 }
+
+/** "09:00" -> "9AM", "19:30" -> "7:30PM". */
+export function formatCompactTime(time: string): string {
+  const [h, m] = time.split(":").map(Number);
+  return `${h % 12 || 12}${m ? `:${m.toString().padStart(2, "0")}` : ""}${h >= 12 ? "PM" : "AM"}`;
+}
+
+/**
+ * Weekly hours with consecutive matching days merged, e.g.
+ * ["Mon–Fri 9AM–7PM", "Sat–Sun 10AM–3PM"]. Unconfirmed days read "Call".
+ */
+export function summarizeHours(location: ClinicLocation): string[] {
+  const label = (h: LocationHours) =>
+    h.status !== "confirmed" ? "Call" : h.isClosed || !h.open ? "Closed" : `${formatCompactTime(h.open)}–${formatCompactTime(h.close)}`;
+  const runs: { first: string; last: string; text: string }[] = [];
+  for (const h of location.hours) {
+    const text = label(h);
+    const day = h.day.slice(0, 3);
+    const run = runs.at(-1);
+    if (run && run.text === text) run.last = day;
+    else runs.push({ first: day, last: day, text });
+  }
+  return runs.map(r => `${r.first === r.last ? r.first : `${r.first}–${r.last}`} ${r.text}`);
+}

@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, useCallback } from "react"
 import { createPortal } from "react-dom"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { CheckCircle2, ChevronDown, ChevronLeft, ChevronRight, Clock, MapPin, Navigation, Phone } from "lucide-react"
+import { CheckCircle2, ChevronDown, ChevronLeft, ChevronRight, Clock, Mail, MapPin, Navigation, Phone, X } from "lucide-react"
 
 import { usePreferredLocation } from "@/components/providers/preferred-location-provider"
 import { CityTab } from "./city-tab"
@@ -17,6 +17,7 @@ import {
   getTodayHours,
   hasPublishedHours,
   isLocationOpen,
+  summarizeHours,
   type ClinicLocation,
 } from "@/lib/constants"
 import { cn } from "@/lib/utils"
@@ -76,10 +77,14 @@ export function ClinicSwitcher() {
     !impliedClinic &&
     !SKIP_PATHS.some(path => pathname?.startsWith(path))
   const open = required || (hasHydrated && isPickerOpen)
+  // Desktop: with a clinic chosen the bar shows its details; clicking the clinic name swaps in the city tabs.
+  const [browsing, setBrowsing] = useState(false)
+  const showDetails = Boolean(preferredLocation) && !browsing
 
   function choose(slug: string) {
     setPreferredLocation(slug)
     closeLocationPicker()
+    setBrowsing(false)
   }
 
   return (
@@ -107,18 +112,36 @@ export function ClinicSwitcher() {
               />
             </button>
           </PopoverTrigger>
-          {/* Desktop: centred city tabs; hover a city for its clinic details. */}
-          <nav className="hidden items-center lg:flex" aria-label="Clinics by city">
-            {CITY_GROUPS.map(({ city, locations }) => (
-              <CityTab
-                key={city}
-                city={city}
-                locations={locations}
-                selectedSlug={preferredLocation?.slug}
-                onChoose={choose}
-              />
-            ))}
-          </nav>
+          {/* Desktop: the chosen clinic's details, or centred city tabs (hover a city for its clinics). */}
+          {showDetails && preferredLocation ? (
+            <ClinicDetails clinic={preferredLocation} onChange={() => setBrowsing(true)} />
+          ) : (
+            <nav
+              className="hidden items-center lg:flex"
+              aria-label="Clinics by city"
+              onKeyDown={event => event.key === "Escape" && setBrowsing(false)}
+            >
+              {CITY_GROUPS.map(({ city, locations }) => (
+                <CityTab
+                  key={city}
+                  city={city}
+                  locations={locations}
+                  selectedSlug={preferredLocation?.slug}
+                  onChoose={choose}
+                />
+              ))}
+              {preferredLocation ? (
+                <button
+                  type="button"
+                  onClick={() => setBrowsing(false)}
+                  aria-label={`Keep ${preferredLocation.shortName}`}
+                  className="ml-2 inline-flex size-6 items-center justify-center rounded-full text-white/60 transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-2 focus-visible:outline-white"
+                >
+                  <X className="size-3.5" aria-hidden="true" />
+                </button>
+              ) : null}
+            </nav>
+          )}
         </div>
       </PopoverAnchor>
 
@@ -140,6 +163,44 @@ export function ClinicSwitcher() {
         <ClinicPanel selected={preferredLocation} onChoose={choose} onNavigate={closeLocationPicker} required={required} />
       </PopoverContent>
     </Popover>
+  )
+}
+
+/** Desktop top bar for the chosen clinic: phone, email, weekly hours and the clinic name. */
+function ClinicDetails({ clinic, onChange }: { clinic: ClinicLocation; onChange: () => void }) {
+  const item = "flex shrink-0 items-center gap-2 border-l border-white/15 px-5 first:border-l-0 first:pl-0 last:pr-0"
+  return (
+    <div className="hidden min-w-0 items-center text-[13px] text-white/85 lg:flex" aria-label={`${clinic.shortName} details`} role="group">
+      {clinic.phone ? (
+        <a href={`tel:${clinic.phone.replace(/\D/g, "")}`} className={cn(item, "hover:text-white")}>
+          <Phone className="size-3.5 opacity-80" aria-hidden="true" />
+          {clinic.phone}
+        </a>
+      ) : null}
+      {clinic.email ? (
+        <a href={`mailto:${clinic.email}`} className={cn(item, "hidden hover:text-white xl:flex")}>
+          <Mail className="size-3.5 opacity-80" aria-hidden="true" />
+          {clinic.email.toLowerCase()}
+        </a>
+      ) : null}
+      <span className={item}>
+        <Clock className="size-3.5 opacity-80" aria-hidden="true" />
+        {summarizeHours(clinic).join(" | ")}
+      </span>
+      <span className={item}>
+        <MapPin className="size-3.5 opacity-80" aria-hidden="true" />
+        Selected:
+        <button
+          type="button"
+          onClick={onChange}
+          aria-label={`Selected clinic ${clinic.shortName}. Show other clinics`}
+          className="inline-flex items-center gap-1 font-semibold text-accent-aqua hover:underline focus-visible:outline-2 focus-visible:outline-white"
+        >
+          {clinic.shortName}
+          <ChevronDown className="size-3" aria-hidden="true" />
+        </button>
+      </span>
+    </div>
   )
 }
 
