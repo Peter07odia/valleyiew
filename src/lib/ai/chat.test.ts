@@ -16,7 +16,7 @@ describe("public clinic assistant",()=>{
  });
  it("accepts AI SDK step markers while retaining only text",()=>{ const result=chatSchema.parse({...payload,messages:[{id:"prior",role:"assistant",parts:[{type:"step-start"},{type:"text",text:"Hello"}]},...payload.messages]});expect(result.messages[0].parts).toEqual([{type:"text",text:"Hello"}]); });
  it("grounds doctors and hours in the shared registry",()=>{
-  const prompt=clinicSystemPrompt("peterborough-lansdowne-mall");expect(prompt).toContain("Dr. Henry Oghotuoma");expect(prompt).toContain("Dr. Eseigbe Uwadia");expect(prompt).toContain("Call for hours");expect(prompt).toContain("no patient database access");
+  const prompt=clinicSystemPrompt("peterborough-lansdowne-mall");expect(prompt).toContain("Dr. Henry Oghotuoma");expect(prompt).toContain("Dr. Eseigbe Uwadia");expect(prompt).toContain("Saturday: 10:00–15:00");expect(prompt).toContain("no patient database access");
  });
  it("rejects other origins before database or model access",async()=>{expect((await POST(request(payload,"https://evil.example"))).status).toBe(403);expect(rpc).not.toHaveBeenCalled();expect(stream).not.toHaveBeenCalled()});
  it("fails closed when rate limiting is unavailable",async()=>{rpc.mockResolvedValue({error:{message:"private"}});const res=await POST(request());expect(res.status).toBe(503);expect(await res.text()).not.toContain("private");expect(stream).not.toHaveBeenCalled()});
