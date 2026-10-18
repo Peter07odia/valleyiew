@@ -154,9 +154,11 @@ export default async function StaffProfilePage({
             </div>
 
             <div className="mt-6 space-y-4 text-base leading-7 text-foreground">
-              {bio.paragraphs.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
+              {bio.paragraphs.length > 0 ? (
+                bio.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)
+              ) : (
+                <p className="text-muted-foreground">A full biography is coming soon.</p>
+              )}
             </div>
 
             {primaryLocation ? (
