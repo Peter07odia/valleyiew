@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/sonner";
 import { RouteChatWidget } from "@/components/layout/route-chat-widget";
 import { MobileClinicBar } from "@/components/layout/mobile-clinic-bar";
+import { MobileClinicSheet } from "@/components/layout/mobile-clinic-sheet";
 import { PreferredLocationProvider } from "@/components/providers/preferred-location-provider";
 import { AuthHashHandler } from "@/components/providers/auth-hash-handler";
 import {
@@ -65,6 +66,7 @@ export default function RootLayout({
               <AuthHashHandler />
               {children}
               <MobileClinicBar />
+              <MobileClinicSheet />
               {CLINIC_CONFIG.aiChat.enabled ? <RouteChatWidget /> : null}
               <Toaster />
             </TooltipProvider>

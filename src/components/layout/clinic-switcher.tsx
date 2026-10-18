@@ -23,7 +23,7 @@ import {
 import { cn } from "@/lib/utils"
 
 // Intake and staff pages have their own clinic handling; never interrupt them.
-const SKIP_PATHS = ["/admin", "/new-patient-form", "/registration-reports", "/auth"]
+export const SKIP_PATHS = ["/admin", "/new-patient-form", "/registration-reports", "/auth"]
 
 /** Top-bar tabs: one per city; cities with several clinics open a small menu. */
 const CITY_GROUPS = CLINIC_LOCATIONS.reduce<{ city: string; locations: ClinicLocation[] }[]>((groups, location) => {
@@ -40,7 +40,7 @@ function subscribeDesktop(callback: () => void) {
   return () => query.removeEventListener("change", callback)
 }
 /** True on laptop/desktop widths; false on phones, tablets and during server render. */
-function useIsDesktop() {
+export function useIsDesktop() {
   return useSyncExternalStore(subscribeDesktop, () => window.matchMedia(DESKTOP_QUERY).matches, () => false)
 }
 
