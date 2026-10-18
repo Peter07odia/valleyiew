@@ -38,7 +38,7 @@ export function LocationCard({ location, waitMinutes }: LocationCardProps) {
   const directionsUrl = getGoogleMapsDirectionsUrl(location)
 
   return (
-    <div className="group h-full overflow-hidden rounded-xl bg-card shadow-sm ring-1 ring-foreground/10 transition-shadow duration-300 hover:shadow-lg">
+    <div className="group flex h-full flex-col overflow-hidden rounded-xl bg-card shadow-sm ring-1 ring-foreground/10 transition-shadow duration-300 hover:shadow-lg">
       {/* Colored status header bar */}
       <div
         className={cn(
@@ -80,7 +80,7 @@ export function LocationCard({ location, waitMinutes }: LocationCardProps) {
       </div>
 
       {/* Card body */}
-      <div className="flex flex-col gap-4 p-5">
+      <div className="flex flex-1 flex-col gap-4 p-5">
         <h3 className="text-xl font-semibold text-foreground">
           {location.name}
         </h3>
