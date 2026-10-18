@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState, useCallback } from "react"
+import { useEffect, useRef, useState, useCallback, useSyncExternalStore } from "react"
 import { createPortal } from "react-dom"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -32,6 +32,17 @@ const CITY_GROUPS = CLINIC_LOCATIONS.reduce<{ city: string; locations: ClinicLoc
   else groups.push({ city: location.city, locations: [location] })
   return groups
 }, [])
+
+const DESKTOP_QUERY = "(min-width: 1024px)"
+function subscribeDesktop(callback: () => void) {
+  const query = window.matchMedia(DESKTOP_QUERY)
+  query.addEventListener("change", callback)
+  return () => query.removeEventListener("change", callback)
+}
+/** True on laptop/desktop widths; false on phones, tablets and during server render. */
+function useIsDesktop() {
+  return useSyncExternalStore(subscribeDesktop, () => window.matchMedia(DESKTOP_QUERY).matches, () => false)
+}
 
 const regionName = (location: ClinicLocation) => REGIONS.find(r => r.id === location.region)?.name ?? ""
 
@@ -71,7 +82,10 @@ export function ClinicSwitcher() {
     if (hasHydrated && !preferredLocation && impliedClinic) setPreferredLocation(impliedClinic)
   }, [hasHydrated, preferredLocation, impliedClinic, setPreferredLocation])
 
+  // Phones and tablets are never forced to choose; the top-bar selector is enough there.
+  const isDesktop = useIsDesktop()
   const required =
+    isDesktop &&
     hasHydrated &&
     !preferredLocation &&
     !impliedClinic &&
@@ -146,23 +160,85 @@ export function ClinicSwitcher() {
       </PopoverAnchor>
 
       {/* Dims the page while choosing; clicking it closes the panel unless a choice is required. */}
-      {open && typeof document !== "undefined"
+      {open && isDesktop && typeof document !== "undefined"
         ? createPortal(<div className="fixed inset-0 z-40 bg-secondary/35 backdrop-blur-[2px]" aria-hidden="true" />, document.body)
         : null}
 
-      <PopoverContent
-        align="center"
-        side="bottom"
-        sideOffset={10}
-        collisionPadding={8}
-        aria-label="Choose your clinic"
-        onEscapeKeyDown={event => required && event.preventDefault()}
-        onInteractOutside={event => required && event.preventDefault()}
-        className="w-[min(96vw,84rem)] gap-0 rounded-[26px] border border-white/20 bg-background/80 p-4 text-foreground shadow-[0_28px_90px_-36px_rgba(15,23,42,0.45)] ring-0 backdrop-blur-2xl sm:p-5"
-      >
-        <ClinicPanel selected={preferredLocation} onChoose={choose} onNavigate={closeLocationPicker} required={required} />
-      </PopoverContent>
+      {isDesktop ? (
+        <PopoverContent
+          align="center"
+          side="bottom"
+          sideOffset={10}
+          collisionPadding={8}
+          aria-label="Choose your clinic"
+          onEscapeKeyDown={event => required && event.preventDefault()}
+          onInteractOutside={event => required && event.preventDefault()}
+          className="w-[min(96vw,84rem)] gap-0 rounded-[26px] border border-white/20 bg-background/80 p-4 text-foreground shadow-[0_28px_90px_-36px_rgba(15,23,42,0.45)] ring-0 backdrop-blur-2xl sm:p-5"
+        >
+          <ClinicPanel selected={preferredLocation} onChoose={choose} onNavigate={closeLocationPicker} required={required} />
+        </PopoverContent>
+      ) : (
+        <PopoverContent
+          align="start"
+          side="bottom"
+          sideOffset={8}
+          collisionPadding={12}
+          aria-label="Choose your clinic"
+          className="w-[min(calc(100vw-1.5rem),22rem)] gap-0 rounded-xl border border-secondary/10 p-1.5 shadow-[0_18px_50px_-24px_rgba(11,42,91,0.45)]"
+        >
+          <ClinicList selected={preferredLocation} onChoose={choose} onNavigate={closeLocationPicker} />
+        </PopoverContent>
+      )}
     </Popover>
+  )
+}
+
+/** Phones and tablets: a plain list of clinics grouped by region. */
+function ClinicList({
+  selected,
+  onChoose,
+  onNavigate,
+}: {
+  selected: ClinicLocation | null
+  onChoose: (slug: string) => void
+  onNavigate: () => void
+}) {
+  return (
+    <div className="max-h-[min(70dvh,32rem)] overflow-y-auto overscroll-contain">
+      {REGIONS.map(region => (
+        <div key={region.id} role="group" aria-label={region.name} className="py-1">
+          <p className="px-2.5 pt-1 pb-0.5 text-[0.6rem] font-bold uppercase tracking-[0.16em] text-muted-foreground">{region.name}</p>
+          {CLINIC_LOCATIONS.filter(location => location.region === region.id).map(location => {
+            const isSelected = selected?.slug === location.slug
+            return (
+              <button
+                key={location.slug}
+                type="button"
+                onClick={() => onChoose(location.slug)}
+                aria-pressed={isSelected}
+                className={cn(
+                  "flex w-full items-center justify-between gap-3 rounded-lg px-2.5 py-2 text-left transition-colors",
+                  isSelected ? "bg-primary/8" : "hover:bg-muted active:bg-muted",
+                )}
+              >
+                <span className="min-w-0">
+                  <span className="block text-sm font-semibold text-secondary">{location.shortName}</span>
+                  <span className="block truncate text-xs text-muted-foreground">{location.address}</span>
+                </span>
+                {isSelected ? <CheckCircle2 className="size-4 shrink-0 text-primary" aria-label="Your clinic" /> : null}
+              </button>
+            )
+          })}
+        </div>
+      ))}
+      <Link
+        href="/locations"
+        onClick={onNavigate}
+        className="mt-1 block border-t border-secondary/10 px-2.5 pt-2.5 pb-1.5 text-xs font-semibold text-primary"
+      >
+        View all locations
+      </Link>
+    </div>
   )
 }
 
