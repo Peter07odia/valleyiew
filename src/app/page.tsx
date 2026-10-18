@@ -24,6 +24,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { ClinicHero } from "@/components/home/clinic-hero";
 import { LocationsShowcase } from "@/components/home/locations-showcase";
 import { HomePharmacySection } from "@/components/home/home-pharmacy-section";
+import { ClinicTimings } from "@/components/home/clinic-timings";
 import { LocationTeamSection } from "@/components/team/location-team-section";
 import { Reveal } from "@/components/shared/reveal";
 import { Button } from "@/components/ui/button";
@@ -229,6 +230,8 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+
+        <ClinicTimings />
 
         <LocationTeamSection headingLevel="h2" />
 

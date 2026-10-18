@@ -46,6 +46,8 @@ export interface ClinicLocation {
   bookingUrl?: string;
   heroImage?: string;
   heroImageAlt?: string;
+  clinicPhoto?: string;
+  clinicPhotoAlt?: string;
   pharmacyName?: string;
   pharmacyUrl?: string;
   pharmacyLogoSrc?: string;

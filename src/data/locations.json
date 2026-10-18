@@ -110,7 +110,9 @@
         "href": "https://www.bookmyshot.com/(905)435-1100",
         "description": "See the pharmacy's online services."
       }
-    ]
+    ],
+    "clinicPhoto": "/images/locations/whitby-clinic.jpg",
+    "clinicPhotoAlt": "Valleyview Medical Centre and East Whitby IDA Pharmacy storefront on Dundas St E, Whitby"
   },
   {
     "id": "oshawa",
@@ -191,7 +193,9 @@
     "pharmacyName": "Harmony PharmaChoice & Compounding Centre",
     "pharmacyUrl": "https://pharmachoice.erefills.ca/pharmachoice/centralprofile/orderpage3.php?sphone=(905)%367-8510&sname=Harmony",
     "pharmacyLogoSrc": "/images/pharmacies/harmony-pharmachoice.png",
-    "pharmacyLogoAlt": "Harmony PharmaChoice logo"
+    "pharmacyLogoAlt": "Harmony PharmaChoice logo",
+    "clinicPhoto": "/images/locations/oshawa-clinic.jpg",
+    "clinicPhotoAlt": "Valleyview Medical Centre storefront on Taunton Rd E, Oshawa"
   },
   {
     "id": "courtice",
@@ -270,7 +274,9 @@
     "pharmacyName": "MapleMeds Pharmacy",
     "pharmacyUrl": "https://maplemeds.ca/",
     "pharmacyLogoSrc": "/images/pharmacies/maplemeds.png",
-    "pharmacyLogoAlt": "MapleMeds logo"
+    "pharmacyLogoAlt": "MapleMeds logo",
+    "clinicPhoto": "/images/locations/courtice.jpg",
+    "clinicPhotoAlt": "Valleyview Medical Centre storefront on Nash Rd, Courtice"
   },
   {
     "id": "lansdowne-mall",
@@ -344,7 +350,9 @@
     "doctorIds": [
       "henry-oghotuoma",
       "eseigbe-uwadia"
-    ]
+    ],
+    "clinicPhoto": "/images/sections/home-care-photo-mobile-v2.png",
+    "clinicPhotoAlt": "A clinician speaking with a patient at Valleyview Medical Centre"
   },
   {
     "id": "peterborough-pharmacy",
@@ -418,7 +426,9 @@
     "doctorIds": [
       "babajide-olawale-odusan",
       "rubayat-hussain"
-    ]
+    ],
+    "clinicPhoto": "/images/brantford/health-resources-still-life.jpg",
+    "clinicPhotoAlt": "Health resources on a desk in a family practice"
   },
   {
     "id": "lynden-road",
@@ -491,7 +501,9 @@
     ],
     "doctorIds": [
       "tunde-samuel-omisore"
-    ]
+    ],
+    "clinicPhoto": "/images/brantford/family-care-consultation.jpg",
+    "clinicPhotoAlt": "A family doctor meeting with a patient"
   },
   {
     "id": "colborne-east",
@@ -564,6 +576,8 @@
     ],
     "doctorIds": [
       "kolawole-gbolagade"
-    ]
+    ],
+    "clinicPhoto": "/images/brantford/comprehensive-family-care.jpg",
+    "clinicPhotoAlt": "A family doctor providing care to a patient"
   }
 ]
