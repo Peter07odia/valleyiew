@@ -1,11 +1,13 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, ArrowUpRight, Navigation, Pill } from "lucide-react"
 
 import { usePreferredLocation } from "@/components/providers/preferred-location-provider"
 import { Button } from "@/components/ui/button"
+import { CLINIC_LOCATIONS } from "@/config/clinic"
 import { getGoogleMapsDirectionsUrl } from "@/lib/constants"
 
 const DEFAULT_HERO = {
@@ -13,28 +15,59 @@ const DEFAULT_HERO = {
   alt: "A patient speaking with a clinician in a warm, modern clinic setting",
 }
 
+/** Every distinct hero photo, so switching clinics never waits on the network. */
+const HERO_IMAGES = [
+  DEFAULT_HERO,
+  ...CLINIC_LOCATIONS.flatMap(l => (l.heroImage ? [{ src: l.heroImage, alt: l.heroImageAlt ?? DEFAULT_HERO.alt }] : [])),
+].filter((image, index, all) => all.findIndex(other => other.src === image.src) === index)
+
 export function ClinicHero() {
   const { preferredLocation: clinic } = usePreferredLocation()
   const hero = clinic?.heroImage
     ? { src: clinic.heroImage, alt: clinic.heroImageAlt ?? DEFAULT_HERO.alt }
     : DEFAULT_HERO
 
+  // The current photo loads first; the others load once the page has finished
+  // loading and sit hidden underneath, ready for an instant swap.
+  const [preloadOthers, setPreloadOthers] = useState(false)
+  useEffect(() => {
+    const start = () => setPreloadOthers(true)
+    if (document.readyState === "complete") {
+      const id = window.setTimeout(start, 0)
+      return () => window.clearTimeout(id)
+    }
+    window.addEventListener("load", start, { once: true })
+    return () => window.removeEventListener("load", start)
+  }, [])
+
   return (
     <section
       aria-labelledby="hero-heading"
       className="relative isolate min-h-[calc(100svh-6.1rem)] overflow-hidden bg-secondary text-secondary-foreground md:min-h-[calc(100svh-6.8rem)]"
     >
-      {/* Keyed so each clinic's photo fades in over the plum base. */}
-      <div key={hero.src} className="absolute inset-0 animate-in fade-in duration-700 motion-reduce:animate-none">
-        <Image
-          src={hero.src}
-          alt={hero.alt}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-[65%_center] sm:object-center"
-        />
-      </div>
+      {/* All photos stay mounted; the active one fades in over the others. */}
+      {HERO_IMAGES.map(image => {
+        const active = image.src === hero.src
+        if (!active && !preloadOthers) return null
+        return (
+          <div
+            key={image.src}
+            aria-hidden={!active}
+            className={`absolute inset-0 transition-opacity duration-500 motion-reduce:transition-none ${active ? "opacity-100" : "opacity-0"}`}
+          >
+            <Image
+              src={image.src}
+              alt={active ? image.alt : ""}
+              fill
+              priority={active}
+              loading={active ? undefined : "eager"}
+              fetchPriority={active ? "high" : "low"}
+              sizes="100vw"
+              className="object-cover object-[65%_center] sm:object-center"
+            />
+          </div>
+        )
+      })}
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,30,66,0.92)_0%,rgba(8,30,66,0.78)_38%,rgba(8,30,66,0.28)_66%,rgba(8,30,66,0.06)_100%)]" />
       <div className="absolute inset-0 bg-gradient-to-t from-secondary/85 via-transparent to-secondary/10" />
       <div
