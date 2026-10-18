@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, useCallback, useSyncExternalStore } from "
 import { createPortal } from "react-dom"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { CheckCircle2, ChevronDown, ChevronLeft, ChevronRight, Clock, Mail, MapPin, Navigation, Phone, Pill, X } from "lucide-react"
+import { CheckCircle2, ChevronDown, ChevronLeft, ChevronRight, Clock, Mail, MapPin, Navigation, Phone, X } from "lucide-react"
 
 import { usePreferredLocation } from "@/components/providers/preferred-location-provider"
 import { CityTab } from "./city-tab"
@@ -263,12 +263,6 @@ function ClinicDetails({ clinic, onChange }: { clinic: ClinicLocation; onChange:
         <Clock className="size-3.5 opacity-80" aria-hidden="true" />
         {summarizeHours(clinic).join(" | ")}
       </span>
-      {clinic.pharmacyName ? (
-        <Link href={`/locations/${clinic.slug}#pharmacy`} className={cn(item, "hover:text-white")} title={clinic.pharmacyName}>
-          <Pill className="size-3.5 opacity-80" aria-hidden="true" />
-          Pharmacy
-        </Link>
-      ) : null}
       <span className={item}>
         <MapPin className="size-3.5 opacity-80" aria-hidden="true" />
         Selected:
