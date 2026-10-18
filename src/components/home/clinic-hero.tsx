@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, ArrowUpRight, Navigation, Pill } from "lucide-react"
+import { ArrowRight, ArrowUpRight, Navigation, Pill, UserPlus } from "lucide-react"
 
 import { usePreferredLocation } from "@/components/providers/preferred-location-provider"
 import { Button } from "@/components/ui/button"
@@ -136,12 +136,26 @@ export function ClinicHero() {
                 </a>
               </Button>
             ) : null}
+            {clinic ? (
+              // Phones: registration replaces the pharmacy link (the header hides it there).
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="h-13 rounded-none border-white/30 bg-transparent px-7 text-white hover:bg-white hover:text-secondary sm:hidden"
+              >
+                <Link href={`/new-patient-form?clinic=${clinic.slug}`}>
+                  <UserPlus className="size-4" aria-hidden="true" />
+                  New patient registration
+                </Link>
+              </Button>
+            ) : null}
             {clinic?.pharmacyName ? (
               <Button
                 asChild
                 size="lg"
                 variant="outline"
-                className="h-13 rounded-none border-white/30 bg-transparent px-7 text-white hover:bg-white hover:text-secondary"
+                className="hidden h-13 rounded-none border-white/30 bg-transparent px-7 text-white hover:bg-white hover:text-secondary sm:inline-flex"
               >
                 {/* Several pharmacy services: jump to the pharmacy card below the hero; otherwise go straight to the pharmacy. */}
                 {(clinic.pharmacyActions?.length ?? 0) > 1 || !clinic.pharmacyUrl ? (
