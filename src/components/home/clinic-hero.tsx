@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, ArrowUpRight, Navigation } from "lucide-react"
+import { ArrowRight, ArrowUpRight, Navigation, Pill } from "lucide-react"
 
 import { usePreferredLocation } from "@/components/providers/preferred-location-provider"
 import { Button } from "@/components/ui/button"
@@ -101,6 +101,27 @@ export function ClinicHero() {
                   <Navigation className="size-4" aria-hidden="true" />
                   Directions
                 </a>
+              </Button>
+            ) : null}
+            {clinic?.pharmacyName ? (
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="h-13 rounded-none border-white/30 bg-transparent px-7 text-white hover:bg-white hover:text-secondary"
+              >
+                {/* Several pharmacy services: show them on the clinic page; otherwise go straight to the pharmacy. */}
+                {(clinic.pharmacyActions?.length ?? 0) > 1 || !clinic.pharmacyUrl ? (
+                  <Link href={`/locations/${clinic.slug}#pharmacy`}>
+                    <Pill className="size-4" aria-hidden="true" />
+                    Pharmacy
+                  </Link>
+                ) : (
+                  <a href={clinic.pharmacyUrl} target="_blank" rel="noopener noreferrer" aria-label={`${clinic.pharmacyName} (opens in a new tab)`}>
+                    <Pill className="size-4" aria-hidden="true" />
+                    Pharmacy
+                  </a>
+                )}
               </Button>
             ) : null}
           </div>
