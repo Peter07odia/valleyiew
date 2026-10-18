@@ -35,12 +35,8 @@ export function HomePharmacySection() {
   const requestedLocation = findLocationByQuery(searchParams.get("location"))
   const { preferredLocation, hasHydrated, setPreferredLocation } =
     usePreferredLocation()
-  const fallbackLocation =
-    LOCATIONS.find((location) => location.pharmacyName && !location.isComingSoon) ??
-    null
-  const activeLocation = hasHydrated
-    ? requestedLocation ?? preferredLocation ?? fallbackLocation
-    : fallbackLocation
+  // Only the visitor's own clinic pharmacy; nothing until a clinic is known.
+  const activeLocation = hasHydrated ? requestedLocation ?? preferredLocation : null
 
   React.useEffect(() => {
     if (
@@ -59,7 +55,7 @@ export function HomePharmacySection() {
   return (
     <section
       id="pharmacy"
-      className="bg-muted/55 px-4 py-10 sm:px-6 lg:px-8"
+      className="scroll-mt-36 bg-muted/55 px-4 py-10 sm:px-6 lg:px-8"
       aria-label={`${activeLocation.shortName} pharmacy`}
     >
       <PharmacyEmblemCard location={activeLocation} />

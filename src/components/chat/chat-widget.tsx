@@ -6,7 +6,7 @@ import { usePreferredLocation } from "@/components/providers/preferred-location-
 import { useMobileClinicBarVisible } from "@/components/layout/mobile-clinic-bar"
 import { useChat } from "@ai-sdk/react"
 import { MessageCircle, X, Send, Bot, AlertTriangle, House } from "lucide-react"
-import { AnimatePresence, motion } from "framer-motion"
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { cn } from "@/lib/utils"
@@ -415,9 +415,13 @@ export function ChatWidget() {
   const hasClinic = !!preferredLocation
   const aboveClinicBar = useMobileClinicBarVisible()
 
-  // Greet once per visit, a few seconds after the visitor has a clinic.
+  const reduceMotion = useReducedMotion()
+  const [nudge, setNudge] = useState(false)
+
+  // Once per visit: desktop opens the chat a few seconds after a clinic is chosen;
+  // phones never pop it open, the button just bounces to draw attention.
   useEffect(() => {
-    if (!hasHydrated || !hasClinic) return
+    if (!hasHydrated || (isDesktop && !hasClinic)) return
     try {
       if (window.sessionStorage.getItem(AUTO_OPENED_KEY)) return
     } catch {
@@ -425,10 +429,11 @@ export function ChatWidget() {
     }
     const timer = window.setTimeout(() => {
       try { window.sessionStorage.setItem(AUTO_OPENED_KEY, "1") } catch {}
-      setIsOpen(true)
+      if (isDesktop) setIsOpen(true)
+      else setNudge(true)
     }, AUTO_OPEN_DELAY_MS)
     return () => window.clearTimeout(timer)
-  }, [hasHydrated, hasClinic])
+  }, [hasHydrated, hasClinic, isDesktop])
 
   return (
     <>
@@ -442,14 +447,23 @@ export function ChatWidget() {
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
             className={cn("fixed right-6 z-50", aboveClinicBar ? "bottom-[calc(5rem+env(safe-area-inset-bottom))] md:bottom-6" : "bottom-6")}
           >
-            <button
+            <motion.button
               type="button"
-              onClick={() => setIsOpen(true)}
-              className="flex size-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg transition-transform hover:scale-105 focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none active:scale-95"
+              animate={nudge && !reduceMotion ? { y: [0, -22, 0, -12, 0, -5, 0] } : { y: 0 }}
+              transition={{ duration: 1.2, times: [0, 0.2, 0.4, 0.55, 0.7, 0.85, 1], ease: "easeInOut", repeat: 2, repeatDelay: 1.2 }}
+              onAnimationComplete={() => setNudge(false)}
+              onClick={() => {
+                setNudge(false)
+                setIsOpen(true)
+              }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              // No CSS transform transition here: it would smooth away the bounce.
+              className="flex size-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
               aria-label="Open chat"
             >
               <MessageCircle className="size-6" />
-            </button>
+            </motion.button>
           </motion.div>
         )}
       </AnimatePresence>

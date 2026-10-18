@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -23,6 +24,7 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { ClinicHero } from "@/components/home/clinic-hero";
 import { LocationsShowcase } from "@/components/home/locations-showcase";
+import { HomePharmacySection } from "@/components/home/home-pharmacy-section";
 import { LocationTeamSection } from "@/components/team/location-team-section";
 import { Reveal } from "@/components/shared/reveal";
 import { Button } from "@/components/ui/button";
@@ -229,6 +231,10 @@ export default function HomePage() {
         </section>
 
         <LocationTeamSection headingLevel="h2" />
+
+        <Suspense fallback={null}>
+          <HomePharmacySection />
+        </Suspense>
 
         <section className="bg-accent">
           <div className="mx-auto grid max-w-[94rem] lg:grid-cols-2">

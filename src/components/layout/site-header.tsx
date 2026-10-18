@@ -24,6 +24,6 @@ export function SiteHeader() {
       <div className="flex shrink-0 items-center gap-2 sm:gap-3"><Link href="/new-patient-form" className="hidden border border-secondary/20 px-4 py-3 text-xs font-bold hover:border-primary sm:block">New patient registration</Link><Link href={clinic?.bookingUrl ?? "/book"} className="flex items-center gap-2 bg-primary px-4 py-3 text-xs font-bold text-white hover:bg-primary/90">Book appointment <ArrowUpRight className="size-3.5" /></Link>
       <button type="button" aria-label={open ? "Close navigation" : "Open navigation"} aria-expanded={open} aria-controls="mobile-menu" onClick={()=>setOpen(!open)} className="p-2 lg:hidden">{open ? <X /> : <Menu />}</button></div>
     </div>
-    {open && <nav id="mobile-menu" aria-label="Mobile navigation" className="max-h-[70dvh] overflow-y-auto border-t px-5 py-4 lg:hidden">{[...links,["New patient registration","/new-patient-form"]].map(([label,href])=><Link key={href} href={href} onClick={()=>setOpen(false)} className="block border-b border-secondary/10 py-3 font-medium">{label}</Link>)}</nav>}
+    {open && <nav id="mobile-menu" aria-label="Mobile navigation" className="max-h-[70dvh] overflow-y-auto border-t px-5 py-4 lg:hidden">{[...links,...(clinic?.pharmacyName?[["Pharmacy",`/locations/${clinic.slug}#pharmacy`]]:[]),["New patient registration","/new-patient-form"]].map(([label,href])=><Link key={href} href={href} onClick={()=>setOpen(false)} className="block border-b border-secondary/10 py-3 font-medium">{label}</Link>)}</nav>}
   </header>
 }

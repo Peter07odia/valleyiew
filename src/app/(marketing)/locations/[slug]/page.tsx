@@ -77,7 +77,7 @@ export default async function LocationPage({ params }: LocationPageProps) {
       {location.pharmacyName ? (
         <section
           id="pharmacy"
-          className="bg-muted/55 px-4 py-10 sm:px-6 lg:px-8"
+          className="scroll-mt-36 bg-muted/55 px-4 py-10 sm:px-6 lg:px-8"
           aria-label={`${location.shortName} pharmacy`}
         >
           <PharmacyEmblemCard location={location} />

@@ -74,6 +74,42 @@
       "abdullah-khan",
       "emmanuel-olamide-adeogun",
       "rashida-anike-agoro"
+    ],
+    "pharmacyName": "East Whitby IDA Pharmacy",
+    "pharmacyUrl": "https://www.bookmyshot.com/(905)435-1100",
+    "pharmacyLogoSrc": "/images/pharmacies/ida-pharmacy.png",
+    "pharmacyLogoAlt": "IDA Pharmacy logo",
+    "pharmacyActions": [
+      {
+        "label": "New Prescription",
+        "href": "https://www.bookmyrefill.com/new/9054351100",
+        "description": "Send a new prescription to the pharmacy."
+      },
+      {
+        "label": "Refill Prescription",
+        "href": "https://www.bookmyrefill.com/refill/9054351100",
+        "description": "Request a refill of an existing prescription."
+      },
+      {
+        "label": "Transfer Prescription",
+        "href": "https://www.bookmypharmacy.com/transfer/9054351100",
+        "description": "Move your prescriptions from another pharmacy."
+      },
+      {
+        "label": "Book Flu Shot",
+        "href": "https://www.bookmyshot.com/flu/9054351100",
+        "description": "Book a flu vaccination appointment."
+      },
+      {
+        "label": "Minor Ailments",
+        "href": "https://www.bookmypharmacy.com/minorailment/9054351100",
+        "description": "Book a pharmacist assessment for a minor ailment."
+      },
+      {
+        "label": "Visit Website",
+        "href": "https://www.bookmyshot.com/(905)435-1100",
+        "description": "See the pharmacy's online services."
+      }
     ]
   },
   {
@@ -151,7 +187,11 @@
       "olajide-afolarin",
       "maren-preussler",
       "olugbenga-ajayi"
-    ]
+    ],
+    "pharmacyName": "Harmony PharmaChoice & Compounding Centre",
+    "pharmacyUrl": "https://pharmachoice.erefills.ca/pharmachoice/centralprofile/orderpage3.php?sphone=(905)%367-8510&sname=Harmony",
+    "pharmacyLogoSrc": "/images/pharmacies/harmony-pharmachoice.png",
+    "pharmacyLogoAlt": "Harmony PharmaChoice logo"
   },
   {
     "id": "courtice",
@@ -226,7 +266,11 @@
       "olajide-afolarin",
       "kehinde-hazzan",
       "olalekan-adekeye"
-    ]
+    ],
+    "pharmacyName": "MapleMeds Pharmacy",
+    "pharmacyUrl": "https://maplemeds.ca/",
+    "pharmacyLogoSrc": "/images/pharmacies/maplemeds.png",
+    "pharmacyLogoAlt": "MapleMeds logo"
   },
   {
     "id": "lansdowne-mall",
