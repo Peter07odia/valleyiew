@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, ArrowUpRight, Navigation, UserPlus } from "lucide-react"
+import { ArrowRight, ArrowUpRight, Navigation } from "lucide-react"
 
 import { usePreferredLocation } from "@/components/providers/preferred-location-provider"
 import { Button } from "@/components/ui/button"
@@ -107,7 +107,8 @@ export function ClinicHero() {
             {clinic ? `in ${clinic.city}.` : "across Durham Region, Peterborough and Brantford."}
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          {/* Phones use the header and bottom bar for these actions. */}
+          <div className="mt-8 hidden flex-wrap gap-3 sm:flex">
             {clinic?.bookingUrl ? (
               <Button asChild size="lg" className="h-13 rounded-none bg-primary px-7 text-white hover:bg-primary/90">
                 <a href={clinic.bookingUrl}>
@@ -134,20 +135,6 @@ export function ClinicHero() {
                   <Navigation className="size-4" aria-hidden="true" />
                   Directions
                 </a>
-              </Button>
-            ) : null}
-            {clinic ? (
-              // Phones only: the header hides its registration button there.
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="h-13 rounded-none border-white/30 bg-transparent px-7 text-white hover:bg-white hover:text-secondary sm:hidden"
-              >
-                <Link href={`/new-patient-form?clinic=${clinic.slug}`}>
-                  <UserPlus className="size-4" aria-hidden="true" />
-                  New patient registration
-                </Link>
               </Button>
             ) : null}
           </div>
