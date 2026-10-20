@@ -11,6 +11,8 @@ export interface ChatAction {
 }
 
 const MAX_ACTIONS = 4
+/** The assistant ends a reply with this when the visitor should pick a clinic. */
+export const CHOOSE_CLINIC_MARKER = "[[choose-clinic]]"
 const URL_PATTERN = /\[([^\]]+)\]\(([^)\s]+)\)|(https?:\/\/[^\s)]+|\/(?:new-patient-form|locations)[^\s)]*)/g
 const digits = (value: string) => value.replace(/\D/g, "").slice(-10)
 
@@ -40,7 +42,10 @@ function actionForUrl(rawHref: string): ChatAction {
  * buttons (Book, Register, Directions…), and a clinic's phone number or address
  * in the reply adds Call and Directions buttons for that clinic.
  */
-export function extractChatActions(text: string): { text: string; actions: ChatAction[] } {
+export function extractChatActions(reply: string): { text: string; actions: ChatAction[]; chooseClinic: boolean } {
+  const chooseClinic = reply.includes(CHOOSE_CLINIC_MARKER)
+  // Also hide a marker that is still streaming in.
+  const text = reply.split(CHOOSE_CLINIC_MARKER).join("").replace(/\[\[[a-z-]*\]?$/, "").trimEnd()
   const actions: ChatAction[] = []
   const cleaned = text
     .replace(URL_PATTERN, (_match, label: string | undefined, mdHref: string | undefined, bare: string | undefined) => {
@@ -69,5 +74,5 @@ export function extractChatActions(text: string): { text: string; actions: ChatA
     seen.add(key)
     return true
   })
-  return { text: cleaned, actions: unique.slice(0, MAX_ACTIONS) }
+  return { text: cleaned, actions: unique.slice(0, MAX_ACTIONS), chooseClinic }
 }

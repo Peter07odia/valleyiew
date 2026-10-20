@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { cn } from "@/lib/utils"
 import { extractChatActions, type ChatAction, type ChatActionKind } from "@/lib/ai/chat-actions"
+import { CLINIC_LOCATIONS, REGIONS } from "@/config/clinic"
 import {
   Sheet,
   SheetContent,
@@ -130,6 +131,33 @@ function ChatActionButtons({ actions }: { actions: ChatAction[] }) {
   )
 }
 
+/** All seven clinics as buttons, shown when the assistant asks which clinic. */
+function ChatClinicPicker({ onChoose, disabled }: { onChoose: (slug: string) => void; disabled: boolean }) {
+  return (
+    <div className="mt-3 space-y-2.5" role="group" aria-label="Choose your clinic">
+      {REGIONS.map(region => (
+        <div key={region.id}>
+          <p className="mb-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-muted-foreground">{region.name}</p>
+          <div className="flex flex-wrap gap-1.5">
+            {CLINIC_LOCATIONS.filter(l => l.region === region.id).map(l => (
+              <button
+                key={l.slug}
+                type="button"
+                disabled={disabled}
+                onClick={() => onChoose(l.slug)}
+                className="inline-flex items-center gap-1.5 rounded-full border border-primary/25 bg-background px-3 py-1.5 text-xs font-semibold text-primary transition-colors hover:bg-primary hover:text-primary-foreground disabled:opacity-50"
+              >
+                <MapPin className="size-3" aria-hidden="true" />
+                {l.shortName}
+              </button>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
 function useIsDesktop() {
   const [isDesktop, setIsDesktop] = useState(false)
 
@@ -154,9 +182,11 @@ function useIsDesktop() {
 function ChatMessages({
   messages,
   status,
+  onChooseClinic,
 }: {
   messages: ReturnType<typeof useChat>["messages"]
   status: ReturnType<typeof useChat>["status"]
+  onChooseClinic: (slug: string) => void
 }) {
   const scrollRef = useRef<HTMLDivElement>(null)
   const isStreaming = status === "streaming" || status === "submitted"
@@ -191,7 +221,7 @@ function ChatMessages({
       className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-4 touch-pan-y"
     >
       <div className="flex flex-col gap-3">
-        {messages.map((message) => (
+        {messages.map((message, messageIndex) => (
           <div
             key={message.id}
             className={cn(
@@ -217,11 +247,14 @@ function ChatMessages({
                     )
                   }
                   // Links in replies show as buttons rather than raw URLs.
-                  const { text, actions } = extractChatActions(part.text)
+                  const { text, actions, chooseClinic } = extractChatActions(part.text)
+                  // Only the latest reply offers the clinic picker.
+                  const showPicker = chooseClinic && messageIndex === messages.length - 1
                   return (
                     <div key={i}>
                       <div className="space-y-3">{renderFormattedText(text)}</div>
                       {actions.length > 0 ? <ChatActionButtons actions={actions} /> : null}
+                      {showPicker ? <ChatClinicPicker onChoose={onChooseClinic} disabled={isStreaming} /> : null}
                     </div>
                   )
                 }
@@ -322,7 +355,7 @@ function ChatInput({
 }
 
 function ChatPanelContent({ onClose }: { onClose: () => void }) {
-  const { preferredLocation } = usePreferredLocation()
+  const { preferredLocation, setPreferredLocation } = usePreferredLocation()
   const { messages, status, sendMessage, error, setMessages, clearError } =
     useChat()
   const showSuggestions = messages.length === 0
@@ -332,6 +365,17 @@ function ChatPanelContent({ onClose }: { onClose: () => void }) {
       sendMessage({ text }, { body: { clinic: preferredLocation?.slug } })
     },
     [sendMessage, preferredLocation?.slug]
+  )
+
+  const handleChooseClinic = useCallback(
+    (slug: string) => {
+      const clinic = CLINIC_LOCATIONS.find(l => l.slug === slug)
+      if (!clinic) return
+      // Remember the choice site-wide, and answer for it straight away.
+      setPreferredLocation(slug)
+      sendMessage({ text: `I'll use ${clinic.shortName}.` }, { body: { clinic: slug } })
+    },
+    [sendMessage, setPreferredLocation]
   )
 
   const handleReset = useCallback(() => {
@@ -374,7 +418,7 @@ function ChatPanelContent({ onClose }: { onClose: () => void }) {
       </div>
 
       {/* Messages */}
-      <ChatMessages messages={messages} status={status} />
+      <ChatMessages messages={messages} status={status} onChooseClinic={handleChooseClinic} />
 
       {/* Error state */}
       {error && (

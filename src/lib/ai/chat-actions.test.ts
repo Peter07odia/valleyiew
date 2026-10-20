@@ -31,6 +31,11 @@ describe("chat reply buttons", () => {
 
   it("keeps markdown link text and leaves plain replies untouched", () => {
     expect(extractChatActions("See [the form](/new-patient-form?clinic=oshawa).").text).toBe("See the form.")
-    expect(extractChatActions("We are open 9 to 7.")).toEqual({ text: "We are open 9 to 7.", actions: [] })
+    expect(extractChatActions("We are open 9 to 7.")).toEqual({ text: "We are open 9 to 7.", actions: [], chooseClinic: false })
+  })
+
+  it("hides the clinic-picker marker and reports it, even mid-stream", () => {
+    expect(extractChatActions("Which town are you in?\n[[choose-clinic]]")).toEqual({ text: "Which town are you in?", actions: [], chooseClinic: true })
+    expect(extractChatActions("Which town are you in?\n[[choose-cl").text).toBe("Which town are you in?")
   })
 })
