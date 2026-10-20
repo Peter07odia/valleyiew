@@ -5,6 +5,8 @@ export function allowedOrigin(request: Request, required = false): boolean {
   // Explicit deploy configuration only; never trust caller-controlled Host headers.
   if (process.env.NEXT_PUBLIC_SITE_URL) allowed.add(new URL(process.env.NEXT_PUBLIC_SITE_URL).origin);
   if (process.env.VERCEL_URL) allowed.add(`https://${process.env.VERCEL_URL}`);
+  // The project's production address (set by Vercel), e.g. the review site.
+  if (process.env.VERCEL_PROJECT_PRODUCTION_URL) allowed.add(`https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`);
   if (process.env.NODE_ENV !== "production") allowed.add(new URL(request.url).origin);
   return allowed.has(origin);
 }
