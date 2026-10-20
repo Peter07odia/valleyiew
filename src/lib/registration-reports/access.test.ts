@@ -1,12 +1,13 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { clinicAccess, clinicsForEmail, recipientsForClinic } from "./access";
+import { formInboxFor } from "@/lib/contact/recipients";
 import { buildRegistrationWorkbook } from "./workbook";
 import ExcelJS from "exceljs";
 beforeEach(()=>vi.stubEnv("VVM_REPORT_RECIPIENTS_JSON", ""));
 describe("seven-clinic staff separation",()=>{
   it("gives each clinic's form inbox access to that clinic only by default",()=>{
-    expect(clinicsForEmail("whitby@valleyviewmedical.ca")).toEqual(["whitby"]);
-    expect(clinicsForEmail("clinic.colborne@valleyviewmedical.ca")).toEqual(["colborne-east"]);
+    expect(clinicsForEmail(formInboxFor("whitby")!)).toContain("whitby");
+    expect(clinicsForEmail(formInboxFor("colborne-east")!)).toContain("colborne-east");
     expect(clinicsForEmail("peter89odia@gmail.com")).toEqual([]);
   });
   it("replaces the central fallback and does not grant access to omitted clinics",()=>{

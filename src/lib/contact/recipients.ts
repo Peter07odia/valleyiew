@@ -12,8 +12,16 @@ export const CLINIC_FORM_INBOXES: Record<string, string> = {
   "colborne-east": "clinic.colborne@valleyviewmedical.ca",
 }
 
+// Interim (user request 2026-10-20): until the clinic mailboxes exist, every form
+// goes to the shared inbox used before. Set to null to switch to the clinic inboxes.
+export const INTERIM_FORM_INBOX: string | null = "valleyviewlynden@gmail.com"
+
+export function formInboxFor(clinicId: string): string | undefined {
+  return INTERIM_FORM_INBOX ?? CLINIC_FORM_INBOXES[clinicId]
+}
+
 export function contactRecipientFor(location: Pick<ClinicLocation, "id">): string {
-  const email = CLINIC_FORM_INBOXES[location.id]
+  const email = formInboxFor(location.id)
   if (!email) throw new Error("No form inbox for this clinic")
   return email
 }

@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 import { CLINIC_LOCATIONS } from "@/config/clinic"
 import { contactSchema } from "./schema"
-import { contactRecipientFor } from "./recipients"
+import { CLINIC_FORM_INBOXES, contactRecipientFor, formInboxFor } from "./recipients"
 
 const { rpc } = vi.hoisted(() => ({ rpc: vi.fn() }))
 vi.mock("@/lib/registration/server", () => ({ getRegistrationClient: () => ({ rpc }) }))
@@ -38,9 +38,11 @@ afterEach(() => vi.unstubAllGlobals())
 const sent = () => JSON.parse(fetchMock.mock.calls[0][1].body)
 
 describe("contact message routing", () => {
-  it("sends each clinic's messages to its own inbox", () => {
-    const routes = Object.fromEntries(CLINIC_LOCATIONS.map(l => [l.id, contactRecipientFor(l)]))
-    expect(routes).toEqual({
+  it("routes each clinic's messages to its form inbox (the interim shared inbox while set)", () => {
+    for (const l of CLINIC_LOCATIONS) expect(contactRecipientFor(l)).toBe(formInboxFor(l.id))
+  })
+  it("has a dedicated inbox ready for every clinic", () => {
+    expect(CLINIC_FORM_INBOXES).toEqual({
       whitby: "whitby@valleyviewmedical.ca",
       oshawa: "oshawa@valleyviewmedical.ca",
       courtice: "courtice@valleyviewmedical.ca",
@@ -65,7 +67,7 @@ describe("POST /api/contact", () => {
     expect(res.status).toBe(200)
     expect(res.headers.get("cache-control")).toBe("no-store")
     const body = sent()
-    expect(body.to).toBe("oshawa@valleyviewmedical.ca")
+    expect(body.to).toBe(formInboxFor("oshawa"))
     expect(body.reply_to).toBe("visitor@example.com")
     expect(body.subject).toBe("Website message — Oshawa (Harmony)")
     expect(body.text).toContain("Phone: 416-555-0100")
