@@ -1,7 +1,8 @@
 export function allowedOrigin(request: Request, required = false): boolean {
   const origin = request.headers.get("origin");
   if (!origin) return !required;
-  const allowed = new Set(["https://valleyviewmedical.ca", "https://www.valleyviewmedical.ca"]);
+  // The review address stays usable after the real domain is attached.
+  const allowed = new Set(["https://valleyviewmedical.ca", "https://www.valleyviewmedical.ca", "https://valleyview-unified.vercel.app"]);
   // Explicit deploy configuration only; never trust caller-controlled Host headers.
   if (process.env.NEXT_PUBLIC_SITE_URL) allowed.add(new URL(process.env.NEXT_PUBLIC_SITE_URL).origin);
   if (process.env.VERCEL_URL) allowed.add(`https://${process.env.VERCEL_URL}`);
