@@ -1,10 +1,11 @@
 import "server-only";
+import { CLINIC_FORM_INBOXES } from "@/lib/contact/recipients";
 import { registrationLocationIds } from "@/lib/registration/locations";
-// User approved this existing mailbox as the interim central recipient on 2026-10-14.
-// Per-clinic configuration replaces the fallback completely, so omissions never widen access.
+// Each clinic's form inbox by default. VVM_REPORT_RECIPIENTS_JSON replaces the defaults
+// completely, so omissions never widen access.
 export function clinicAccess(): Record<string, string[]> {
   const raw = process.env.VVM_REPORT_RECIPIENTS_JSON;
-  const config: unknown = raw ? JSON.parse(raw) : Object.fromEntries(registrationLocationIds.map(id => [id, ["valleyviewlynden@gmail.com"]]));
+  const config: unknown = raw ? JSON.parse(raw) : Object.fromEntries(registrationLocationIds.map(id => [id, [CLINIC_FORM_INBOXES[id]]]));
   if (!config || typeof config !== "object" || Array.isArray(config)) throw new Error("Invalid clinic access configuration");
   return Object.fromEntries(registrationLocationIds.map(id => {
     const value = (config as Record<string, unknown>)[id];

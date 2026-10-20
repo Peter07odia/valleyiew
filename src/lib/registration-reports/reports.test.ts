@@ -35,7 +35,7 @@ describe("Production registration reports", () => {
   });
   it("requires the approved account and enabled reports", async () => {
     cookieGet.mockReturnValue({ value: "test-token" });
-    getUser.mockResolvedValue({ data: { user: { email: "valleyviewlynden@gmail.com" } }, error: null });
+    getUser.mockResolvedValue({ data: { user: { email: "clinic.lynden@valleyviewmedical.ca" } }, error: null });
     expect(await reportUser()).not.toBeNull();
     vi.stubEnv("VVM_REPORTS_ENABLED", "false");
     expect(await reportUser()).toBeNull();
@@ -60,7 +60,7 @@ describe("Production registration reports", () => {
   });
   it("queries only the production table and paginates beyond Supabase's row limit", async () => {
     cookieGet.mockReturnValue({ value: "test-token" });
-    getUser.mockResolvedValue({ data: { user: { email: "valleyviewlynden@gmail.com" } }, error: null });
+    getUser.mockResolvedValue({ data: { user: { email: "clinic.lynden@valleyviewmedical.ca" } }, error: null });
     const range = vi.fn().mockResolvedValueOnce({ data: Array.from({ length: 500 }, (_, i) => ({ id: String(i), preferred_location: "lynden-road", created_at: "2026-09-10T01:00:00Z", date_of_birth: "1990-01-01", ohip_encrypted: "mock-ciphertext" })), error: null }).mockResolvedValueOnce({ data: [], error: null });
     const chain = { in: vi.fn(), select: vi.fn(), lte: vi.fn(), order: vi.fn(), range }; chain.in.mockReturnValue(chain); chain.select.mockReturnValue(chain); chain.lte.mockReturnValue(chain); chain.order.mockReturnValue(chain); from.mockReturnValue(chain);
     const response = await GET();
@@ -68,7 +68,7 @@ describe("Production registration reports", () => {
     expect(response.headers.get("cache-control")).toBe("private, no-store");
     expect(from).toHaveBeenCalledTimes(2);
     expect(from).toHaveBeenCalledWith("valleyview_patient_registrations");
-    expect(chain.in).toHaveBeenCalledWith("preferred_location", expect.arrayContaining(["whitby", "lynden-road", "colborne-east"]));
+    expect(chain.in).toHaveBeenCalledWith("preferred_location", ["lynden-road"]);
     expect(range).toHaveBeenNthCalledWith(2, 500, 999);
   });
   it("limits staff to permitted clinics and adds legacy Brantford rows only for Brantford access", async () => {

@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 import { CLINIC_LOCATIONS } from "@/config/clinic"
 import { contactSchema } from "./schema"
-import { CONTACT_FALLBACK_EMAIL, contactRecipientFor } from "./recipients"
+import { contactRecipientFor } from "./recipients"
 
 const { rpc } = vi.hoisted(() => ({ rpc: vi.fn() }))
 vi.mock("@/lib/registration/server", () => ({ getRegistrationClient: () => ({ rpc }) }))
@@ -38,16 +38,16 @@ afterEach(() => vi.unstubAllGlobals())
 const sent = () => JSON.parse(fetchMock.mock.calls[0][1].body)
 
 describe("contact message routing", () => {
-  it("sends each clinic's messages to its own inbox, with Brantford on the approved fallback", () => {
+  it("sends each clinic's messages to its own inbox", () => {
     const routes = Object.fromEntries(CLINIC_LOCATIONS.map(l => [l.id, contactRecipientFor(l)]))
     expect(routes).toEqual({
-      whitby: "info@valleyviewmedical.ca",
-      oshawa: "valleyviewharmony@gmail.com",
-      courtice: "valleyviewcourtice@gmail.com",
-      "lansdowne-mall": "valleyviewmedical.css@gmail.com",
-      "peterborough-pharmacy": "valleyviewmedical.lss@gmail.com",
-      "lynden-road": CONTACT_FALLBACK_EMAIL,
-      "colborne-east": CONTACT_FALLBACK_EMAIL,
+      whitby: "whitby@valleyviewmedical.ca",
+      oshawa: "oshawa@valleyviewmedical.ca",
+      courtice: "courtice@valleyviewmedical.ca",
+      "lansdowne-mall": "clinic.css@valleyviewmedical.ca",
+      "peterborough-pharmacy": "clinic.lss@valleyviewmedical.ca",
+      "lynden-road": "clinic.lynden@valleyviewmedical.ca",
+      "colborne-east": "clinic.colborne@valleyviewmedical.ca",
     })
   })
   it("validates required contact details, clinic and the honeypot", () => {
@@ -65,7 +65,7 @@ describe("POST /api/contact", () => {
     expect(res.status).toBe(200)
     expect(res.headers.get("cache-control")).toBe("no-store")
     const body = sent()
-    expect(body.to).toBe("valleyviewharmony@gmail.com")
+    expect(body.to).toBe("oshawa@valleyviewmedical.ca")
     expect(body.reply_to).toBe("visitor@example.com")
     expect(body.subject).toBe("Website message — Oshawa (Harmony)")
     expect(body.text).toContain("Phone: 416-555-0100")

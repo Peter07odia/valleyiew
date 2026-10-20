@@ -4,14 +4,15 @@ import { buildRegistrationWorkbook } from "./workbook";
 import ExcelJS from "exceljs";
 beforeEach(()=>vi.stubEnv("VVM_REPORT_RECIPIENTS_JSON", ""));
 describe("seven-clinic staff separation",()=>{
-  it("uses only the approved central mailbox for all seven until individually configured",()=>{
-    expect(clinicsForEmail("valleyviewlynden@gmail.com")).toHaveLength(7);
+  it("gives each clinic's form inbox access to that clinic only by default",()=>{
+    expect(clinicsForEmail("whitby@valleyviewmedical.ca")).toEqual(["whitby"]);
+    expect(clinicsForEmail("clinic.colborne@valleyviewmedical.ca")).toEqual(["colborne-east"]);
     expect(clinicsForEmail("peter89odia@gmail.com")).toEqual([]);
   });
   it("replaces the central fallback and does not grant access to omitted clinics",()=>{
     vi.stubEnv("VVM_REPORT_RECIPIENTS_JSON",JSON.stringify({whitby:["WHITBY@example.com"],"lynden-road":["lynden@example.com"]}));
     expect(clinicsForEmail("whitby@example.com")).toEqual(["whitby"]);
-    expect(clinicsForEmail("valleyviewlynden@gmail.com")).toEqual([]);
+    expect(clinicsForEmail("oshawa@valleyviewmedical.ca")).toEqual([]);
     expect(recipientsForClinic("oshawa")).toEqual([]);
     expect(recipientsForClinic("lynden-road")).toEqual(["lynden@example.com"]);
   });
