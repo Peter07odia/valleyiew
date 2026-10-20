@@ -21,6 +21,7 @@ const nextConfig: NextConfig = {
     { source: "/services/vaccinations", destination: "/services/vaccinations-immunizations", permanent: true },
     { source: "/services/:slug(lab-diagnostics|specialist-referrals)", destination: "/services/testing-referrals", permanent: true },
     { source: "/services/:slug(minor-procedures|walk-in-care)", destination: "/services", permanent: true },
+    { source: "/contact.php", destination: "/contact", permanent: true },
   ] },
   async headers() { return [ { source: "/:path*", headers: [
     { key: "X-Content-Type-Options", value: "nosniff" },

@@ -120,7 +120,11 @@ export function SiteFooter() {
               {CLINIC_CONFIG.organizationName} &copy; {new Date().getFullYear()}
               . All rights reserved.
             </p>
-            <Link href="/privacy-policy">Privacy</Link>
+            <nav aria-label="Legal" className="flex gap-4">
+              <Link href="/privacy-policy">Privacy</Link>
+              <Link href="/terms-of-service">Terms</Link>
+              <Link href="/accessibility">Accessibility</Link>
+            </nav>
           </div>
         </div>
       </div>
