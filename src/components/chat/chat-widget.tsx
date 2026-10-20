@@ -158,6 +158,30 @@ function ChatClinicPicker({ onChoose, disabled }: { onChoose: (slug: string) => 
   )
 }
 
+/**
+ * The visible area on phones. iOS keeps 100dvh at full height when the keyboard
+ * opens, so a full-height panel ends up partly under the keyboard and the page
+ * scrolls instead of the messages; sizing to the visual viewport avoids that.
+ */
+function useVisibleViewport(active: boolean) {
+  const [box, setBox] = useState<{ height: number; top: number } | null>(null)
+
+  useEffect(() => {
+    const viewport = window.visualViewport
+    if (!active || !viewport) return
+    const update = () => setBox({ height: viewport.height, top: viewport.offsetTop })
+    update()
+    viewport.addEventListener("resize", update)
+    viewport.addEventListener("scroll", update)
+    return () => {
+      viewport.removeEventListener("resize", update)
+      viewport.removeEventListener("scroll", update)
+    }
+  }, [active])
+
+  return active ? box : null
+}
+
 function useIsDesktop() {
   const [isDesktop, setIsDesktop] = useState(false)
 
@@ -196,6 +220,16 @@ function ChatMessages({
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight
     }
   }, [messages, status])
+
+  useEffect(() => {
+    const viewport = window.visualViewport
+    if (!viewport) return
+    const keepLatestInView = () => {
+      if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight
+    }
+    viewport.addEventListener("resize", keepLatestInView)
+    return () => viewport.removeEventListener("resize", keepLatestInView)
+  }, [])
 
   if (messages.length === 0) {
     return (
@@ -487,12 +521,14 @@ function MobileChatPanel({
   open: boolean
   onClose: () => void
 }) {
+  const visible = useVisibleViewport(open)
   return (
     <Sheet open={open} onOpenChange={(isOpen) => !isOpen && onClose()}>
       <SheetContent
         side="bottom"
         showCloseButton={false}
-        className="gap-0 p-0 data-[side=bottom]:h-[100dvh]"
+        className="gap-0 overflow-hidden p-0 data-[side=bottom]:h-[100dvh]"
+        style={visible ? { height: visible.height, top: visible.top, bottom: "auto" } : undefined}
       >
         <SheetHeader className="sr-only">
           <SheetTitle>Chat with Valleyview Medical Centre</SheetTitle>
@@ -572,13 +608,13 @@ export function ChatWidget() {
       {/* Desktop panel */}
       <AnimatePresence>
         {isOpen && isDesktop && (
-          <DesktopChatPanel key={preferredLocation?.slug ?? "all"} onClose={() => setIsOpen(false)} />
+          <DesktopChatPanel onClose={() => setIsOpen(false)} />
         )}
       </AnimatePresence>
 
       {/* Mobile panel */}
       {!isDesktop && (
-        <MobileChatPanel key={preferredLocation?.slug ?? "all"} open={isOpen} onClose={() => setIsOpen(false)} />
+        <MobileChatPanel open={isOpen} onClose={() => setIsOpen(false)} />
       )}
     </>
   )
