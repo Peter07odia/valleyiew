@@ -5,11 +5,12 @@ import Link from "next/link"
 import { usePreferredLocation } from "@/components/providers/preferred-location-provider"
 import { useMobileClinicBarVisible } from "@/components/layout/mobile-clinic-bar"
 import { useChat } from "@ai-sdk/react"
-import { MessageCircle, X, Send, Bot, AlertTriangle, House } from "lucide-react"
+import { MessageCircle, X, Send, Bot, AlertTriangle, House, CalendarPlus, UserPlus, Navigation, Phone, MapPin, ArrowUpRight, type LucideIcon } from "lucide-react"
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { cn } from "@/lib/utils"
+import { extractChatActions, type ChatAction, type ChatActionKind } from "@/lib/ai/chat-actions"
 import {
   Sheet,
   SheetContent,
@@ -81,6 +82,52 @@ function renderFormattedText(text: string) {
       </div>
     )
   })
+}
+
+const ACTION_ICONS: Record<ChatActionKind, LucideIcon> = {
+  book: CalendarPlus,
+  register: UserPlus,
+  directions: Navigation,
+  call: Phone,
+  location: MapPin,
+  link: ArrowUpRight,
+}
+
+function ChatActionButtons({ actions }: { actions: ChatAction[] }) {
+  return (
+    <div className="mt-3 flex flex-col gap-2">
+      {actions.map(action => {
+        const Icon = ACTION_ICONS[action.kind]
+        const className = cn(
+          "flex min-h-10 items-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold transition-colors",
+          action.kind === "book" || action.kind === "register"
+            ? "bg-primary text-primary-foreground hover:bg-primary/90"
+            : "border border-primary/25 bg-background text-primary hover:bg-primary/5",
+        )
+        const content = (
+          <>
+            <Icon className="size-4 shrink-0" aria-hidden="true" />
+            <span className="flex-1">{action.label}</span>
+            {action.external ? <ArrowUpRight className="size-3.5 shrink-0 opacity-70" aria-hidden="true" /> : null}
+          </>
+        )
+        return action.external || action.kind === "call" ? (
+          <a
+            key={action.href}
+            href={action.href}
+            className={className}
+            {...(action.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+          >
+            {content}
+          </a>
+        ) : (
+          <Link key={action.href} href={action.href} className={className}>
+            {content}
+          </Link>
+        )
+      })}
+    </div>
+  )
 }
 
 function useIsDesktop() {
@@ -162,9 +209,19 @@ function ChatMessages({
             >
               {message.parts.map((part, i) => {
                 if (part.type === "text") {
+                  if (message.role === "user") {
+                    return (
+                      <div key={i} className="space-y-3">
+                        {renderFormattedText(part.text)}
+                      </div>
+                    )
+                  }
+                  // Links in replies show as buttons rather than raw URLs.
+                  const { text, actions } = extractChatActions(part.text)
                   return (
-                    <div key={i} className="space-y-3">
-                      {renderFormattedText(part.text)}
+                    <div key={i}>
+                      <div className="space-y-3">{renderFormattedText(text)}</div>
+                      {actions.length > 0 ? <ChatActionButtons actions={actions} /> : null}
                     </div>
                   )
                 }
