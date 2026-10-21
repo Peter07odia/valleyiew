@@ -161,6 +161,30 @@ export default async function StaffProfilePage({
               )}
             </div>
 
+            {bio.interests?.length ? (
+              <div className="mt-8">
+                <h3 className="text-lg font-semibold">Special interests</h3>
+                <ul className="mt-3 flex flex-wrap gap-2">
+                  {bio.interests.map((interest) => (
+                    <li key={interest} className="rounded-full bg-muted px-3 py-1 text-sm">
+                      {interest}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+
+            {bio.credentials?.length ? (
+              <div className="mt-8">
+                <h3 className="text-lg font-semibold">Qualifications</h3>
+                <ul className="mt-3 list-disc space-y-2 pl-5 text-base leading-7">
+                  {bio.credentials.map((credential) => (
+                    <li key={credential}>{credential}</li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+
             {primaryLocation ? (
               <div className="mt-10 rounded-lg bg-muted p-5">
                 <p className="text-sm text-muted-foreground">

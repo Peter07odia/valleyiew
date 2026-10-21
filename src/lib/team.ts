@@ -27,6 +27,8 @@ export interface TeamMemberBio {
   sourceUrl?: string
   imagePosition?: string
   paragraphs: string[]
+  credentials?: string[]
+  interests?: string[]
 }
 
 export interface TeamMemberAppearance {
