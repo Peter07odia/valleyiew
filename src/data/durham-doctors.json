@@ -1,5 +1,40 @@
 [
   {
+    "id": "mohsina-ashraf",
+    "name": "Dr. Mohsina Ashraf",
+    "role": "MBBS, MRCGP, MRCOG, FCPS (Obs/Gyn) | Family Physician",
+    "paragraphs": [
+      "Dr. Mohsina Ashraf is a UK-trained family physician with more than 19 years of experience in family medicine, obstetrics and gynaecology. She practised for many years as a specialist obstetrician-gynaecologist before completing her family medicine training in the United Kingdom, so she brings both comprehensive primary care and in-depth women's health expertise to every visit.",
+      "Her clinical interests include menopause and perimenopause care, contraception, sexual and reproductive health, pregnancy and postpartum care, PCOS, metabolic health and chronic disease prevention. She is passionate about helping women move through hormonal changes with evidence-based, personalised care.",
+      "With additional training in lifestyle medicine, Dr. Ashraf looks for the root causes of chronic disease. She works with patients on nutrition, physical activity, sleep, stress and sustainable habits, with a particular interest in metabolic syndrome, insulin resistance, weight management and healthy ageing.",
+      "In the clinic she offers IUD and Nexplanon insertion and removal, contraceptive counselling, endometrial biopsy, menstrual health care, Pap tests, breast health screening, treatment plans for PCOS, PMS and menopausal symptoms, and shared-care prenatal follow-up.",
+      "Dr. Ashraf believes family medicine goes beyond treating illness: it means understanding the whole person. Known for her compassionate, patient-centred approach, she helps patients take an active role in their long-term health and wellbeing.",
+      "She speaks English, Urdu, Punjabi and Hindi, and values culturally sensitive care for the diverse communities she serves."
+    ],
+    "credentials": [
+      "MRCGP (UK) – Member, Royal College of General Practitioners",
+      "MRCOG (UK) – Member, Royal College of Obstetricians & Gynaecologists",
+      "FCPS (Obstetrics & Gynaecology) – College of Physicians and Surgeons, Pakistan",
+      "Certificate in Lifestyle Medicine – Royal College of General Practitioners, UK",
+      "PGCert in Strategic Leadership & Multi-Professional Education in Healthcare – University of Kent, UK",
+      "Letter of Competence in IUDs & Subdermal Implants – Faculty of Sexual & Reproductive Healthcare, UK"
+    ],
+    "interests": [
+      "Women's health",
+      "Menopause & hormonal health",
+      "Contraception & reproductive health",
+      "Pregnancy & postpartum care",
+      "PCOS",
+      "Lifestyle medicine",
+      "Metabolic health",
+      "Healthy ageing",
+      "Preventive care",
+      "Chronic disease management"
+    ],
+    "image": "/images/doctors/mohsina.jpeg",
+    "imagePosition": "center 25%"
+  },
+  {
     "id": "afaf-saeed",
     "name": "Dr. Afaf Saeed",
     "role": "MBBS, MRCGP (UK) | Family Physician",
@@ -152,40 +187,5 @@
     ],
     "image": "/images/doctors/logo.png",
     "sourceUrl": "https://valleyviewmedical.ca/doctors/dr-olalekan-adekeye/"
-  },
-  {
-    "id": "mohsina-ashraf",
-    "name": "Dr. Mohsina Ashraf",
-    "role": "MBBS, MRCGP (UK), MRCOG (UK), FCPS (Obs/Gyn) | Family Physician",
-    "paragraphs": [
-      "Dr. Mohsina Ashraf is a UK-trained family physician with more than 19 years of experience in family medicine, obstetrics and gynaecology. She practised for many years as a specialist obstetrician-gynaecologist before completing her family medicine training in the United Kingdom, so she brings both comprehensive primary care and in-depth women's health expertise to every visit.",
-      "Her clinical interests include menopause and perimenopause care, contraception, sexual and reproductive health, pregnancy and postpartum care, PCOS, metabolic health and chronic disease prevention. She is passionate about helping women move through hormonal changes with evidence-based, personalised care.",
-      "With additional training in lifestyle medicine, Dr. Ashraf looks for the root causes of chronic disease. She works with patients on nutrition, physical activity, sleep, stress and sustainable habits, with a particular interest in metabolic syndrome, insulin resistance, weight management and healthy ageing.",
-      "In the clinic she offers IUD and Nexplanon insertion and removal, contraceptive counselling, endometrial biopsy, menstrual health care, Pap tests, breast health screening, treatment plans for PCOS, PMS and menopausal symptoms, and shared-care prenatal follow-up.",
-      "Dr. Ashraf believes family medicine goes beyond treating illness: it means understanding the whole person. Known for her compassionate, patient-centred approach, she helps patients take an active role in their long-term health and wellbeing.",
-      "She speaks English, Urdu, Punjabi and Hindi, and values culturally sensitive care for the diverse communities she serves."
-    ],
-    "credentials": [
-      "MRCGP (UK) – Member, Royal College of General Practitioners",
-      "MRCOG (UK) – Member, Royal College of Obstetricians & Gynaecologists",
-      "FCPS (Obstetrics & Gynaecology) – College of Physicians and Surgeons, Pakistan",
-      "Certificate in Lifestyle Medicine – Royal College of General Practitioners, UK",
-      "PGCert in Strategic Leadership & Multi-Professional Education in Healthcare – University of Kent, UK",
-      "Letter of Competence in IUDs & Subdermal Implants – Faculty of Sexual & Reproductive Healthcare, UK"
-    ],
-    "interests": [
-      "Women's health",
-      "Menopause & hormonal health",
-      "Contraception & reproductive health",
-      "Pregnancy & postpartum care",
-      "PCOS",
-      "Lifestyle medicine",
-      "Metabolic health",
-      "Healthy ageing",
-      "Preventive care",
-      "Chronic disease management"
-    ],
-    "image": "/images/doctors/mohsina.jpeg",
-    "imagePosition": "center 25%"
   }
 ]
