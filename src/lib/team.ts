@@ -40,10 +40,41 @@ export interface TeamMemberAppearance {
 
 export const TEAM_MEMBER_IMAGE_FALLBACK = "/images/branding/vvm-logo.png"
 
-export const TEAM_MEMBER_BIOS: TeamMemberBio[] = [...durhamDoctors, ...regionalDoctors];
-export const TEAM_MEMBER_IMAGE_BY_BIO_ID: Record<string, string> = Object.fromEntries(
-  [...durhamDoctors, ...regionalDoctors].map(bio => [bio.id, bio.image])
+/** Doctor records from the data files. `image` is null when there is no photo. */
+export interface DoctorBio extends TeamMemberBio {
+  image: string | null
+  imageAlt?: string
+  /** Lists "Women's health" first under Areas of focus. Off unless the clinic confirms it. */
+  womensHealth?: boolean
+  areasOfFocus?: string[]
+}
+
+export const WOMENS_HEALTH_FOCUS = "Women's health (including gynecology, pregnancy and postpartum care)"
+
+const DOCTORS: DoctorBio[] = [...durhamDoctors, ...regionalDoctors]
+
+export const TEAM_MEMBER_BIOS: DoctorBio[] = DOCTORS;
+export const TEAM_MEMBER_IMAGE_BY_BIO_ID: Record<string, string | null> = Object.fromEntries(
+  DOCTORS.map(bio => [bio.id, bio.image])
 );
+
+// Logo stand-ins from the old sites are not photos; those doctors get the placeholder avatar.
+const LOGO_IMAGES = new Set([TEAM_MEMBER_IMAGE_FALLBACK, "/images/doctors/logo.png"])
+
+export function getDoctorBio(id?: string) {
+  return id ? DOCTORS.find(bio => bio.id === id) : undefined
+}
+
+/** The doctor's photo, or null when the placeholder avatar should show. */
+export function getDoctorPhoto(id: string): string | null {
+  const image = TEAM_MEMBER_IMAGE_BY_BIO_ID[id]
+  return image && !LOGO_IMAGES.has(image) ? image : null
+}
+
+export function getDoctorAreasOfFocus(bio: DoctorBio): string[] {
+  const areas = bio.areasOfFocus ?? []
+  return bio.womensHealth ? [WOMENS_HEALTH_FOCUS, ...areas] : areas
+}
 /** Team groups, in the order the original site's team tabs used. */
 export const TEAM_CATEGORIES = [
   { id: "doctors", title: "Doctors" },

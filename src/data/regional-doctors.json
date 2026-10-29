@@ -13,7 +13,12 @@
       "Dr. Omisore is excited to join Valleyview Medical Centre in Brantford, Ontario, where he looks forward to becoming part of the local healthcare community and providing comprehensive, compassionate family medicine to patients and families in the Brantford area.",
       "Outside his clinical practice, Dr. Omisore has a strong interest in preventive healthcare, quality improvement, medical education, mentorship, and continuous professional development."
     ],
-    "image": "/images/team/tunde-samuel-omisore.png"
+    "image": "/images/team/tunde-samuel-omisore.png",
+    "womensHealth": false,
+    "areasOfFocus": [
+      "Diabetes care",
+      "Mental health"
+    ]
   },
   {
     "id": "kolawole-gbolagade",
@@ -23,7 +28,12 @@
       "Dr. Kolawole Gbolagade is a highly skilled family physician with over 14 years of cumulative clinical experience. He graduated from Obafemi Awolowo University, Ile-Ife, and qualified as a medical doctor in 2012. He subsequently completed his training and qualified as a Family Physician in the United Kingdom in 2020.",
       "Since April 2025, Dr. Gbolagade has been practicing as a Family Physician in Victoria, British Columbia, Canada. Throughout his career, he has demonstrated a strong commitment to patient-centred care, continuous professional development, and the delivery of holistic, evidence-based medical care. His extensive clinical experience and dedication to advancing his knowledge enable him to provide comprehensive care tailored to the individual needs of his patients."
     ],
-    "image": "/images/team/kolawole-gbolagade.png"
+    "image": "/images/team/kolawole-gbolagade.png",
+    "womensHealth": false,
+    "areasOfFocus": [
+      "Diabetes care",
+      "Mental health"
+    ]
   },
   {
     "id": "eseigbe-uwadia",
@@ -37,7 +47,12 @@
       "Dr. Uwadia is delighted to join the Peterborough community and looks forward to caring for individuals and families from diverse backgrounds. He aims to build trusted, long-term relationships with his patients and create a welcoming environment where they feel heard, respected and involved in their care.",
       "His approach to Family Medicine is centred on a simple principle: listen carefully, treat the whole person, prevent illness where possible, and work together with patients toward better health and quality of life."
     ],
-    "image": "/images/team/eseigbe-uwadia.png"
+    "image": "/images/team/eseigbe-uwadia.png",
+    "womensHealth": false,
+    "areasOfFocus": [
+      "Diabetes care",
+      "Mental health"
+    ]
   },
   {
     "id": "babajide-olawale-odusan",
@@ -50,7 +65,12 @@
       "Dr. Odusan has worked across multiple hospitals and family practice clinics throughout Northern England, providing comprehensive care to diverse patient populations. His clinical interests include preventive medicine, chronic disease management, mental health, acute care medicine, and holistic family healthcare.",
       "He is a Member of the Royal College of General Practitioners and is also a certificant of the College of Family Physicians of Canada. Dr. Odusan remains committed to delivering compassionate, high-quality, and accessible healthcare while supporting the wellbeing of individuals and families within the community."
     ],
-    "image": "/images/branding/vvm-logo.png"
+    "image": null,
+    "womensHealth": false,
+    "areasOfFocus": [
+      "Diabetes care",
+      "Mental health"
+    ]
   },
   {
     "id": "henry-oghotuoma",
@@ -63,7 +83,12 @@
       "Dr. Oghotuoma has worked across several hospitals and GP practices throughout Northern England, providing comprehensive care to diverse patient populations. His clinical interests include preventive medicine, chronic disease management, paediatrics, elderly care, musculoskeletal medicine, mental health, acute care medicine, and holistic family healthcare.",
       "He is a Member of the Royal College of General Practitioners (MRCGP) and a certificant of the College of Family Physicians of Canada (CCFP). Dr. Oghotuoma remains committed to delivering compassionate, high-quality, and accessible healthcare while supporting the wellbeing of individuals and families within the community."
     ],
-    "image": "/images/branding/vvm-logo.png"
+    "image": null,
+    "womensHealth": false,
+    "areasOfFocus": [
+      "Diabetes care",
+      "Mental health"
+    ]
   },
   {
     "id": "rubayat-hussain",

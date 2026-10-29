@@ -4,10 +4,13 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import { ArrowLeft, Mail, MapPin } from "lucide-react"
 
+import { DoctorPhoto } from "@/components/team/doctor-photo"
 import { Button } from "@/components/ui/button"
 import {
   SUPPORT_PROFILES,
   TEAM_MEMBER_BIOS,
+  getDoctorAreasOfFocus,
+  getDoctorBio,
   getTeamBio,
   getTeamMemberAppearances,
   getTeamMemberImageSrc,
@@ -55,6 +58,8 @@ export default async function StaffProfilePage({
     notFound()
   }
 
+  const doctor = getDoctorBio(bio.id)
+  const areasOfFocus = doctor ? getDoctorAreasOfFocus(doctor) : []
   const imageSrc = getTeamMemberImageSrc(bio.id)
   const appearances = getTeamMemberAppearances(bio.id)
   const role = appearances[0]?.role ?? bio.role
@@ -99,19 +104,27 @@ export default async function StaffProfilePage({
         <article className="grid gap-8 lg:grid-cols-[minmax(280px,420px)_1fr] lg:gap-12">
           <div>
             <div className="relative aspect-[4/4.4] overflow-hidden rounded-lg bg-white shadow-sm ring-1 ring-border">
-              <Image
-                src={imageSrc}
-                alt={bio.name}
-                fill
-                priority
-                sizes="(max-width: 1024px) 100vw, 420px"
-                style={{ objectPosition: bio.imagePosition ?? "center" }}
-                className={cn(
-                  isTeamLogoImage(imageSrc)
-                    ? "object-contain p-12"
-                    : "object-cover"
-                )}
-              />
+              {doctor ? (
+                <DoctorPhoto
+                  doctorId={doctor.id}
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 420px"
+                />
+              ) : (
+                <Image
+                  src={imageSrc}
+                  alt={bio.name}
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 420px"
+                  style={{ objectPosition: bio.imagePosition ?? "center" }}
+                  className={cn(
+                    isTeamLogoImage(imageSrc)
+                      ? "object-contain p-12"
+                      : "object-cover"
+                  )}
+                />
+              )}
             </div>
 
             {appearances.length ? (
@@ -160,6 +173,19 @@ export default async function StaffProfilePage({
                 <p className="text-muted-foreground">A full biography is coming soon.</p>
               )}
             </div>
+
+            {areasOfFocus.length ? (
+              <div className="mt-8">
+                <h3 className="text-lg font-semibold">Areas of focus</h3>
+                <ul className="mt-3 flex flex-wrap gap-2">
+                  {areasOfFocus.map((area) => (
+                    <li key={area} className="rounded-full bg-muted px-3 py-1 text-sm">
+                      {area}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
 
             {bio.interests?.length ? (
               <div className="mt-8">

@@ -1,5 +1,6 @@
 import { LocationTeamSection } from "@/components/team/location-team-section"
 import type { Metadata } from "next"
+import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import {
@@ -261,6 +262,32 @@ export default async function LocationPage({ params }: LocationPageProps) {
           </div>
         </div>
       </section>
+      {location.photos?.length ? (
+        <section
+          aria-labelledby="clinic-photos-heading"
+          className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8"
+        >
+          <h2 id="clinic-photos-heading" className="mb-6 text-2xl font-semibold">
+            Clinic photos
+          </h2>
+          <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {location.photos.map((photo) => (
+              <li
+                key={photo.src}
+                className="relative aspect-[4/3] overflow-hidden rounded-lg bg-muted ring-1 ring-border"
+              >
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover"
+                />
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
       <LocationTeamSection headingLevel="h2" locationSlug={location.slug} />
     </>
   )

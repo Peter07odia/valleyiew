@@ -35,6 +35,7 @@ const QUICK_LINKS = [
   { label: "Services", href: "/services" },
   { label: "Health Resources", href: "/#resources" },
   { label: "Locations", href: "/locations" },
+  { label: "Careers", href: "/careers" },
   BOOKING_LINK,
 ];
 

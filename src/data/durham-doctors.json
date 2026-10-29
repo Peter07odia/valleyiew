@@ -32,7 +32,14 @@
       "Chronic disease management"
     ],
     "image": "/images/doctors/mohsina.jpeg",
-    "imagePosition": "center 25%"
+    "imagePosition": "center 25%",
+    "womensHealth": true,
+    "areasOfFocus": [
+      "Diabetes care",
+      "Mental health",
+      "Weight management",
+      "Skin care"
+    ]
   },
   {
     "id": "afaf-saeed",
@@ -42,11 +49,18 @@
       "Dr. Afaf Saeed has over 10 years of experience working in the UK's National Health Service (NHS). She completed her specialist training in General Practice and was awarded a Certificate of Completion of Training (CCT) and Membership of the Royal College of General Practitioners (MRCGP).",
       "As a family physician, Dr. Saeed enjoys caring for patients of all ages and values the variety that general practice brings. She has experience managing a wide range of acute and chronic medical conditions and has particular interests in women's health and preventive care. She believes that the best healthcare starts with listening, understanding each patient's individual needs, and working together to achieve the best possible outcomes.",
       "Throughout her career, Dr. Saeed has been privileged to care for patients from many different backgrounds and enjoys building lasting relationships with individuals and families. She is committed to providing compassionate, evidence-based care in a welcoming and supportive environment.",
-      "Dr. Saeed is originally from the northern areas of Pakistan. She speaks Urdu and Punjabi, and also understands Pashto.",
+      "Dr. Saeed is originally from the northern areas of Pakistan. She speaks Urdu and Punjabi.",
       "Outside of medicine, Dr. Saeed enjoys spending time with her family and is excited to begin this new chapter in Ontario, where she looks forward to caring for the local community."
     ],
     "image": "/images/doctors/AfafSaeed.jpeg",
-    "sourceUrl": "https://valleyviewmedical.ca/doctors/dr-afaf-saeed/"
+    "sourceUrl": "https://valleyviewmedical.ca/doctors/dr-afaf-saeed/",
+    "womensHealth": false,
+    "areasOfFocus": [
+      "Diabetes care",
+      "Mental health",
+      "Weight management",
+      "Skin care"
+    ]
   },
   {
     "id": "sidra-saif",
@@ -62,8 +76,13 @@
       "Her goal is to offer comprehensive and holistic care to her patients at Valleyview Medical Centre, ensuring that every individual receives the highest quality of care tailored to their unique needs.",
       "In addition to her professional accomplishments, Dr. Saif is fluent in both English and Urdu, enabling her to communicate effectively with a diverse patient population and establish strong doctor-patient relationships based on trust and understanding."
     ],
-    "image": "/images/doctors/sidra.jpg",
-    "sourceUrl": "https://valleyviewmedical.ca/doctors/dr-sidra-saif/"
+    "image": null,
+    "sourceUrl": "https://valleyviewmedical.ca/doctors/dr-sidra-saif/",
+    "womensHealth": false,
+    "areasOfFocus": [
+      "Diabetes care",
+      "Mental health"
+    ]
   },
   {
     "id": "abdullah-khan",
@@ -78,7 +97,12 @@
       "The combination of his neurosurgical background and family medicine expertise makes Dr. Khan a valuable asset to our team."
     ],
     "image": "/images/doctors/abdullah.jpg",
-    "sourceUrl": "https://valleyviewmedical.ca/doctors/dr-abdullah-khan/"
+    "sourceUrl": "https://valleyviewmedical.ca/doctors/dr-abdullah-khan/",
+    "womensHealth": false,
+    "areasOfFocus": [
+      "Diabetes care",
+      "Mental health"
+    ]
   },
   {
     "id": "emmanuel-olamide-adeogun",
@@ -94,7 +118,12 @@
       "Fluent in both English and Yoruba, he ensures effective communication with a diverse patient population, underscoring his commitment to delivering top-tier healthcare services."
     ],
     "image": "/images/doctors/emmanuel.jpg",
-    "sourceUrl": "https://valleyviewmedical.ca/doctors/dr-emmanuel-olamide-adeogun/"
+    "sourceUrl": "https://valleyviewmedical.ca/doctors/dr-emmanuel-olamide-adeogun/",
+    "womensHealth": false,
+    "areasOfFocus": [
+      "Diabetes care",
+      "Mental health"
+    ]
   },
   {
     "id": "rashida-anike-agoro",
@@ -109,8 +138,13 @@
       "Her proficiency in Pediatrics underscores her ability to care for our youngest patients, ensuring their health and well-being from an early age.",
       "What truly sets Dr. Agoro apart is her commitment to ongoing professional development. This dedication ensures that she remains at the forefront of medical advancements, offering Valleyview Medical Centre's patients the latest and most effective treatments."
     ],
-    "image": "/images/doctors/logo.png",
-    "sourceUrl": "https://valleyviewmedical.ca/doctors/dr-rashida-anike-agoro/"
+    "image": null,
+    "sourceUrl": "https://valleyviewmedical.ca/doctors/dr-rashida-anike-agoro/",
+    "womensHealth": false,
+    "areasOfFocus": [
+      "Diabetes care",
+      "Mental health"
+    ]
   },
   {
     "id": "shehla-qadeer",
@@ -133,8 +167,13 @@
       "Dr. Afolarin holds several prestigious qualifications, including the M.B.Ch.B. from OAU Ife, Nigeria, as well as memberships with the Royal College of General Practitioners (MRCGP), Diploma in Urgent Medical Care (DUMC) from Royal College of Surgeons Edinburgh, the Faculty of Prehospital Care (FPHC), and the College of Family Physicians Canada (CCFP). He has also earned certifications in ATLS, APLS, ALS, and EPLS.",
       "Dr. Afolarin is known for his exceptional communication skills, attentiveness to patient concerns, and compassionate care. His fluency in both English and Yoruba allows him to connect with a diverse patient population."
     ],
-    "image": "/images/doctors/logo.png",
-    "sourceUrl": "https://valleyviewmedical.ca/doctors/dr-olajide-afolarin/"
+    "image": null,
+    "sourceUrl": "https://valleyviewmedical.ca/doctors/dr-olajide-afolarin/",
+    "womensHealth": false,
+    "areasOfFocus": [
+      "Diabetes care",
+      "Mental health"
+    ]
   },
   {
     "id": "maren-preussler",
@@ -146,7 +185,14 @@
       "Dedicated to continuous learning and innovation in healthcare, Dr. Maren remains actively engaged in current medical advancements to ensure her patients receive the most effective and up-to-date care. Her current clinical interests include women's health and minor procedures."
     ],
     "image": "/images/doctors/maren.jpeg",
-    "sourceUrl": "https://valleyviewmedical.ca/doctors/dr-maren-preussler/"
+    "sourceUrl": "https://valleyviewmedical.ca/doctors/dr-maren-preussler/",
+    "womensHealth": false,
+    "areasOfFocus": [
+      "Diabetes care",
+      "Mental health",
+      "Weight management",
+      "Skin care"
+    ]
   },
   {
     "id": "olugbenga-ajayi",
@@ -160,7 +206,12 @@
       "Dr. Ajayi is fluent in English and Yoruba, and is proud to serve patients from diverse cultural backgrounds."
     ],
     "image": "/images/doctors/olugbenga.jpeg",
-    "sourceUrl": "https://valleyviewmedical.ca/doctors/dr-olugbenga-ajayi/"
+    "sourceUrl": "https://valleyviewmedical.ca/doctors/dr-olugbenga-ajayi/",
+    "womensHealth": false,
+    "areasOfFocus": [
+      "Diabetes care",
+      "Mental health"
+    ]
   },
   {
     "id": "kehinde-hazzan",
@@ -173,7 +224,12 @@
       "His clinical strengths include preventive medicine, chronic disease management, elderly care, paediatric care, specialist referrals, and comprehensive physical examinations."
     ],
     "image": "/images/doctors/kehinde.jpeg",
-    "sourceUrl": "https://valleyviewmedical.ca/doctors/dr-kehinde-hazzan/"
+    "sourceUrl": "https://valleyviewmedical.ca/doctors/dr-kehinde-hazzan/",
+    "womensHealth": false,
+    "areasOfFocus": [
+      "Diabetes care",
+      "Mental health"
+    ]
   },
   {
     "id": "olalekan-adekeye",
@@ -185,7 +241,14 @@
       "Dr. Adekeye has held several clinical roles, including Locum GP work, serving as a Salaried GP, and completing registrar rotations in paediatrics, emergency medicine, general medicine, and primary care. He is particularly skilled in managing both acute and chronic illnesses, conducting detailed physical examinations, reviewing diagnostics, and coordinating care with multidisciplinary teams.",
       "Known for his clear communication, gentle bedside manner, and patient-first philosophy, Dr. Adekeye takes pride in creating a comfortable environment where patients feel supported, respected, and well-informed about their health."
     ],
-    "image": "/images/doctors/logo.png",
-    "sourceUrl": "https://valleyviewmedical.ca/doctors/dr-olalekan-adekeye/"
+    "image": "/doctors/olalekan-adekeye.jpg",
+    "sourceUrl": "https://valleyviewmedical.ca/doctors/dr-olalekan-adekeye/",
+    "imageAlt": "Dr. Olalekan Adekeye in black scrubs with his arms crossed, in a clinic room",
+    "imagePosition": "center 20%",
+    "womensHealth": false,
+    "areasOfFocus": [
+      "Diabetes care",
+      "Mental health"
+    ]
   }
 ]
