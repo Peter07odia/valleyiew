@@ -63,6 +63,7 @@ export default async function LocationPage({ params }: LocationPageProps) {
   const isComingSoon = location.isComingSoon
   const hoursPublished = hasPublishedHours(location)
   const directionsUrl = getGoogleMapsDirectionsUrl(location)
+  const [exteriorPhoto, ...interiorPhotos] = location.photos ?? []
 
   return (
     <>
@@ -73,6 +74,8 @@ export default async function LocationPage({ params }: LocationPageProps) {
             ? "Opening details will be announced once confirmed."
             : "Find contact details, directions and online booking for your clinic. Call the clinic for appointment and walk-in availability."
         }
+        imageSrc={exteriorPhoto?.src}
+        imageAlt={exteriorPhoto?.alt}
       />
 
       {location.pharmacyName ? (
@@ -262,7 +265,7 @@ export default async function LocationPage({ params }: LocationPageProps) {
           </div>
         </div>
       </section>
-      {location.photos?.length ? (
+      {interiorPhotos.length ? (
         <section
           aria-labelledby="clinic-photos-heading"
           className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8"
@@ -271,7 +274,7 @@ export default async function LocationPage({ params }: LocationPageProps) {
             Clinic photos
           </h2>
           <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {location.photos.map((photo) => (
+            {interiorPhotos.map((photo) => (
               <li
                 key={photo.src}
                 className="relative aspect-[4/3] overflow-hidden rounded-lg bg-muted ring-1 ring-border"

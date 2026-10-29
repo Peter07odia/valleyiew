@@ -48,7 +48,7 @@ export interface ClinicLocation {
   heroImageAlt?: string;
   clinicPhoto?: string;
   clinicPhotoAlt?: string;
-  /** Real photos of this clinic, shown on its location page. */
+  /** Real photos of this clinic; the first is the exterior, shown at the top of its location page. */
   photos?: { src: string; alt: string }[];
   pharmacyName?: string;
   pharmacyUrl?: string;
