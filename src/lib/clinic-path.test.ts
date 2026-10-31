@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest"
-import { clinicSlugForPath } from "./clinic-path"
+import { clinicSlugForPath, locationSlugForPath } from "./clinic-path"
 
 describe("clinicSlugForPath", () => {
   it("uses the clinic named by a location page", () => {
@@ -15,6 +15,16 @@ describe("clinicSlugForPath", () => {
   it("ignores general and unknown pages", () => {
     for (const path of ["/", "/locations", "/team", "/locations/unknown", "/staff/unknown", "/locations/whitby/extra", null]) {
       expect(clinicSlugForPath(path)).toBeNull()
+    }
+  })
+})
+
+describe("locationSlugForPath", () => {
+  it("returns the clinic only for location pages", () => {
+    expect(locationSlugForPath("/locations/whitby")).toBe("whitby")
+    expect(locationSlugForPath("/locations/brantford-colborne/")).toBe("brantford-colborne")
+    for (const path of ["/", "/locations", "/staff/afaf-saeed", "/locations/unknown", "/locations/whitby/extra", null]) {
+      expect(locationSlugForPath(path)).toBeNull()
     }
   })
 })
