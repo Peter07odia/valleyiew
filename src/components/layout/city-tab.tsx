@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from "react"
+import { useEffect, useRef, useState } from "react"
 import { CheckCircle2, ChevronDown, Clock, MapPin, Navigation, Phone } from "lucide-react"
 
 import { Popover, PopoverAnchor, PopoverContent } from "@/components/ui/popover"
@@ -13,10 +13,9 @@ import {
   type ClinicLocation,
 } from "@/lib/constants"
 import { cn } from "@/lib/utils"
+import { CLINIC_CARD_HOVER, chooseOnCardClick } from "./clinic-card-click"
 
 const CLOSE_DELAY_MS = 150
-/** How long the mouse must rest on a clinic card before it becomes the chosen clinic. */
-export const HOVER_SELECT_DELAY_MS = 500
 
 /** "Peterborough (Lansdowne Mall)" -> "Lansdowne Mall". */
 const branchLabel = (location: ClinicLocation) => /\(([^)]+)\)/.exec(location.shortName)?.[1] ?? location.shortName
@@ -31,7 +30,7 @@ function today(location: ClinicLocation) {
 /**
  * One city in the top bar. Hovering (or focusing/clicking) drops down a short
  * card per clinic in that city; single-clinic cities also switch on click.
- * Resting the mouse on a clinic card chooses it, so the button click is optional.
+ * Hovering a clinic card highlights it; clicking the card or its button chooses it.
  */
 export function CityTab({
   city,
@@ -46,7 +45,6 @@ export function CityTab({
 }) {
   const [open, setOpen] = useState(false)
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
-  const selectTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
   const active = locations.some(l => l.slug === selectedSlug)
   const single = locations.length === 1
 
@@ -54,22 +52,10 @@ export function CityTab({
     if (closeTimer.current) clearTimeout(closeTimer.current)
     closeTimer.current = null
   }
-  const cancelHoverSelect = () => {
-    if (selectTimer.current) clearTimeout(selectTimer.current)
-    selectTimer.current = null
-  }
   const choose = (slug: string) => {
-    cancelHoverSelect()
     onChoose(slug)
     setOpen(false)
   }
-  // Mouse only: touch and pen taps also fire pointer events, and they already use the button.
-  const startHoverSelect = (event: ReactPointerEvent, slug: string) => {
-    if (event.pointerType !== "mouse" || slug === selectedSlug) return
-    cancelHoverSelect()
-    selectTimer.current = setTimeout(() => choose(slug), HOVER_SELECT_DELAY_MS)
-  }
-  useEffect(() => cancelHoverSelect, [])
   const show = () => {
     cancelClose()
     setOpen(true)
@@ -130,9 +116,8 @@ export function CityTab({
             return (
               <div
                 key={location.slug}
-                onPointerEnter={event => startHoverSelect(event, location.slug)}
-                onPointerLeave={cancelHoverSelect}
-                className="flex flex-col gap-2.5 p-4 transition-colors hover:bg-accent/60"
+                onClick={event => chooseOnCardClick(event, () => choose(location.slug))}
+                className={cn("group/card relative flex flex-col gap-2.5 bg-white p-4 hover:bg-accent", CLINIC_CARD_HOVER)}
               >
                 <div className="flex items-start justify-between gap-2">
                   <p className="font-serif text-lg leading-tight text-secondary">{single ? location.shortName : branchLabel(location)}</p>
@@ -170,7 +155,7 @@ export function CityTab({
                     aria-pressed={selected}
                     className={cn(
                       "h-8 text-xs font-semibold transition-colors",
-                      selected ? "bg-secondary text-white" : "bg-primary text-white hover:bg-primary/90",
+                      selected ? "bg-secondary text-white" : "bg-primary text-white group-hover/card:bg-secondary",
                     )}
                   >
                     {selected ? "Your clinic" : "Choose this clinic"}
