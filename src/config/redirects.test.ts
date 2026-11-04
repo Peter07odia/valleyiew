@@ -6,10 +6,12 @@ import nextConfig from "../../next.config"
 import sitemap from "@/app/sitemap"
 import { SUPPORT_PROFILES, TEAM_MEMBER_BIOS } from "@/lib/team"
 
-type Redirect = { source: string; destination: string; permanent?: boolean }
+type Redirect = { source: string; destination: string; permanent?: boolean; has?: unknown[] }
 
+// Redirects as seen by a request to the main domain. Rules with a `has` condition
+// only fire for other hosts (www and the old regional domains), so they're excluded.
 async function loadRedirects(): Promise<Redirect[]> {
-  return (await nextConfig.redirects!()) as Redirect[]
+  return ((await nextConfig.redirects!()) as Redirect[]).filter((r) => !r.has)
 }
 
 const matchesSource = (redirects: Redirect[], pathname: string) =>
