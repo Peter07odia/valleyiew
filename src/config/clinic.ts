@@ -137,6 +137,11 @@ export function searchIndexingAllowed(): boolean {
   );
 }
 
+/** Self-referencing canonical on the confirmed main domain, regardless of preview URL overrides. */
+export function canonicalUrl(path: string): string {
+  return new URL(path, `https://${CLINIC_CONFIG.domain}`).toString();
+}
+
 export function getConfiguredSiteUrl(): URL {
   const configuredUrl = process.env.NEXT_PUBLIC_SITE_URL;
 

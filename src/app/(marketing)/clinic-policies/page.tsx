@@ -1,4 +1,34 @@
-import Link from "next/link"
+import type { Metadata } from "next"
 import { PageHero } from "@/components/shared/page-hero"
-export const metadata = { title: "Patient Information" }
-export default function PolicyPage(){return <><PageHero title="Before your appointment" description="Contact your clinic about its appointment, cancellation, prescription and fee policies."/><section className="mx-auto max-w-3xl space-y-8 px-5 py-16 leading-7"><div><h2 className="mb-3 font-serif text-3xl text-secondary">Appointments and cancellations</h2><p>If you cannot attend, contact your clinic as soon as possible. Cancellation requirements and any charges should be confirmed with your clinic.</p></div><div><h2 className="mb-3 font-serif text-3xl text-secondary">Prescriptions, forms and fees</h2><p>Contact your clinic before your prescription runs out. Some renewals need an appointment or monitoring. Ask the clinic about costs before requesting uninsured forms or services.</p></div><div><h2 className="mb-3 font-serif text-3xl text-secondary">Your information</h2><p>Use the registration form for new-patient intake. Do not send health card numbers or personal medical details through the website chat.</p></div><Link href="/contact" className="inline-block font-semibold text-primary underline">Find your clinic’s contact details</Link></section></>}
+import { RichText } from "@/components/policies/rich-text"
+import { canonicalUrl } from "@/config/clinic"
+import { CLINIC_POLICIES, CLINIC_POLICIES_INTRO } from "@/data/patient-policies"
+
+export const metadata: Metadata = {
+  title: { absolute: "Clinic Policies | Valley View Medical Centre" },
+  description:
+    "Valley View Medical Centre clinic policies on health cards, uninsured services, test results, appointments, prescription renewals, cancellations and no-show fees.",
+  alternates: { canonical: canonicalUrl("/clinic-policies") },
+}
+
+export default function ClinicPoliciesPage() {
+  return (
+    <>
+      <PageHero title="Clinic Policies" description={CLINIC_POLICIES_INTRO} />
+      <article className="mx-auto max-w-3xl space-y-12 px-5 py-16 leading-7">
+        {CLINIC_POLICIES.map((section) => (
+          <section key={section.id} id={section.id} className="scroll-mt-28">
+            <h2 className="mb-3 font-serif text-3xl text-secondary">{section.title}</h2>
+            <div className="space-y-4">
+              {section.paragraphs.map((paragraph, index) => (
+                <p key={index}>
+                  <RichText content={paragraph} />
+                </p>
+              ))}
+            </div>
+          </section>
+        ))}
+      </article>
+    </>
+  )
+}
