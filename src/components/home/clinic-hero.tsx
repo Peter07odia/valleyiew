@@ -82,15 +82,6 @@ export function ClinicHero() {
 
       <div className="relative mx-auto flex min-h-[calc(100svh-6.1rem)] max-w-7xl items-center px-5 py-16 sm:px-10 md:min-h-[calc(100svh-6.8rem)] lg:px-8">
         <div className="w-full max-w-3xl">
-          <div className="mb-6 flex max-w-full items-center gap-4 text-secondary-foreground/92 sm:mb-8">
-            <span className="relative block size-8 shrink-0 rounded-full border-[3px] border-current">
-              <span className="absolute -right-1 -top-1 block size-3 rounded-full bg-current" />
-            </span>
-            <p className="text-base font-medium leading-6 sm:text-lg">
-              {clinic ? clinic.shortName : "Seven clinics. One Valleyview."}
-            </p>
-          </div>
-
           <p className="max-w-[16ch] text-balance font-sans text-[clamp(2.5rem,5.4vw,5.5rem)] font-normal leading-[1.02] tracking-[-0.03em] [text-shadow:0_8px_36px_rgba(4,18,42,0.3)]">
             Valleyview Medical Centre
           </p>
