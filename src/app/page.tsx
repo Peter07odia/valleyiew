@@ -31,6 +31,9 @@ import { Reveal } from "@/components/shared/reveal";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
+  title: { absolute: "Walk-In Clinics & Family Doctors | Valleyview Medical Centre" },
+  description:
+    "Walk-in and family medicine at seven Valleyview clinics in Whitby, Oshawa, Courtice, Peterborough and Brantford. Find your nearest clinic, hours and online booking.",
   alternates: { canonical: "https://valleyviewmedical.ca/" },
 };
 

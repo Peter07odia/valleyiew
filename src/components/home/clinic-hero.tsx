@@ -91,16 +91,22 @@ export function ClinicHero() {
             </p>
           </div>
 
-          <h1
-            id="hero-heading"
-            className="max-w-[16ch] text-balance font-sans text-[clamp(2.5rem,5.4vw,5.5rem)] font-normal leading-[1.02] tracking-[-0.03em] [text-shadow:0_8px_36px_rgba(4,18,42,0.3)]"
-          >
+          {/* Same look as before; only the h1 text changed for search. */}
+          <p className="max-w-[16ch] text-balance font-sans text-[clamp(2.5rem,5.4vw,5.5rem)] font-normal leading-[1.02] tracking-[-0.03em] [text-shadow:0_8px_36px_rgba(4,18,42,0.3)]">
             <span className="block text-[0.42em] font-light leading-tight tracking-[-0.01em] text-secondary-foreground/85">Welcome to</span>
             <span className="mt-1 block">Valleyview Medical Centre</span>
-            <span className="mt-5 block text-[clamp(1.35rem,2.6vw,2.6rem)] font-bold normal-case leading-tight tracking-[0.02em] text-accent-warm [text-shadow:none]">
-              Your health, connected with care.
-            </span>
+          </p>
+
+          <h1
+            id="hero-heading"
+            className="mt-5 max-w-2xl text-balance font-sans text-lg font-medium leading-7 text-secondary-foreground/92 [text-shadow:0_4px_20px_rgba(4,18,42,0.35)] sm:text-xl sm:leading-8"
+          >
+            Walk-in and family medicine clinics in Durham Region, Peterborough and Brantford
           </h1>
+
+          <p className="mt-5 max-w-2xl text-balance font-sans text-[clamp(1.35rem,2.6vw,2.6rem)] font-bold leading-tight tracking-[0.02em] text-accent-warm">
+            Your health, connected with care.
+          </p>
 
           <p className="mt-7 max-w-xl text-base leading-7 text-secondary-foreground/85 sm:text-lg sm:leading-8">
             Compassionate, comprehensive family care for individuals and families{" "}
