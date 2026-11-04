@@ -82,33 +82,24 @@ export function ClinicHero() {
 
       <div className="relative mx-auto flex min-h-[calc(100svh-6.1rem)] max-w-7xl items-center px-5 py-16 sm:px-10 md:min-h-[calc(100svh-6.8rem)] lg:px-8">
         <div className="w-full max-w-3xl">
-          <div className="mb-6 flex max-w-full items-center gap-4 text-secondary-foreground/92 sm:mb-8">
-            <span className="relative block size-8 shrink-0 rounded-full border-[3px] border-current">
-              <span className="absolute -right-1 -top-1 block size-3 rounded-full bg-current" />
-            </span>
-            <p className="text-base font-medium leading-6 sm:text-lg">
-              {clinic ? clinic.shortName : "Seven clinics. One Valleyview."}
-            </p>
-          </div>
+          <p className="max-w-[16ch] text-balance font-sans text-[clamp(2.5rem,5.4vw,5.5rem)] font-normal leading-[1.02] tracking-[-0.03em] [text-shadow:0_8px_36px_rgba(4,18,42,0.3)]">
+            <span className="block text-[0.42em] font-light leading-tight tracking-[-0.01em] text-secondary-foreground/85">Welcome to</span>
+            <span className="mt-1 block">Valleyview Medical Centre</span>
+          </p>
+
+          <p className="mt-5 max-w-2xl text-balance font-sans text-[clamp(1.35rem,2.6vw,2.6rem)] font-bold leading-tight tracking-[0.02em] text-accent-warm">
+            Your health, connected with care.
+          </p>
 
           <h1
             id="hero-heading"
-            className="max-w-[16ch] text-balance font-sans text-[clamp(2.5rem,5.4vw,5.5rem)] font-normal leading-[1.02] tracking-[-0.03em] [text-shadow:0_8px_36px_rgba(4,18,42,0.3)]"
+            className="mt-8 max-w-2xl text-balance font-sans text-xl font-medium leading-8 text-secondary-foreground/92 [text-shadow:0_4px_20px_rgba(4,18,42,0.35)] sm:text-2xl sm:leading-9"
           >
-            <span className="block text-[0.42em] font-light leading-tight tracking-[-0.01em] text-secondary-foreground/85">Welcome to</span>
-            <span className="mt-1 block">Valleyview Medical Centre</span>
-            <span className="mt-5 block text-[clamp(1.35rem,2.6vw,2.6rem)] font-bold normal-case leading-tight tracking-[0.02em] text-accent-warm [text-shadow:none]">
-              Your health, connected with care.
-            </span>
+            Walk-in and family medicine clinics in Durham Region, Peterborough and Brantford
           </h1>
 
-          <p className="mt-7 max-w-xl text-base leading-7 text-secondary-foreground/85 sm:text-lg sm:leading-8">
-            Compassionate, comprehensive family care for individuals and families{" "}
-            {clinic ? `in ${clinic.city}.` : "across Durham Region, Peterborough and Brantford."}
-          </p>
-
           {/* Phones use the header and bottom bar for these actions. */}
-          <div className="mt-8 hidden flex-wrap gap-3 sm:flex">
+          <div className="mt-12 hidden flex-wrap gap-3 sm:flex">
             {clinic?.bookingUrl ? (
               <Button asChild size="lg" className="h-13 rounded-none bg-primary px-7 text-white hover:bg-primary/90">
                 <a href={clinic.bookingUrl}>
