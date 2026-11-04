@@ -53,9 +53,9 @@ describe("policy pages", () => {
     expect(render(PAGES[route]).match(/<h1[\s>]/g)).toHaveLength(1)
   })
 
-  it.each(Object.keys(PAGES))("%s spells the name Valley View Medical Centre", (route) => {
+  it.each(Object.keys(PAGES))("%s spells the name Valleyview Medical Centre", (route) => {
     const html = render(PAGES[route])
-    expect(html).not.toMatch(/Valleyview|Medical Center\b/)
+    expect(html).not.toMatch(/Valley View|Medical Center\b/)
   })
 
   it("clinic policies has the ten section ids in order", () => {

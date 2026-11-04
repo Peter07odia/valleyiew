@@ -5,9 +5,9 @@ import { canonicalUrl } from "@/config/clinic"
 import { SERVICE_FEES, SERVICE_FEES_INTRO } from "@/data/patient-policies"
 
 export const metadata: Metadata = {
-  title: { absolute: "Uninsured Service Fees | Valley View Medical Centre" },
+  title: "Uninsured Service Fees",
   description:
-    "Fees at Valley View Medical Centre for services not covered by OHIP, including sick notes, forms, driver’s medicals, TB tests and medical records.",
+    "Fees at Valleyview Medical Centre for services not covered by OHIP, including sick notes, forms, driver’s medicals, TB tests and medical records.",
   alternates: { canonical: canonicalUrl("/service-fees") },
 }
 

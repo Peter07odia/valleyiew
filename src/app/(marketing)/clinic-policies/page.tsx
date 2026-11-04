@@ -5,9 +5,9 @@ import { canonicalUrl } from "@/config/clinic"
 import { CLINIC_POLICIES, CLINIC_POLICIES_INTRO } from "@/data/patient-policies"
 
 export const metadata: Metadata = {
-  title: { absolute: "Clinic Policies | Valley View Medical Centre" },
+  title: "Clinic Policies",
   description:
-    "Valley View Medical Centre clinic policies on health cards, uninsured services, test results, appointments, prescription renewals, cancellations and no-show fees.",
+    "Valleyview Medical Centre clinic policies on health cards, uninsured services, test results, appointments, prescription renewals, cancellations and no-show fees.",
   alternates: { canonical: canonicalUrl("/clinic-policies") },
 }
 

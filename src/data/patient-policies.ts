@@ -188,7 +188,7 @@ export const SERVICE_FEES: ServiceFee[] = [
 ]
 
 export const PATIENT_RIGHTS_INTRO =
-  "At Valley View Medical Centre, we respect the rights of every patient. We also ask every patient to help us give the best care to you and to everyone who visits our clinics."
+  "At Valleyview Medical Centre, we respect the rights of every patient. We also ask every patient to help us give the best care to you and to everyone who visits our clinics."
 
 export interface PatientRight {
   heading: string

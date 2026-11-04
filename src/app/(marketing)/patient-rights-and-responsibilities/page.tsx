@@ -10,9 +10,9 @@ import {
 } from "@/data/patient-policies"
 
 export const metadata: Metadata = {
-  title: { absolute: "Patient Rights and Responsibilities | Valley View Medical Centre" },
+  title: "Patient Rights and Responsibilities",
   description:
-    "Your rights as a Valley View Medical Centre patient, including safety, respect and privacy, and what we ask of every patient who visits our clinics.",
+    "Your rights as a Valleyview Medical Centre patient, including safety, respect and privacy, and what we ask of every patient who visits our clinics.",
   alternates: { canonical: canonicalUrl("/patient-rights-and-responsibilities") },
 }
 
