@@ -34,6 +34,7 @@ export interface ClinicLocation {
   slug: string;
   name: string;
   shortName: string;
+  walkIn: boolean;
   address: string;
   city: string;
   province: string;
@@ -48,6 +49,8 @@ export interface ClinicLocation {
   heroImageAlt?: string;
   clinicPhoto?: string;
   clinicPhotoAlt?: string;
+  /** Real photos of this clinic; the first is the exterior, shown at the top of its location page. */
+  photos?: { src: string; alt: string }[];
   pharmacyName?: string;
   pharmacyUrl?: string;
   pharmacyLogoSrc?: string;
@@ -132,6 +135,11 @@ export function searchIndexingAllowed(): boolean {
     process.env.VERCEL_ENV !== "preview" &&
     isConfirmed(CLINIC_CONFIG.domainStatus)
   );
+}
+
+/** Self-referencing canonical on the confirmed main domain, regardless of preview URL overrides. */
+export function canonicalUrl(path: string): string {
+  return new URL(path, `https://${CLINIC_CONFIG.domain}`).toString();
 }
 
 export function getConfiguredSiteUrl(): URL {

@@ -1,11 +1,11 @@
 "use client"
-import Image from "next/image"
 import Link from "next/link"
 import { useRef, useState, useEffect, useCallback } from "react"
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react"
 import { usePreferredLocation } from "@/components/providers/preferred-location-provider"
 import { CLINIC_LOCATIONS } from "@/config/clinic"
-import { TEAM_MEMBER_BIOS, getTeamMemberImageSrc } from "@/lib/team"
+import { TEAM_MEMBER_BIOS } from "@/lib/team"
+import { DoctorPhoto } from "./doctor-photo"
 import { Reveal } from "@/components/shared/reveal"
 import styles from "./team-carousel.module.css"
 export function LocationTeamSection({ headingLevel = "h1", locationSlug, all = false }: { headingLevel?: "h1" | "h2"; locationSlug?: string; all?: boolean }) {
@@ -31,7 +31,7 @@ function DoctorCarousel({ doctors }: { doctors: typeof TEAM_MEMBER_BIOS }) {
       {doctors.map((bio,index)=>{
         const [credentials,role] = bio.role.includes(" | ") ? bio.role.split(" | ") : ["",bio.role]
         return <Link href={`/staff/${bio.id}`} key={bio.id} className={styles.cardLink} aria-label={`View profile of ${bio.name}, ${index+1} of ${doctors.length}`}>
-          <Reveal as="article" effect="flip" delay={(index % 4) * 100} className={styles.card}><div className={styles.cardHeader}><div className={styles.avatarWrap}><Image src={getTeamMemberImageSrc(bio.id)} alt={bio.name} fill sizes="88px" className={styles.avatarImg} style={{objectPosition:bio.imagePosition ?? "center top"}} /></div></div>
+          <Reveal as="article" effect="flip" delay={(index % 4) * 100} className={styles.card}><div className={styles.cardHeader}><div className={styles.avatarWrap}><DoctorPhoto doctorId={bio.id} sizes="88px" className={styles.avatarImg} /></div></div>
             <div className={styles.cardBody}><div className={styles.doctorInfo}><h3>{bio.name}</h3><p>{role}</p>{credentials && <p className={styles.credentials}>{credentials}</p>}</div><span className={styles.viewProfile}>View Profile <ArrowRight size={14} aria-hidden="true" /></span></div>
           </Reveal>
         </Link>

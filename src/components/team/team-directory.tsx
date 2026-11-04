@@ -17,6 +17,7 @@ import {
   type TeamCategory,
 } from "@/lib/team"
 import { cn } from "@/lib/utils"
+import { DoctorPhoto } from "./doctor-photo"
 import styles from "./team-carousel.module.css"
 
 interface Person {
@@ -24,16 +25,17 @@ interface Person {
   name: string
   title: string
   credentials?: string
+  /** Support staff photo; doctors use DoctorPhoto instead. */
   image: string
   profileId: string | null
-  imagePosition?: string
+  isDoctor?: boolean
 }
 
 function peopleFor(category: TeamCategory, clinicId: string | null, doctorIds: string[] | null): Person[] {
   if (category === "doctors") {
     return TEAM_MEMBER_BIOS.filter(bio => !doctorIds || doctorIds.includes(bio.id)).map(bio => {
       const [credentials, title] = bio.role.includes(" | ") ? bio.role.split(" | ") : ["", bio.role]
-      return { key: bio.id, name: bio.name, title, credentials, image: getTeamMemberImageSrc(bio.id), profileId: bio.id, imagePosition: bio.imagePosition }
+      return { key: bio.id, name: bio.name, title, credentials, image: getTeamMemberImageSrc(bio.id), profileId: bio.id, isDoctor: true }
     })
   }
   const seen = new Set<string>()
@@ -59,14 +61,17 @@ function PersonCard({ person, index }: { person: Person; index: number }) {
     <Reveal as="article" effect="flip" delay={(index % 4) * 100} className={styles.card}>
       <div className={styles.cardHeader}>
         <div className={styles.avatarWrap}>
-          <Image
-            src={person.image}
-            alt={person.name}
-            fill
-            sizes="88px"
-            className={cn(styles.avatarImg, logo && "object-contain p-2")}
-            style={logo ? undefined : { objectPosition: person.imagePosition ?? "center top" }}
-          />
+          {person.isDoctor && person.profileId ? (
+            <DoctorPhoto doctorId={person.profileId} sizes="88px" className={styles.avatarImg} />
+          ) : (
+            <Image
+              src={person.image}
+              alt={person.name}
+              fill
+              sizes="88px"
+              className={cn(styles.avatarImg, logo && "object-contain p-2")}
+            />
+          )}
         </div>
       </div>
       <div className={styles.cardBody}>

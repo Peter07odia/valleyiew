@@ -1,5 +1,7 @@
+import { locationSeo, medicalClinicJsonLd } from "@/lib/location-seo"
 import { LocationTeamSection } from "@/components/team/location-team-section"
 import type { Metadata } from "next"
+import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import {
@@ -23,7 +25,7 @@ import { HoursTable } from "@/components/locations/hours-table"
 import { LocationMap } from "@/components/locations/location-map"
 import { PharmacyEmblemCard } from "@/components/pharmacy/pharmacy-emblem-card"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardHeader } from "@/components/ui/card"
 
 interface LocationPageProps {
   params: Promise<{ slug: string }>
@@ -45,9 +47,11 @@ export async function generateMetadata({
     return { title: "Location Not Found" }
   }
 
+  const seo = locationSeo(location)
   return {
-    title: `${location.shortName} Clinic`,
-    description: `Valleyview Medical Centre ${location.shortName} in ${location.city}, Ontario. Find clinic hours, contact details and Ocean booking.`,
+    title: seo.title,
+    description: seo.description,
+    alternates: { canonical: seo.url },
   }
 }
 
@@ -62,16 +66,23 @@ export default async function LocationPage({ params }: LocationPageProps) {
   const isComingSoon = location.isComingSoon
   const hoursPublished = hasPublishedHours(location)
   const directionsUrl = getGoogleMapsDirectionsUrl(location)
+  const [exteriorPhoto, ...interiorPhotos] = location.photos ?? []
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(medicalClinicJsonLd(location)).replace(/</g, "\\u003c") }}
+      />
       <PageHero
         title={location.name}
         description={
           isComingSoon
             ? "Opening details will be announced once confirmed."
-            : "Find contact details, directions and online booking for your clinic. Call the clinic for appointment and walk-in availability."
+            : locationSeo(location).intro
         }
+        imageSrc={exteriorPhoto?.src}
+        imageAlt={exteriorPhoto?.alt}
       />
 
       {location.pharmacyName ? (
@@ -90,9 +101,9 @@ export default async function LocationPage({ params }: LocationPageProps) {
           <div className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle className="text-xl font-semibold">
+                <h2 className="text-xl font-semibold">
                   Contact Information
-                </CardTitle>
+                </h2>
               </CardHeader>
               <CardContent className="space-y-4">
                 {isComingSoon && location.comingSoonMessage ? (
@@ -223,9 +234,9 @@ export default async function LocationPage({ params }: LocationPageProps) {
 
             <Card>
               <CardHeader>
-                <CardTitle className="text-xl font-semibold">
+                <h2 className="text-xl font-semibold">
                   Clinic Hours
-                </CardTitle>
+                </h2>
               </CardHeader>
               <CardContent>
                 {hoursPublished ? (
@@ -243,9 +254,9 @@ export default async function LocationPage({ params }: LocationPageProps) {
           <div>
             <Card>
               <CardHeader>
-                <CardTitle className="text-xl font-semibold">
+                <h2 className="text-xl font-semibold">
                   {isComingSoon ? "Opening Soon" : "Find Us"}
-                </CardTitle>
+                </h2>
               </CardHeader>
               <CardContent>
                 {isComingSoon ? (
@@ -261,6 +272,32 @@ export default async function LocationPage({ params }: LocationPageProps) {
           </div>
         </div>
       </section>
+      {interiorPhotos.length ? (
+        <section
+          aria-labelledby="clinic-photos-heading"
+          className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8"
+        >
+          <h2 id="clinic-photos-heading" className="mb-6 text-2xl font-semibold">
+            Clinic photos
+          </h2>
+          <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {interiorPhotos.map((photo) => (
+              <li
+                key={photo.src}
+                className="relative aspect-[4/3] overflow-hidden rounded-lg bg-muted ring-1 ring-border"
+              >
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover"
+                />
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
       <LocationTeamSection headingLevel="h2" locationSlug={location.slug} />
     </>
   )

@@ -35,7 +35,17 @@ const QUICK_LINKS = [
   { label: "Services", href: "/services" },
   { label: "Health Resources", href: "/#resources" },
   { label: "Locations", href: "/locations" },
+  { label: "Careers", href: "/careers" },
   BOOKING_LINK,
+];
+
+export const FOR_PATIENTS_LINKS = [
+  { label: "Clinic Policies", href: "/clinic-policies" },
+  { label: "Uninsured Service Fees", href: "/service-fees" },
+  { label: "Patient Rights and Responsibilities", href: "/patient-rights-and-responsibilities" },
+  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Accessibility", href: "/accessibility" },
+  { label: "Terms of Service", href: "/terms-of-service" },
 ];
 
 export function SiteFooter() {
@@ -55,7 +65,7 @@ export function SiteFooter() {
         />
 
         <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
             {/* Column 1: Branding */}
             <div className="flex flex-col gap-5">
               <Link
@@ -93,7 +103,28 @@ export function SiteFooter() {
               </nav>
             </div>
 
-            {/* Column 3: Locations */}
+            {/* Column 3: For patients */}
+            <div className="flex flex-col gap-4">
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-secondary-foreground/90">
+                For patients
+              </h3>
+              <nav aria-label="For patients">
+                <ul className="flex flex-col gap-2.5">
+                  {FOR_PATIENTS_LINKS.map((link) => (
+                    <li key={link.href}>
+                      <Link
+                        href={link.href}
+                        className="text-sm text-secondary-foreground/70 transition-colors hover:text-primary"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </div>
+
+            {/* Column 4: Locations */}
             <div className="flex flex-col gap-4">
               <h3 className="text-sm font-semibold uppercase tracking-wider text-secondary-foreground/90">
                 Our Locations
@@ -120,11 +151,6 @@ export function SiteFooter() {
               {CLINIC_CONFIG.organizationName} &copy; {new Date().getFullYear()}
               . All rights reserved.
             </p>
-            <nav aria-label="Legal" className="flex gap-4">
-              <Link href="/privacy-policy">Privacy</Link>
-              <Link href="/terms-of-service">Terms</Link>
-              <Link href="/accessibility">Accessibility</Link>
-            </nav>
           </div>
         </div>
       </div>

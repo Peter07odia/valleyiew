@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -28,6 +29,10 @@ import { ClinicTimings } from "@/components/home/clinic-timings";
 import { LocationTeamSection } from "@/components/team/location-team-section";
 import { Reveal } from "@/components/shared/reveal";
 import { Button } from "@/components/ui/button";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "https://valleyviewmedical.ca/" },
+};
 
 const CARE_REASONS = [
   {

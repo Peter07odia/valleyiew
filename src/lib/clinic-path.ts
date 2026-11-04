@@ -15,3 +15,8 @@ export function clinicSlugForPath(pathname: string | null | undefined): string |
   const clinics = CLINIC_LOCATIONS.filter(location => location.doctorIds.includes(slug))
   return clinics.length === 1 ? clinics[0].slug : null
 }
+
+/** The clinic named by a `/locations/<slug>` page, or null. Doctor profiles are not included. */
+export function locationSlugForPath(pathname: string | null | undefined): string | null {
+  return /^\/locations\/[^/?#]+\/?$/.test(pathname ?? "") ? clinicSlugForPath(pathname) : null
+}

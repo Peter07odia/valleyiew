@@ -8,6 +8,7 @@ import { CheckCircle2, ChevronDown, ChevronLeft, ChevronRight, Clock, Mail, MapP
 
 import { usePreferredLocation } from "@/components/providers/preferred-location-provider"
 import { CityTab } from "./city-tab"
+import { CLINIC_CARD_HOVER, chooseOnCardClick } from "./clinic-card-click"
 import { Popover, PopoverAnchor, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { CLINIC_LOCATIONS, REGIONS } from "@/config/clinic"
 import { clinicSlugForPath } from "@/lib/clinic-path"
@@ -364,7 +365,7 @@ function ClinicPanel({
       <div
         ref={track}
         onScroll={update}
-        className="-mx-1 flex snap-x snap-mandatory gap-2.5 overflow-x-auto overscroll-x-contain px-1 pb-2 [scrollbar-width:thin]"
+        className="-mx-1 flex snap-x snap-mandatory gap-2.5 overflow-x-auto overscroll-x-contain px-1 pt-2 pb-2 [scrollbar-width:thin]"
       >
         {CLINIC_LOCATIONS.map(location => (
           <ClinicCard
@@ -389,9 +390,11 @@ function ClinicCard({ location, selected, onChoose }: { location: ClinicLocation
       data-selected={selected}
       className={cn(
         // Cards share the row so all seven fit on wide screens; narrower screens scroll sideways.
-        "flex w-[13rem] shrink-0 snap-start flex-col overflow-hidden rounded-[18px] border bg-white/85 shadow-[0_18px_45px_-30px_rgba(28,46,74,0.5)] transition-all duration-200 lg:w-auto lg:min-w-[10rem] lg:max-w-[15rem] lg:flex-1",
-        selected ? "border-primary ring-2 ring-primary/35" : "border-white/70 hover:-translate-y-0.5 hover:border-primary/40",
+        "group/card flex w-[13rem] shrink-0 snap-start flex-col overflow-hidden rounded-[18px] border bg-white/85 shadow-[0_18px_45px_-30px_rgba(28,46,74,0.5)] hover:border-primary hover:bg-white lg:w-auto lg:min-w-[10rem] lg:max-w-[15rem] lg:flex-1",
+        CLINIC_CARD_HOVER,
+        selected ? "border-primary ring-2 ring-primary/35" : "border-white/70",
       )}
+      onClick={event => chooseOnCardClick(event, onChoose)}
     >
       <div className={cn("flex items-center justify-center gap-1.5 px-2 py-1 text-[11px] font-medium text-white", info.tone)}>
         <span className="size-1.5 rounded-full bg-white/85" aria-hidden="true" />
@@ -433,7 +436,7 @@ function ClinicCard({ location, selected, onChoose }: { location: ClinicLocation
             aria-label={selected ? `${location.shortName} is your clinic` : `Choose ${location.shortName}`}
             className={cn(
               "h-8 w-full rounded-full text-xs font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
-              selected ? "bg-secondary text-white" : "bg-primary text-white hover:bg-primary/90",
+              selected ? "bg-secondary text-white" : "bg-primary text-white group-hover/card:bg-secondary",
             )}
           >
             {selected ? "Your clinic" : "Choose this clinic"}

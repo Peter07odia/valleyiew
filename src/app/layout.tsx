@@ -31,6 +31,7 @@ export const metadata: Metadata = {
     "medical centre",
   ],
   metadataBase: getConfiguredSiteUrl(),
+  verification: { google: "FTjiSSbfjJleLhIi6s-hgnqCBF8_MPw4-83VDkhzRbs" },
   robots: searchIndexingAllowed()
     ? { index: true, follow: true }
     : { index: false, follow: false },

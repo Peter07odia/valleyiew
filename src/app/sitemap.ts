@@ -37,6 +37,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.7,
     },
+    ...[
+      "/service-fees",
+      "/patient-rights-and-responsibilities",
+      "/privacy-policy",
+      "/terms-of-service",
+      "/accessibility",
+    ].map((path) => ({
+      url: `${BASE_URL}${path}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.5,
+    })),
     {
       url: `${BASE_URL}/book`,
       lastModified: new Date(),
@@ -54,6 +66,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.7,
+    },
+    {
+      url: `${BASE_URL}/careers`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.4,
     },
     {
       url: `${BASE_URL}/faq`,

@@ -12,7 +12,7 @@
     "postalCodeStatus": "confirmed",
     "phone": "905-434-1662",
     "fax": "905-747-0999",
-    "email": "info@valleyviewmedical.ca",
+    "email": "whitby@valleyviewmedical.ca",
     "contactStatus": "confirmed",
     "bookingUrl": "https://ocean.cognisantmd.com/online-booking/04f9eeaf-8434-4153-aa26-2d0c910f4020",
     "heroImage": "/images/sections/home-care-photo-whitby-4k.png",
@@ -86,8 +86,8 @@
         "description": "Send a new prescription to the pharmacy."
       },
       {
-        "label": "Refill Prescription",
-        "href": "https://www.bookmyrefill.com/refill/9054351100",
+        "label": "Refill prescriptions at East Whitby Pharmacy",
+        "href": "https://eastwhitbypharmacy.erefills.ca/centralprofile/signin.php",
         "description": "Request a refill of an existing prescription."
       },
       {
@@ -112,7 +112,16 @@
       }
     ],
     "clinicPhoto": "/images/locations/whitby-clinic.jpg",
-    "clinicPhotoAlt": "Valleyview Medical Centre and East Whitby IDA Pharmacy storefront on Dundas St E, Whitby"
+    "clinicPhotoAlt": "Valleyview Medical Centre and East Whitby IDA Pharmacy storefront on Dundas St E, Whitby",
+    "photos": [
+      {
+        "src": "/images/locations/whitby-clinic.jpg",
+        "alt": "Valleyview Medical Centre and East Whitby IDA Pharmacy storefront on Dundas St E, Whitby"
+      }
+    ],
+    "walkIn": true,
+    "lat": 43.8896029,
+    "lng": -78.901594
   },
   {
     "id": "oshawa",
@@ -127,7 +136,7 @@
     "postalCodeStatus": "confirmed",
     "phone": "905-367-5402",
     "fax": "905-291-7274",
-    "email": "valleyviewharmony@gmail.com",
+    "email": "oshawa@valleyviewmedical.ca",
     "contactStatus": "confirmed",
     "bookingUrl": "https://ocean.cognisantmd.com/online-booking/3b9e0482-a387-48f5-afd3-f0aedf0064f9",
     "heroImage": "/images/hero/oshawa.jpg",
@@ -195,8 +204,17 @@
     "pharmacyUrl": "https://pharmachoice.erefills.ca/pharmachoice/centralprofile/orderpage3.php?sphone=(905)%367-8510&sname=Harmony",
     "pharmacyLogoSrc": "/images/pharmacies/harmony-pharmachoice.png",
     "pharmacyLogoAlt": "Harmony PharmaChoice logo",
-    "clinicPhoto": "/images/locations/oshawa-clinic.jpg",
-    "clinicPhotoAlt": "Valleyview Medical Centre storefront on Taunton Rd E, Oshawa"
+    "clinicPhoto": "/images/locations/oshawa-storefront.jpg",
+    "clinicPhotoAlt": "Valleyview Medical Centre and pharmacy storefront on Taunton Rd E, Oshawa",
+    "photos": [
+      {
+        "src": "/images/locations/oshawa-storefront.jpg",
+        "alt": "Valleyview Medical Centre and pharmacy storefront on Taunton Rd E, Oshawa"
+      }
+    ],
+    "walkIn": true,
+    "lat": 43.9395834,
+    "lng": -78.8443571
   },
   {
     "id": "courtice",
@@ -211,7 +229,7 @@
     "postalCodeStatus": "confirmed",
     "phone": "905-674-1447",
     "fax": "905-674-8323",
-    "email": "valleyviewcourtice@gmail.com",
+    "email": "courtice@valleyviewmedical.ca",
     "contactStatus": "confirmed",
     "bookingUrl": "https://ocean.cognisantmd.com/online-booking/38259596-8c5a-4814-9fee-31fc9f106803",
     "heroImage": "/images/sections/home-care-photo-courtice-4k.png",
@@ -276,8 +294,17 @@
     "pharmacyUrl": "https://maplemeds.ca/",
     "pharmacyLogoSrc": "/images/pharmacies/maplemeds.png",
     "pharmacyLogoAlt": "MapleMeds logo",
-    "clinicPhoto": "/images/locations/courtice.jpg",
-    "clinicPhotoAlt": "Valleyview Medical Centre storefront on Nash Rd, Courtice"
+    "clinicPhoto": "/images/locations/courtice-storefront.jpg",
+    "clinicPhotoAlt": "Valleyview Medical Centre storefront at 1656 Nash Rd, Courtice",
+    "photos": [
+      {
+        "src": "/images/locations/courtice-storefront.jpg",
+        "alt": "Valleyview Medical Centre storefront at 1656 Nash Rd, Courtice"
+      }
+    ],
+    "walkIn": true,
+    "lat": 43.9147865,
+    "lng": -78.7889253
   },
   {
     "id": "lansdowne-mall",
@@ -292,7 +319,7 @@
     "postalCodeStatus": "confirmed",
     "phone": "905-434-1912",
     "fax": "905-595-1414",
-    "email": "Valleyviewmedical.css@gmail.com",
+    "email": "clinic.css@valleyviewmedical.ca",
     "contactStatus": "confirmed",
     "bookingUrl": "https://ocean.cognisantmd.com/online-booking/adb0456d-e954-44d3-b5ba-f3c75e48e345",
     "heroImage": "/images/sections/home-care-photo-desktop-v2.png",
@@ -353,7 +380,10 @@
       "eseigbe-uwadia"
     ],
     "clinicPhoto": "/images/sections/home-care-photo-mobile-v2.png",
-    "clinicPhotoAlt": "A clinician speaking with a patient at Valleyview Medical Centre"
+    "clinicPhotoAlt": "A clinician speaking with a patient at Valleyview Medical Centre",
+    "walkIn": true,
+    "lat": 44.2815595,
+    "lng": -78.3328036
   },
   {
     "id": "peterborough-pharmacy",
@@ -368,7 +398,7 @@
     "postalCodeStatus": "confirmed",
     "phone": "705-813-8007",
     "fax": "705-813-8011",
-    "email": "Valleyviewmedical.lss@gmail.com",
+    "email": "clinic.lss@valleyviewmedical.ca",
     "contactStatus": "confirmed",
     "bookingUrl": "https://ocean.cognisantmd.com/online-booking/0fc11d64-70da-4264-acb3-35ad99f7cff5",
     "heroImage": "/images/sections/home-care-photo-peterborough-pharmacy.jpg",
@@ -429,7 +459,10 @@
       "rubayat-hussain"
     ],
     "clinicPhoto": "/images/brantford/health-resources-still-life.jpg",
-    "clinicPhotoAlt": "Health resources on a desk in a family practice"
+    "clinicPhotoAlt": "Health resources on a desk in a family practice",
+    "walkIn": true,
+    "lat": 44.2758546,
+    "lng": -78.3726993
   },
   {
     "id": "lynden-road",
@@ -444,7 +477,7 @@
     "postalCodeStatus": "confirmed",
     "phone": "519-398-7477",
     "fax": "519-398-7555",
-    "email": "",
+    "email": "clinic.lynden@valleyviewmedical.ca",
     "contactStatus": "confirmed",
     "bookingUrl": "https://ocean.cognisantmd.com/online-booking/6a6d7f25-f36c-4ff2-aef0-49f1034847fe",
     "heroImage": "/images/brantford/hero-clinic-conversation.jpg",
@@ -503,8 +536,25 @@
     "doctorIds": [
       "tunde-samuel-omisore"
     ],
-    "clinicPhoto": "/images/brantford/family-care-consultation.jpg",
-    "clinicPhotoAlt": "A family doctor meeting with a patient"
+    "clinicPhoto": "/images/locations/brantford-lynden-road-storefront.jpg",
+    "clinicPhotoAlt": "Lynden Pharmacy and Valleyview Medical Centre storefront on Lynden Rd, Brantford",
+    "photos": [
+      {
+        "src": "/images/locations/brantford-lynden-road-storefront.jpg",
+        "alt": "Lynden Pharmacy and Valleyview Medical Centre storefront on Lynden Rd, Brantford"
+      },
+      {
+        "src": "/images/locations/brantford-lynden-road-reception.jpg",
+        "alt": "Reception desk inside the Lynden Rd clinic"
+      },
+      {
+        "src": "/images/locations/brantford-lynden-road-pharmacy.jpg",
+        "alt": "Prescriptions counter and shelves at Lynden Pharmacy"
+      }
+    ],
+    "walkIn": true,
+    "lat": 43.175318,
+    "lng": -80.2327691
   },
   {
     "id": "colborne-east",
@@ -519,7 +569,7 @@
     "postalCodeStatus": "confirmed",
     "phone": "519-929-9819",
     "fax": "519-929-9820",
-    "email": "",
+    "email": "clinic.colborne@valleyviewmedical.ca",
     "contactStatus": "confirmed",
     "bookingUrl": "https://ocean.cognisantmd.com/online-booking/71398f83-8da0-45d1-9a22-aa1b4a996f43",
     "heroImage": "/images/brantford/hero-colborne-african-physician.jpg",
@@ -578,7 +628,20 @@
     "doctorIds": [
       "kolawole-gbolagade"
     ],
-    "clinicPhoto": "/images/brantford/comprehensive-family-care.jpg",
-    "clinicPhotoAlt": "A family doctor providing care to a patient"
+    "clinicPhoto": "/images/locations/brantford-colborne-storefront.jpg",
+    "clinicPhotoAlt": "Maple Care Pharmacy and Valleyview Medical Centre storefront on Colborne St E, Brantford",
+    "photos": [
+      {
+        "src": "/images/locations/brantford-colborne-storefront.jpg",
+        "alt": "Maple Care Pharmacy and Valleyview Medical Centre storefront on Colborne St E, Brantford"
+      },
+      {
+        "src": "/images/locations/brantford-colborne-reception.jpg",
+        "alt": "Reception desk and waiting area inside the Colborne St E clinic"
+      }
+    ],
+    "walkIn": true,
+    "lat": 43.1388028,
+    "lng": -80.2416964
   }
 ]

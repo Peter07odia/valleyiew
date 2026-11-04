@@ -13,6 +13,7 @@ import {
   type ClinicLocation,
 } from "@/lib/constants"
 import { cn } from "@/lib/utils"
+import { CLINIC_CARD_HOVER, chooseOnCardClick } from "./clinic-card-click"
 
 const CLOSE_DELAY_MS = 150
 
@@ -29,6 +30,7 @@ function today(location: ClinicLocation) {
 /**
  * One city in the top bar. Hovering (or focusing/clicking) drops down a short
  * card per clinic in that city; single-clinic cities also switch on click.
+ * Hovering a clinic card highlights it; clicking the card or its button chooses it.
  */
 export function CityTab({
   city,
@@ -49,6 +51,10 @@ export function CityTab({
   const cancelClose = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current)
     closeTimer.current = null
+  }
+  const choose = (slug: string) => {
+    onChoose(slug)
+    setOpen(false)
   }
   const show = () => {
     cancelClose()
@@ -108,7 +114,11 @@ export function CityTab({
             const selected = location.slug === selectedSlug
             const hours = today(location)
             return (
-              <div key={location.slug} className="flex flex-col gap-2.5 p-4">
+              <div
+                key={location.slug}
+                onClick={event => chooseOnCardClick(event, () => choose(location.slug))}
+                className={cn("group/card relative flex flex-col gap-2.5 bg-white p-4 hover:bg-accent", CLINIC_CARD_HOVER)}
+              >
                 <div className="flex items-start justify-between gap-2">
                   <p className="font-serif text-lg leading-tight text-secondary">{single ? location.shortName : branchLabel(location)}</p>
                   {selected ? <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-primary" aria-label="Your clinic" /> : null}
@@ -141,14 +151,11 @@ export function CityTab({
                 <div className="mt-auto grid grid-cols-[1fr_auto] items-center gap-2 pt-1">
                   <button
                     type="button"
-                    onClick={() => {
-                      onChoose(location.slug)
-                      setOpen(false)
-                    }}
+                    onClick={() => choose(location.slug)}
                     aria-pressed={selected}
                     className={cn(
                       "h-8 text-xs font-semibold transition-colors",
-                      selected ? "bg-secondary text-white" : "bg-primary text-white hover:bg-primary/90",
+                      selected ? "bg-secondary text-white" : "bg-primary text-white group-hover/card:bg-secondary",
                     )}
                   >
                     {selected ? "Your clinic" : "Choose this clinic"}
