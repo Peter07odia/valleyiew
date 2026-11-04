@@ -9,6 +9,9 @@
  * publish it as written.
  */
 
+/** Prefix of every unresolved item; the page components use it to highlight them. */
+export const UNCONFIRMED_MARKER = "CONFIRM:"
+
 export type InlineText = string | { text: string; href: string }
 export type Paragraph = InlineText[]
 
@@ -146,10 +149,10 @@ export const CLINIC_POLICIES: PolicySection[] = [
   },
 ]
 
-export const SERVICE_FEES_INTRO: Paragraph[] = [
-  [
-    "These services are not covered by OHIP. Fees depend on the service, and complex requests may cost more. Please ask your clinic’s front desk for the exact fee before your visit.",
-  ],
+export const SERVICE_FEES_INTRO =
+  "These services are not covered by OHIP. Fees depend on the service, and complex requests may cost more. Please ask your clinic’s front desk for the exact fee before your visit."
+
+export const SERVICE_FEES_NOTES: Paragraph[] = [
   ["CONFIRM: that every fee below is current for all seven clinics."],
 ]
 
@@ -158,33 +161,74 @@ export interface ServiceFee {
   fee: string
 }
 
-export const SERVICE_FEES: ServiceFee[] = [
-  { service: "Sick note or doctor’s letter", fee: "$25 to $50" },
-  { service: "Form completion (depends on form)", fee: "$40 to $80" },
-  { service: "Driver’s medical exam", fee: "$125 to $200" },
-  { service: "Non-OHIP visit", fee: "$100 to $160" },
-  { service: "TB test", fee: "$40 to $60" },
-  { service: "TB read", fee: "$20 to $40" },
-  { service: "Attending physician statement", fee: "$50 to $150" },
-  { service: "Prescription for massage or physiotherapy", fee: "$30 to $50" },
-  { service: "Chiropractic, orthotics or compression stockings form", fee: "$30 to $60" },
-  { service: "CRA tax credit form", fee: "$45 to $85" },
-  { service: "Daycare note", fee: "$25 to $50" },
-  { service: "Long-term disability form", fee: "$100 to $150" },
-  { service: "Short-term disability form", fee: "$60 to $100" },
-  { service: "Disability tax credit form", fee: "$85 to $120" },
-  { service: "MTO physical and form", fee: "$120 to $180" },
-  { service: "Immunization form", fee: "$25 to $50" },
-  { service: "Medical records request", fee: "$50 to $100" },
+export interface ServiceFeeGroup {
+  id: string
+  title: string
+  fees: ServiceFee[]
+}
+
+// Grouped for easier scanning; every fee and amount is unchanged from the approved list.
+export const SERVICE_FEE_GROUPS: ServiceFeeGroup[] = [
   {
-    service: "Chart copy",
-    fee: "CONFIRM: fee for the first 20 pages (old site only said $0.25 per page after 20)",
+    id: "notes-letters",
+    title: "Notes and letters",
+    fees: [
+      { service: "Sick note or doctor’s letter", fee: "$25 to $50" },
+      { service: "Daycare note", fee: "$25 to $50" },
+      { service: "Prescription for massage or physiotherapy", fee: "$30 to $50" },
+    ],
   },
-  { service: "Ear flushing", fee: "$30 to $50 per ear" },
-  { service: "FAF form", fee: "$40 to $80" },
-  { service: "Wart or skin tag removal (1 to 3)", fee: "$10 to $30" },
-  { service: "Wart or skin tag removal (4 to 5)", fee: "$50 to $80" },
-  { service: "No-show fee", fee: "CONFIRM: same amount as the No-Show Fee policy" },
+  {
+    id: "forms",
+    title: "Forms",
+    fees: [
+      { service: "Form completion (depends on form)", fee: "$40 to $80" },
+      { service: "Attending physician statement", fee: "$50 to $150" },
+      { service: "Chiropractic, orthotics or compression stockings form", fee: "$30 to $60" },
+      { service: "CRA tax credit form", fee: "$45 to $85" },
+      { service: "Long-term disability form", fee: "$100 to $150" },
+      { service: "Short-term disability form", fee: "$60 to $100" },
+      { service: "Disability tax credit form", fee: "$85 to $120" },
+      { service: "Immunization form", fee: "$25 to $50" },
+      { service: "FAF form", fee: "$40 to $80" },
+    ],
+  },
+  {
+    id: "exams-visits",
+    title: "Exams and visits",
+    fees: [
+      { service: "Driver’s medical exam", fee: "$125 to $200" },
+      { service: "MTO physical and form", fee: "$120 to $180" },
+      { service: "Non-OHIP visit", fee: "$100 to $160" },
+    ],
+  },
+  {
+    id: "tests-procedures",
+    title: "Tests and procedures",
+    fees: [
+      { service: "TB test", fee: "$40 to $60" },
+      { service: "TB read", fee: "$20 to $40" },
+      { service: "Ear flushing", fee: "$30 to $50 per ear" },
+      { service: "Wart or skin tag removal (1 to 3)", fee: "$10 to $30" },
+      { service: "Wart or skin tag removal (4 to 5)", fee: "$50 to $80" },
+    ],
+  },
+  {
+    id: "medical-records",
+    title: "Medical records",
+    fees: [
+      { service: "Medical records request", fee: "$50 to $100" },
+      {
+        service: "Chart copy",
+        fee: "CONFIRM: fee for the first 20 pages (old site only said $0.25 per page after 20)",
+      },
+    ],
+  },
+  {
+    id: "missed-appointments",
+    title: "Missed appointments",
+    fees: [{ service: "No-show fee", fee: "CONFIRM: same amount as the No-Show Fee policy" }],
+  },
 ]
 
 export const PATIENT_RIGHTS_INTRO =
@@ -197,19 +241,19 @@ export interface PatientRight {
 
 export const PATIENT_RIGHTS: PatientRight[] = [
   {
-    heading: "Safety and respect.",
+    heading: "Safety and respect",
     body: [
       "You will receive respectful, compassionate care that does not discriminate and that respects your values, beliefs and safety. If something unexpected happens during your care, we will tell you and involve you in any changes to your care.",
     ],
   },
   {
-    heading: "Taking part in your care.",
+    heading: "Taking part in your care",
     body: [
       "You have the right to know who your healthcare providers are, to receive clear information about your diagnosis and treatment, to make choices about your care, to seek a second opinion, and to be told about any research projects.",
     ],
   },
   {
-    heading: "Privacy.",
+    heading: "Privacy",
     body: [
       "You have the right to privacy and confidentiality, to control your personal information, to see your health record and ask for corrections, and to have your information kept secure. See our ",
       { text: "Privacy Policy", href: "/privacy-policy" },
