@@ -118,7 +118,10 @@
         "src": "/images/locations/whitby-clinic.jpg",
         "alt": "Valleyview Medical Centre and East Whitby IDA Pharmacy storefront on Dundas St E, Whitby"
       }
-    ]
+    ],
+    "walkIn": true,
+    "lat": 43.8896029,
+    "lng": -78.901594
   },
   {
     "id": "oshawa",
@@ -208,7 +211,10 @@
         "src": "/images/locations/oshawa-storefront.jpg",
         "alt": "Valleyview Medical Centre and pharmacy storefront on Taunton Rd E, Oshawa"
       }
-    ]
+    ],
+    "walkIn": true,
+    "lat": 43.9395834,
+    "lng": -78.8443571
   },
   {
     "id": "courtice",
@@ -295,7 +301,10 @@
         "src": "/images/locations/courtice-storefront.jpg",
         "alt": "Valleyview Medical Centre storefront at 1656 Nash Rd, Courtice"
       }
-    ]
+    ],
+    "walkIn": true,
+    "lat": 43.9147865,
+    "lng": -78.7889253
   },
   {
     "id": "lansdowne-mall",
@@ -371,7 +380,10 @@
       "eseigbe-uwadia"
     ],
     "clinicPhoto": "/images/sections/home-care-photo-mobile-v2.png",
-    "clinicPhotoAlt": "A clinician speaking with a patient at Valleyview Medical Centre"
+    "clinicPhotoAlt": "A clinician speaking with a patient at Valleyview Medical Centre",
+    "walkIn": true,
+    "lat": 44.2815595,
+    "lng": -78.3328036
   },
   {
     "id": "peterborough-pharmacy",
@@ -447,7 +459,10 @@
       "rubayat-hussain"
     ],
     "clinicPhoto": "/images/brantford/health-resources-still-life.jpg",
-    "clinicPhotoAlt": "Health resources on a desk in a family practice"
+    "clinicPhotoAlt": "Health resources on a desk in a family practice",
+    "walkIn": true,
+    "lat": 44.2758546,
+    "lng": -78.3726993
   },
   {
     "id": "lynden-road",
@@ -536,7 +551,10 @@
         "src": "/images/locations/brantford-lynden-road-pharmacy.jpg",
         "alt": "Prescriptions counter and shelves at Lynden Pharmacy"
       }
-    ]
+    ],
+    "walkIn": true,
+    "lat": 43.175318,
+    "lng": -80.2327691
   },
   {
     "id": "colborne-east",
@@ -621,6 +639,9 @@
         "src": "/images/locations/brantford-colborne-reception.jpg",
         "alt": "Reception desk and waiting area inside the Colborne St E clinic"
       }
-    ]
+    ],
+    "walkIn": true,
+    "lat": 43.1388028,
+    "lng": -80.2416964
   }
 ]

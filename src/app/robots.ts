@@ -1,9 +1,10 @@
 import type { MetadataRoute } from "next"
-import { getConfiguredSiteUrl, searchIndexingAllowed } from "@/config/clinic"
+import { searchIndexingAllowed } from "@/config/clinic"
 
 export default function robots(): MetadataRoute.Robots {
   if (!searchIndexingAllowed()) {
     return {
+      sitemap: "https://valleyviewmedical.ca/sitemap.xml",
       rules: {
         userAgent: "*",
         disallow: "/",
@@ -17,6 +18,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/", "/admin", "/registration-reports", "/auth"],
     },
-    sitemap: `${getConfiguredSiteUrl().origin}/sitemap.xml`,
+    sitemap: "https://valleyviewmedical.ca/sitemap.xml",
   }
 }

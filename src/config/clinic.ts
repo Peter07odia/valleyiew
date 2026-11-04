@@ -34,6 +34,7 @@ export interface ClinicLocation {
   slug: string;
   name: string;
   shortName: string;
+  walkIn: boolean;
   address: string;
   city: string;
   province: string;

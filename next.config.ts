@@ -45,6 +45,12 @@ export const HOST_REDIRECTS: Redirect[] = [
 
 const nextConfig: NextConfig = {
   async redirects() { return [
+    {
+      source: "/:path*",
+      has: [{ type: "host", value: "www.valleyviewmedical.ca" }],
+      destination: `${MAIN_SITE}/:path*`,
+      statusCode: 301,
+    },
     ...HOST_REDIRECTS,
     // Dr. Sheila Khadir no longer practises with Valleyview (2026-10-29).
     { source: "/doctors/dr-sheila-khadir", destination: "/team", permanent: true },

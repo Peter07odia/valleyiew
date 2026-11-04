@@ -47,6 +47,12 @@ describe("old domain redirects", () => {
     expect(resolve("www.valleyviewmedical.ca", "/team")).toBeNull()
     expect(HOST_REDIRECTS.every(r => r.permanent)).toBe(true)
     const all = await nextConfig.redirects!()
+    expect(all).toContainEqual({
+      source: "/:path*",
+      has: [{ type: "host", value: "www.valleyviewmedical.ca" }],
+      destination: `${MAIN}/:path*`,
+      statusCode: 301,
+    })
     expect(all).toContainEqual({ source: "/doctors/dr-sheila-khadir", destination: "/team", permanent: true })
   })
 })
