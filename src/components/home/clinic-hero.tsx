@@ -83,12 +83,17 @@ export function ClinicHero() {
       <div className="relative mx-auto flex min-h-[calc(100svh-6.1rem)] max-w-7xl items-center px-5 py-16 sm:px-10 md:min-h-[calc(100svh-6.8rem)] lg:px-8">
         <div className="w-full max-w-3xl">
           <p className="max-w-[16ch] text-balance font-sans text-[clamp(2.5rem,5.4vw,5.5rem)] font-normal leading-[1.02] tracking-[-0.03em] [text-shadow:0_8px_36px_rgba(4,18,42,0.3)]">
-            Valleyview Medical Centre
+            <span className="block text-[0.42em] font-light leading-tight tracking-[-0.01em] text-secondary-foreground/85">Welcome to</span>
+            <span className="mt-1 block">Valleyview Medical Centre</span>
+          </p>
+
+          <p className="mt-5 max-w-2xl text-balance font-sans text-[clamp(1.35rem,2.6vw,2.6rem)] font-bold leading-tight tracking-[0.02em] text-accent-warm">
+            Your health, connected with care.
           </p>
 
           <h1
             id="hero-heading"
-            className="mt-8 max-w-2xl text-balance font-sans text-xl font-medium leading-8 text-secondary-foreground/92 [text-shadow:0_4px_20px_rgba(4,18,42,0.35)] sm:mt-10 sm:text-2xl sm:leading-9"
+            className="mt-8 max-w-2xl text-balance font-sans text-xl font-medium leading-8 text-secondary-foreground/92 [text-shadow:0_4px_20px_rgba(4,18,42,0.35)] sm:text-2xl sm:leading-9"
           >
             Walk-in and family medicine clinics in Durham Region, Peterborough and Brantford
           </h1>
