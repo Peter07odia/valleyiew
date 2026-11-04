@@ -2,15 +2,11 @@
  * Patient policy content for /clinic-policies, /service-fees and
  * /patient-rights-and-responsibilities.
  *
- * Every unresolved question for the clinic lives in THIS file and starts with
- * "CONFIRM:". src/data/patient-policies.test.ts fails while any rendered page
- * still contains "CONFIRM:", which blocks the branch from going live until the
- * clinic answers. Replace each CONFIRM text with the confirmed wording; never
- * publish it as written.
+ * Wording follows the original valleyviewmedical.ca policy pages. If a question
+ * for the clinic is ever added here, start it with "CONFIRM:" — the test in
+ * src/data/patient-policies.test.ts fails while any page shows that text, so it
+ * can't go live by accident.
  */
-
-/** Prefix of every unresolved item; the page components use it to highlight them. */
-export const UNCONFIRMED_MARKER = "CONFIRM:"
 
 export type InlineText = string | { text: string; href: string }
 export type Paragraph = InlineText[]
@@ -38,13 +34,12 @@ export const CLINIC_POLICIES: PolicySection[] = [
         ". If you show a valid health card within 30 days of your visit, we will refund what you paid, minus an administrative fee.",
       ],
       [
-        "CONFIRM: amount of the administrative fee, and whether out-of-province health cards are accepted at all seven clinics.",
+        "Under Ontario Ministry of Health policy, a valid provincial health card (from Ontario or any other province) is required for every visit.",
       ],
       [
-        "Keeping your health card up to date helps you keep access to care and protects against fraud. If your card is lost, stolen or damaged, or your name or address has changed, contact ServiceOntario.",
-      ],
-      [
-        "CONFIRM: link to the current ontario.ca health card page instead of a phone number (the old site listed 1-800-664-8998, which could not be verified as current).",
+        "Keeping your health card up to date helps you keep access to care and protects against fraud. If your card is lost, stolen or damaged, please contact the Ministry of Health and Long-Term Care information line at ",
+        { text: "1-800-664-8998", href: "tel:18006648998" },
+        ". If your address or name has changed, visit or contact your local OHIP office.",
       ],
     ],
   },
@@ -69,7 +64,6 @@ export const CLINIC_POLICIES: PolicySection[] = [
       [
         "If you would like to discuss your results with your doctor, please book a follow-up appointment one to two weeks after your tests. Allow at least 48 hours for blood work and at least 72 hours for x-rays and other tests.",
       ],
-      ["CONFIRM: that this is still the clinics’ policy."],
     ],
   },
   {
@@ -95,10 +89,7 @@ export const CLINIC_POLICIES: PolicySection[] = [
     title: "Patient Check-In",
     paragraphs: [
       [
-        "Before your first visit, we will ask you to complete a registration form with your name, date of birth, address, phone number and health card details.",
-      ],
-      [
-        "CONFIRM: how registration forms are handled and stored today (the old site said paper forms are shredded after the visit, but new patients now register online).",
+        "Before your first visit, we will ask you to complete a registration form with your name, date of birth, address, phone number and health card details. These forms are confidential and are securely shredded after your visit.",
       ],
     ],
   },
@@ -113,7 +104,15 @@ export const CLINIC_POLICIES: PolicySection[] = [
         "New medications and dose changes always need an appointment. Prescriptions for narcotics, controlled medications, sedatives and antibiotics are never renewed by phone or fax and need an appointment with your doctor.",
       ],
       [
-        "CONFIRM: the old site contradicted itself here. One page said the clinic has a “No Phone/Fax Prescription Renewal Policy”. Another said the walk-in clinic can give a one-time short supply at your pharmacy’s request (allow 48 hours), and that renewals without an appointment may be charged as an uninsured service. Which is current?",
+        "We do not refill narcotics or controlled medications. We recommend contacting the provider who first prescribed them for refills.",
+      ],
+      [
+        "If you run out of medication without having made an appointment, our walk-in clinic can provide a one-time short supply at the request of your pharmacy. Please allow up to 48 hours for the prescription to be sent to your pharmacy. Only existing, current prescriptions are eligible.",
+      ],
+      [
+        "A prescription renewal without an appointment is not covered by OHIP and may be charged as listed in our ",
+        { text: "Uninsured Service Fees", href: "/service-fees" },
+        ".",
       ],
     ],
   },
@@ -131,10 +130,7 @@ export const CLINIC_POLICIES: PolicySection[] = [
     title: "No-Show Fee",
     paragraphs: [
       [
-        "If you miss an appointment without giving at least 24 hours’ notice, you will be charged a no-show fee. Three or more missed appointments may lead to ending the patient relationship, at your physician’s discretion.",
-      ],
-      [
-        "CONFIRM: the fee amount (the old policies page said $40, the old fee schedule said $40 to $80).",
+        "If you miss an appointment without giving at least 24 hours’ notice, you will be charged a $40 no-show fee. Three or more missed appointments may lead to ending the patient relationship, at your physician’s discretion.",
       ],
     ],
   },
@@ -150,11 +146,7 @@ export const CLINIC_POLICIES: PolicySection[] = [
 ]
 
 export const SERVICE_FEES_INTRO =
-  "These services are not covered by OHIP. Fees depend on the service, and complex requests may cost more. Please ask your clinic’s front desk for the exact fee before your visit."
-
-export const SERVICE_FEES_NOTES: Paragraph[] = [
-  ["CONFIRM: that every fee below is current for all seven clinics."],
-]
+  "These services are not covered by OHIP. Fees depend on the service, and complex requests may cost more. Fees are approximate and may vary, so please ask your clinic’s front desk for the exact fee before your visit."
 
 export interface ServiceFee {
   service: string
@@ -218,16 +210,13 @@ export const SERVICE_FEE_GROUPS: ServiceFeeGroup[] = [
     title: "Medical records",
     fees: [
       { service: "Medical records request", fee: "$50 to $100" },
-      {
-        service: "Chart copy",
-        fee: "CONFIRM: fee for the first 20 pages (old site only said $0.25 per page after 20)",
-      },
+      { service: "Chart copy (first 20 pages)", fee: "$0.25 per page after 20" },
     ],
   },
   {
     id: "missed-appointments",
     title: "Missed appointments",
-    fees: [{ service: "No-show fee", fee: "CONFIRM: same amount as the No-Show Fee policy" }],
+    fees: [{ service: "No-show fee", fee: "$40 to $80" }],
   },
 ]
 

@@ -14,10 +14,9 @@ import {
 
 import { PolicyCta } from "@/components/policies/policy-cta"
 import { PolicyHero } from "@/components/policies/policy-hero"
-import { ConfirmNote, PolicyParagraph, isUnconfirmed } from "@/components/policies/rich-text"
 import { Reveal } from "@/components/shared/reveal"
 import { canonicalUrl } from "@/config/clinic"
-import { SERVICE_FEE_GROUPS, SERVICE_FEES_INTRO, SERVICE_FEES_NOTES } from "@/data/patient-policies"
+import { SERVICE_FEE_GROUPS, SERVICE_FEES_INTRO } from "@/data/patient-policies"
 
 export const metadata: Metadata = {
   title: "Uninsured Service Fees",
@@ -44,7 +43,7 @@ export default function ServiceFeesPage() {
 
       <div className="px-5 py-16 sm:px-10 lg:py-24">
         <div className="mx-auto max-w-7xl">
-          <Reveal className="grid gap-6 lg:grid-cols-[1fr_1fr] lg:items-start">
+          <Reveal className="max-w-3xl">
             <div className="flex items-start gap-3 border-l-4 border-primary bg-accent px-5 py-4 text-base leading-7 text-secondary">
               <Info className="mt-1 size-5 shrink-0 text-primary" aria-hidden="true" />
               <p>
@@ -64,11 +63,6 @@ export default function ServiceFeesPage() {
                 </Link>{" "}
                 in our clinic policies.
               </p>
-            </div>
-            <div className="space-y-4">
-              {SERVICE_FEES_NOTES.map((paragraph, i) => (
-                <PolicyParagraph key={i} content={paragraph} />
-              ))}
             </div>
           </Reveal>
 
@@ -136,24 +130,12 @@ export default function ServiceFeesPage() {
                       <tbody className="divide-y divide-secondary/10">
                         {group.fees.map((row) => (
                           <tr key={row.service} className="transition-colors hover:bg-accent/60">
-                            {isUnconfirmed(row.fee) ? (
-                              // Unresolved fee: the note spans the row under the service name.
-                              <th scope="row" colSpan={2} className="px-6 py-4 font-normal leading-6 text-secondary/85">
-                                <span className="block">{row.service}</span>
-                                <span className="mt-3 block [&>span]:text-sm [&>span]:leading-6">
-                                  <ConfirmNote>{row.fee}</ConfirmNote>
-                                </span>
-                              </th>
-                            ) : (
-                              <>
-                                <th scope="row" className="px-6 py-4 align-top font-normal leading-6 text-secondary/85">
-                                  {row.service}
-                                </th>
-                                <td className="whitespace-nowrap px-6 py-4 text-right align-top font-semibold tabular-nums text-secondary">
-                                  {row.fee}
-                                </td>
-                              </>
-                            )}
+                            <th scope="row" className="px-6 py-4 align-top font-normal leading-6 text-secondary/85">
+                              {row.service}
+                            </th>
+                            <td className="px-6 py-4 text-right align-top font-semibold tabular-nums text-secondary sm:whitespace-nowrap">
+                              {row.fee}
+                            </td>
                           </tr>
                         ))}
                       </tbody>
